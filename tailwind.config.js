@@ -41,7 +41,8 @@ module.exports = {
       colors: {
         greentxt: 'var(--Green-Green-100, #088133)',
         blacklighttxt: 'var(--Black-Black50, #808080)',
-        snowy: '#F4F7FE'
+        snowy: '#F4F7FE',
+        greenView: '#088133'
       },
     },
   },

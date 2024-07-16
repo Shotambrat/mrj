@@ -14,17 +14,17 @@ const LeftArrow = ({ onClick, hasPrev }) => (
     aria-label="Previous Slide"
   >
     <svg
-      className="w-6 h-6 text-white"
+      className="w-8 h-8 max-mdl:w-6 max-mdl:h-6 text-white"
+      viewBox="-9 0 40 22"
       fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M15 19l-7-7 7-7"
+        d="M10.2969 1.5625L1.85938 10L10.2969 18.4375M3.03125 10L20.1406 10"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </button>
@@ -38,18 +38,19 @@ const RightArrow = ({ onClick, hasNext }) => (
     } top-1/2 right-4 z-10 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100`}
     aria-label="Next Slide"
   >
+
     <svg
-      className="w-6 h-6 text-white"
+      className="w-8 h-8 max-mdl:w-6 max-mdl:h-6 text-white"
+      viewBox="-9 0 40 22"
       fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M9 5l7 7-7 7"
+        d="M11.7031 1.5625L20.1406 10L11.7031 18.4375M18.9687 10L1.85937 10"
+        stroke="white"
+        stroke-width={2}
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   </button>
@@ -69,7 +70,7 @@ const BannerCarousel = () => {
         renderArrowNext={(clickHandler, hasNext) => (
           <RightArrow onClick={clickHandler} hasNext={hasNext} />
         )}
-        className="relative"
+        className="relative "
       >
         <div className="w-full relative ">
           <Image
