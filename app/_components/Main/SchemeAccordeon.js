@@ -58,32 +58,60 @@ const AccordionContent = ({ children }) => {
   return <div className="pb-5 px-4">{children}</div>;
 };
 
-export default function Instuction() {
+const data = [
+  {
+    key: "general",
+    title: "Equipment Selection",
+    description: "Consult with our experts to find equipment that perfectly meets your needs",
+    image: schemeImage
+  },
+  {
+    key: "blood",
+    title: "Order Processing",
+    description: "Consult",
+    image: schemeImage
+  },
+  {
+    key: "urine",
+    title: "Customized Ordering and Installation",
+    description: "Hola",
+    image: schemeImage
+  },
+  {
+    key: "feces",
+    title: "Training and Support",
+    description: "Consul",
+    image: schemeImage
+  }
+];
+
+export default function Instruction() {
   const [openSection, setOpenSection] = useState("general");
+  const [filteredData, setFilteredData] = useState(data[0]);
 
   const toggleSection = (section) => {
-    setOpenSection(openSection === section ? "" : section);
+    setOpenSection(section);
+    const result = data.find((item) => item.key === section);
+    setFilteredData(result);
   };
 
   return (
     <section className="w-full">
       <div className="flex flex-col w-full xl:hidden">
-        <AccordionItem
-          title="Equipment Selection"
-          isOpen={openSection === "general"}
-          onClick={() => toggleSection("general")}
-        >
-          <div className="flex flex-col text-xl text-neutral-900 max-md:max-w-full">
+        {data.map(({ key, title, description, image }) => (
+          <AccordionItem
+            key={key}
+            title={title}
+            isOpen={openSection === key}
+            onClick={() => toggleSection(key)}
+          >
             <AccordionContent>
               <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
                 <div className="flex gap-3 max-md:flex-wrap">
-                  <p className="max-md:max-w-full">
-                    Consult with our experts to find equipment that perfectly
-                    meets your needs
-                  </p>
+                  <p className="max-md:max-w-full">{description}</p>
                 </div>
                 <Image
-                  src={schemeImage}
+                  src={image}
                   width={1000}
                   height={1000}
                   alt="Scheme Image"
@@ -91,106 +119,33 @@ export default function Instuction() {
                 />
               </div>
             </AccordionContent>
-          </div>
-        </AccordionItem>
-        <AccordionItem
-          title="Order Processing"
-          isOpen={openSection === "blood"}
-          onClick={() => toggleSection("blood")}
-        >
-          <AccordionContent>
-            {/* Add your content for blood analysis here */}
-            <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
-              <div className="flex gap-3 max-md:flex-wrap">
-                <p className="max-md:max-w-full">
-                  Consult with our experts to find equipment that perfectly
-                  meets your needs
-                </p>
-              </div>
-              <Image
-                src={schemeImage}
-                width={1000}
-                height={1000}
-                alt="Scheme Image"
-                className="w-full h-auto"
-              />
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem
-          title="Customized Ordering and Installation"
-          isOpen={openSection === "urine"}
-          onClick={() => toggleSection("urine")}
-        >
-          <AccordionContent>
-            {/* Add your content for urine analysis here */}
-            <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
-              <div className="flex gap-3 max-md:flex-wrap">
-                <p className="max-md:max-w-full">
-                  Consult with our experts to find equipment that perfectly
-                  meets your needs
-                </p>
-              </div>
-              <Image
-                src={schemeImage}
-                width={1000}
-                height={1000}
-                alt="Scheme Image"
-                className="w-full h-auto"
-              />
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem
-          title="Training and Support"
-          isOpen={openSection === "feces"}
-          onClick={() => toggleSection("feces")}
-        >
-          <AccordionContent>
-            {/* Add your content for feces analysis here */}
-            <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
-              <div className="flex gap-3 max-md:flex-wrap">
-                <p className="max-md:max-w-full">
-                  Consult with our experts to find equipment that perfectly
-                  meets your needs
-                </p>
-              </div>
-              <Image
-                src={schemeImage}
-                width={1000}
-                height={1000}
-                alt="Scheme Image"
-                className="w-full h-auto"
-              />
-            </div>
-          </AccordionContent>
-        </AccordionItem>
+          </AccordionItem>
+        ))}
       </div>
-      <div className="w-full flex">
+      <div className="w-full flex max-xl:hidden">
         <div className="flex-1 flex-col flex justify-between">
-          <button className="border-t border-b border-r-8 border-r-green-400 h-full py-8 flex items-center justify-start">
-            <p>Equipment Selection</p>
-          </button>
-          <button className="border-t border-b border-r h-full py-8 flex items-center justify-start">
-            <p>Equipment Selection</p>
-          </button>
-          <button className="border-t border-b border-r h-full py-8 flex items-center justify-start">
-            <p>Equipment Selection</p>
-          </button>
-          <button className="border-t border-b border-r h-full py-8 flex items-center justify-start">
-            <p>Equipment Selection</p>
-          </button>
+          {data.map((item, i) => (
+            <button
+              key={i}
+              className={`border-t border-b h-full py-8 flex items-center justify-start ${
+                openSection === item.key ? "text-greenView  border-r-4 border-r-green-800" : "text-neutral-400 border-r"
+              }`}
+              onClick={() => toggleSection(item.key)}
+            >
+              <p className="text-2xl font-semibold">{item.title}</p>
+            </button>
+          ))}
         </div>
-        <div className="flex-1 h-full flex-col justify-between border-b ">
+        <div className="flex-1 flex-col justify-between border-b ">
           <Image
-            src={schemeImage}
+            src={filteredData.image}
             width={1000}
             height={1000}
             alt="Scheme Image"
             className="w-full h-auto"
           />
           <div className="px-4 py-4">
-          Consult with our experts to find equipment that perfectly meets your needs
+            {filteredData.description}
           </div>
         </div>
       </div>
