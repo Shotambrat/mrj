@@ -21,7 +21,7 @@ module.exports = {
 
       'slg': '750px',
       // => @media (min-width: 900px) { ...
-      
+
       'lg': '900px',
       // => @media (min-width: 1100px) { ... }
 
@@ -30,7 +30,7 @@ module.exports = {
 
       '2xl': '1100px',
       // => @media (min-width: 1536px) { ... }
-      
+
       '3xl': '1440px',
       // => @media (min-width: 1440px) { ... }
     },
@@ -39,6 +39,8 @@ module.exports = {
         lato: ['Lato', 'sans-serif'],
       },
       colors: {
+        greentxt: 'var(--Green-Green-100, #088133)',
+        blacklighttxt: 'var(--Black-Black50, #808080)',
         snowy: '#F4F7FE'
       },
     },
