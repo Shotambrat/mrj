@@ -1,9 +1,9 @@
 export default function GreenArrow({ title }) {
   return (
     <button className="flex items-center gap-2 transition-all duration-200 hover:gap-4">
-      <p className="text-greenView text-lg whitespace-nowrap font-bold">{title}</p>
+      <p className="text-greenView whitespace-nowrap font-bold">{title}</p>
       <svg
-        className="w-4 h-4"
+        className="w-3 h-3"
         viewBox="0 0 16 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

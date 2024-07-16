@@ -13,3 +13,14 @@ body {
   height: auto; /* Adjust as needed */
   padding-top: 20px; /* Add padding if needed */
 }
+
+
+/* Пример для Tailwind CSS */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE и Edge */
+  scrollbar-width: none; /* Firefox */
+}
