@@ -38,6 +38,9 @@ module.exports = {
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
       },
+      colors: {
+        snowy: '#F4F7FE'
+      },
     },
   },
   plugins: [],
