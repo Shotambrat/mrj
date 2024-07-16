@@ -2,8 +2,8 @@
 
 export default function Home() {
   return (
-    <main className="w-full bg-white flex flex-col gap-32">
+    <div className="w-full bg-white flex flex-col gap-32">
       
-    </main>
+    </div>
   );
 }

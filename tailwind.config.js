@@ -39,7 +39,8 @@ module.exports = {
         lato: ['Lato', 'sans-serif'],
       },
       colors: {
-        snowy: '#F4F7FE'
+        snowy: '#F4F7FE',
+        greenView: '#088133'
       },
     },
   },
