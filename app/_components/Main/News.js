@@ -39,7 +39,7 @@ export default function News() {
       <div className="w-full grid gap-4 grid-cols-1 mdl:grid-cols-2 xl:grid-cols-4 h-auto">
         {data.map((item, i) => {
           return (
-            <Link href={`/news/${item.slug}`}>
+            <Link key={i} href={`/news/${item.slug}`}>
               <NewCard
                 key={i}
                 title={item.title}
