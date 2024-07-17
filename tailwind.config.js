@@ -42,6 +42,7 @@ module.exports = {
         greentxt: 'var(--Green-Green-100, #088133)',
         blacklighttxt: 'var(--Black-Black50, #808080)',
         snowy: '#F4F7FE',
+        contactBorder: " #E1E1E1",
         greenView: '#088133'
       },
     },
