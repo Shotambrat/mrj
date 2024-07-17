@@ -6,6 +6,7 @@ import AboutUs from "@/app/_components/Main/AboutUs";
 import Application from "./Application";
 // import Partners from "../About/Partners";
 import News from "./News";
+import Map from "../About/Map";
 
 export default function Main() {
   return (
@@ -20,6 +21,7 @@ export default function Main() {
         <Partners />
       </div> */}
       <News />
+      <Map />
     </div>
   );
 }
