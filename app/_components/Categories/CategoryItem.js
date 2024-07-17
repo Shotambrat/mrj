@@ -17,7 +17,7 @@ export default function CategoryItem({ key, title, imageSrc }) {
         width={500}
         height={500}
         alt={`${title} Photo`}
-        className="absolute w-1/2 h-[80%] z-0 object-contain -bottom-8 right-0"
+        className="absolute w-1/2 h-[80%] z-0 object-contain -bottom-16 right-0"
       />
     </div>
   );
