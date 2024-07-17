@@ -16,7 +16,7 @@ const AccordionItem = ({ title, isOpen, onClick, children }) => {
           isOpen ? "text-greenView" : "text-neutral-400"
         } font-bold text-2xl max-md:flex-wrap max-md:max-w-full cursor-pointer`}
       >
-        <span className="">{title}</span>
+        <span className="flex-auto">{title}</span>
         {isOpen ? (
           <Image
             src={upGreen}
@@ -87,10 +87,21 @@ const data = [
 
 export default function Instruction() {
   const [openSection, setOpenSection] = useState("general");
+  const [openSectionAccordeon, setOpenSectionAccordeon] = useState("general");
   const [filteredData, setFilteredData] = useState(data[0]);
 
   const toggleSection = (section) => {
     setOpenSection(section);
+    const result = data.find((item) => item.key === section);
+    setFilteredData(result);
+  };
+
+  const toggleSectionAccordeon = (section) => {
+    if (openSectionAccordeon ==  section) {
+      setOpenSectionAccordeon("");
+    } else {
+      setOpenSectionAccordeon(section);
+    }
     const result = data.find((item) => item.key === section);
     setFilteredData(result);
   };
@@ -102,8 +113,8 @@ export default function Instruction() {
           <AccordionItem
             key={key}
             title={title}
-            isOpen={openSection === key}
-            onClick={() => toggleSection(key)}
+            isOpen={openSectionAccordeon === key}
+            onClick={() => toggleSectionAccordeon(key)}
           >
             <AccordionContent>
               <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
