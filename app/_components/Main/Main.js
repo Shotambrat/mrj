@@ -2,6 +2,7 @@ import Banner from "@/app/_components/Main/Banner"
 import Equipments from "@/app/_components/Main/Equipments"
 import Scheme from "@/app/_components/Main/Scheme"
 import ProfessionalEquipments from "@/app/_components/Main/ProfessionalEquipments"
+import AboutUs from "@/app/_components/Main/AboutUs"
 
 export default function Main() {
   return (
@@ -10,6 +11,7 @@ export default function Main() {
         <Equipments />
         <Scheme />
         <ProfessionalEquipments />
+        <AboutUs />
     </div>
   )
 }

@@ -1,5 +1,7 @@
-import equipLab from "@/public/images/equipments/equip-lab.png";
-import equipUzi from "@/public/images/equipments/equip-uzi.png";
+import uzi from "@/public/images/equipments/uzi.png";
+import lab from "@/public/images/equipments/lab-equip.png";
+import colba from "@/public/images/equipments/colba.png";
+import radio from "@/public/images/equipments/radio.png";
 import CategoryItem from "@/app/_components/Categories/CategoryItem";
 import Link from "next/link";
 import GreenArrow from "../Buttons/GreenArrow";
@@ -8,19 +10,19 @@ export default function Equipments() {
   const data = [
     {
       title: "Ultrasound Diagnostic System",
-      imageSrc: equipLab,
+      imageSrc: uzi,
     },
     {
       title: "Laboratory Equipment",
-      imageSrc: equipUzi,
+      imageSrc: lab,
     },
     {
       title: "Reagents and consumables",
-      imageSrc: equipLab,
+      imageSrc: colba,
     },
     {
       title: "Radiology and X-ray systems",
-      imageSrc: equipUzi,
+      imageSrc: radio,
     },
   ];
   return (
