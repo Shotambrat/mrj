@@ -38,6 +38,10 @@ module.exports = {
       fontFamily: {
         lato: ['Lato', 'sans-serif'],
       },
+      boxShadow: {
+        'custom-light': '0 0px 40px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1)',
+        'custom-heavy': '0 25px 50px rgba(0, 0, 0, 0.25)',
+      },
       colors: {
         greentxt: 'var(--Green-Green-100, #088133)',
         blacklighttxt: 'var(--Black-Black50, #808080)',

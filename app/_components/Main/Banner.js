@@ -64,6 +64,7 @@ const BannerCarousel = () => {
         infiniteLoop
         showThumbs={false}
         showStatus={false}
+        showIndicators={false}
         renderArrowPrev={(clickHandler, hasPrev) => (
           <LeftArrow onClick={clickHandler} hasPrev={hasPrev} />
         )}
