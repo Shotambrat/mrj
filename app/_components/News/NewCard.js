@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function NewCard({key, title, date, imageSrc}) {
   return (
-    <div key={key} className="w-full rounded-3xl bg-white shadow-custom-light p-4 h-full flex flex-col gap-5 justify-between">
+    <div className="w-full rounded-3xl bg-white shadow-custom-light p-4 h-full flex flex-col gap-5 justify-between">
       <Image
       src={imageSrc}
       width={500}

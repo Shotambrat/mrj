@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from 'react';
 
 export default function Map() {
 
@@ -132,7 +131,7 @@ export default function Map() {
                                         <a href="mailto:info@mrjtrade.ae" className="text-black text-lg font-semibold mdx:text-[20px]">info@mrjtrade.ae</a>
                                     </div>
                                 </div>
-                                <button type="submit" className=" w-[328px] mdl:mr-auto mdl:px-16 py-3 rounded-[12px] transition-colors bg-greentxt text-white mdx:text-[20px] mdx:w-[408px] xl:mt-[130px]" style={{ pointerEvents: 'auto' }}>
+                                <button type="submit" className="w-full md:w-[328px] mdl:mr-auto mdl:px-16 py-3 rounded-[12px] transition-colors bg-greentxt text-white mdx:text-[20px] mdx:w-[408px] xl:mt-[130px]" style={{ pointerEvents: 'auto' }}>
                                     Ask question
                                 </button>
                             </form>

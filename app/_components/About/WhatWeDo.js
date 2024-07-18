@@ -80,21 +80,23 @@ export default function WhatWeDo() {
     ];
 
     return (
-        <div className="2xl:grid 2xl:grid-cols-2">
-            <div>
-                <h2 className="ml-0 text-[25px] mb-8 mdx:text-[35px] font-medium">What we do for <br />our Partners?</h2>
-            </div>
-            <div className="mt-[25px] grid gap-4 mdx:grid-cols-2">
-                {services.map((service, index) => (
-                    <div key={index} className={`w-full h-[186px] flex flex-col gap-[23px] items-start border-[1px] rounded-[20px] px-[20px] pt-[20px] pb-[30px] 2xl:pt-[30px] 2xl:h-[200px] ${service.highlight ? 'mdx:col-span-2' : ''}`}>
-                        <div>
-                            {service.icon}
+        <div className="max-w-[1440px] mx-auto px-2">
+            <div className="2xl:grid 2xl:grid-cols-2">
+                <div>
+                    <h2 className="ml-0 text-[25px] mb-8 mdx:text-[35px] font-medium">What we do for <br />our Partners?</h2>
+                </div>
+                <div className="mt-[25px] grid gap-4 mdx:grid-cols-2">
+                    {services.map((service, index) => (
+                        <div key={index} className={`w-full h-[186px] flex flex-col gap-[23px] items-start border-[1px] rounded-[20px] px-[20px] pt-[20px] pb-[30px] 2xl:pt-[30px] 2xl:h-[200px] ${service.highlight ? 'mdx:col-span-2' : ''}`}>
+                            <div>
+                                {service.icon}
+                            </div>
+                            <div className="text-[16px] mdx:text-[18px] mdl:text-[20px]">
+                                {service.text}
+                            </div>
                         </div>
-                        <div className="text-[16px] mdx:text-[18px] mdl:text-[20px]">
-                            {service.text}
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
         </div>
     );

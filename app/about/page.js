@@ -7,11 +7,11 @@ import Map from "@/app/_components/About/Map";
 export default function Home() {
   return (
     <main className="w-full bg-white flex flex-col gap-32  mx-auto">
-      <div className="mt-[40px] px-2"><Banner /></div>
-      <div className="mt-[40px] xl:px-[70px] 3xl:x-[200px]"><WhatWeDo /></div>
-      <div className="mt-[40px] xl:px-[70px] 3xl:x-[200px]"><Partners /></div>
-      <div className="mt-[40px] px-2"><WhyChooseUs /></div>
-      <div className="mt-[40px] "><Map /></div>
+      <div ><Banner /></div>
+      <div ><WhatWeDo /></div>
+      <div ><Partners /></div>
+      <div ><WhyChooseUs /></div>
+      <div><Map /></div>
     </main>
   );
 }
