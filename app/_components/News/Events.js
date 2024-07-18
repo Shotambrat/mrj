@@ -33,15 +33,16 @@ export default function Events() {
       imageSrc: eventImage4,
       link: "#",
     },
+    
   ];
 
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 123000,
+    autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1200,
@@ -53,7 +54,7 @@ export default function Events() {
       {
         breakpoint: 1000,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -68,15 +69,15 @@ export default function Events() {
   };
 
   return (
-    <section className="w-full max-w-[1440px] mx-auto flex flex-col gap-1 px-2">
-      <h2 className="text-3xl max-mdx:text-2xl font-bold flex items-center text-greentxt mt-[40px]">
+    <section className="w-full max-w-[1440px] mx-auto flex flex-col  gap-1 px-2 ">
+      <h2 className="text-3xl max-mdx:text-2xl font-bold flex  items-center text-greentxt mt-[40px]">
         EVENTS
         <GreenArrow />
       </h2>
-      <div className="w-full">
+      <div className="w-full ">
         <Slider {...settings}>
           {data.map((item, index) => (
-            <div key={index} className="p-2 mt-4">
+            <div key={index} className="p-2 mt-4 ">
               <EventCard title={item.title} imageSrc={item.imageSrc} link={item.link} />
             </div>
           ))}
