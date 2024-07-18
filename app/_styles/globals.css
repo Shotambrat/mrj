@@ -38,3 +38,32 @@ body {
   height: 100%;
   filter: grayscale(100%);
 }
+
+#dollar-logo {
+  border-bottom: 2px solid #e5e7eb; /* TailwindCSS grey-200 */
+}
+
+
+.main-carousel .carousel .slide img {
+  object-fit: contain;
+  height: 400px;
+  width: auto;
+}
+
+.thumbnail-carousel .carousel .thumb img {
+  height: 80px;
+  width: auto;
+}
+
+.thumbnail-carousel .carousel .thumb {
+  border: none;
+  padding: 2px;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

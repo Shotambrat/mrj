@@ -5,7 +5,7 @@ import Tools from "@/app/_components/Header/Tools";
 export default function Header() {
   const data = [
     {
-        title: 'Catalog',
+        title: 'Categories',
         slug: 'categories',
     },
     {
