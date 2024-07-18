@@ -4,7 +4,7 @@ import Scheme from "@/app/_components/Main/Scheme";
 import ProfessionalEquipments from "@/app/_components/Main/ProfessionalEquipments";
 import AboutUs from "@/app/_components/Main/AboutUs";
 import Application from "./Application";
-// import Partners from "../About/Partners";
+import Partners from "../About/Partners";
 import News from "./News";
 import Map from "../About/Map";
 
@@ -17,9 +17,7 @@ export default function Main() {
       <ProfessionalEquipments />
       <AboutUs />
       <Application />
-      {/* <div className="w-full max-w-[1440px] mx-auto px-2">
-        <Partners />
-      </div> */}
+      <Partners />
       <News />
       <Map />
     </div>
