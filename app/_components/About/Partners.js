@@ -5,7 +5,7 @@ import dollar from "@/public/images/aboutUs/partners/image42.png";
 import mindray from "@/public/images/aboutUs/partners/image3.png";
 import zoncare from "@/public/images/aboutUs/partners/image27.png";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function Partners() {
   const logos = [
@@ -18,21 +18,18 @@ export default function Partners() {
   ];
 
   return (
-    <div className="max-w-[1440px] mx-auto">
-      <div className="text-[25px] mb-8 mdx:text-[35px] px-2">Our partners</div>
-      <div className="relative ">
-        <div className="relative absolute  border-[1px] border-white z-10"></div>
-        <div className=" grid grid-cols-2 m-[-1px] xl:grid-cols-3 border border-white">
-          {logos.map((logo, index) => (
-            <div
-              key={index}
-              className="flex justify-center items-center w-full h-24 p-12 border border-gray-200 "
-            >
-              <Image src={logo.src} alt={logo.alt} />
-            </div>
-          ))}
-        </div>
-        <div className="relative absolute  border-[1px] border-white z-10 m-[-3px] h-full"></div>
+    <div className="max-w-[1440px] mx-auto px-2">
+      <div className="text-2xl mb-8 mdx:text-3xl font-semibold">OUR PARTNERS</div>
+      <div className="relative grid grid-cols-2 xl:grid-cols-3">
+        <div className="absolute h-[98%] w-[99%] border-2 top-1 left-1 border-white shadow-custom-heavy z-10"></div>
+        {logos.map((logo, index) => (
+          <div
+            key={index}
+            className="flex justify-center items-center w-full h-24 p-20 xl:p-24 border border-gray-200 "
+          >
+            <Image src={logo.src} alt={logo.alt} />
+          </div>
+        ))}
       </div>
     </div>
   );

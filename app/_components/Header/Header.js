@@ -6,7 +6,7 @@ export default function Header() {
   const data = [
     {
         title: 'Catalog',
-        slug: 'catalog',
+        slug: 'categories',
     },
     {
         title: 'About us',

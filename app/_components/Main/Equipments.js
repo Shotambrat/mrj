@@ -11,18 +11,22 @@ export default function Equipments() {
     {
       title: "Ultrasound Diagnostic System",
       imageSrc: uzi,
+      slug: "ultrasound"
     },
     {
       title: "Laboratory Equipment",
       imageSrc: lab,
+      slug: "lab"
     },
     {
       title: "Reagents and consumables",
       imageSrc: colba,
+      slug: "reagents"
     },
     {
       title: "Radiology and X-ray systems",
       imageSrc: radio,
+      slug: "radiology"
     },
   ];
   return (
@@ -32,7 +36,7 @@ export default function Equipments() {
       </h2>
       <div className="w-full grid grid-cols-1 mdl:grid-cols-2 xl:grid-cols-4 gap-4">
         {data.map((item, i) => (
-          <CategoryItem key={i} title={item.title} imageSrc={item.imageSrc} />
+          <CategoryItem key={i} title={item.title} imageSrc={item.imageSrc} slug={item.slug} />
         ))}
       </div>
       <div className="w-full flex justify-center">
