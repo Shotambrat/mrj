@@ -1,12 +1,11 @@
-import CatalogList from '@/app/_components/Catalog/CatalogBar'
+
+import List from '@/app/_components/Catalog/List'
 import React from 'react'
 
 export default function page() {
   return (
-    <div>
-        <div className='w-full max-w-[500px]'>
-          <CatalogList />
-        </div>
+    <div className='w-full bg-white flex flex-col py-24'>
+      <List />
     </div>
   )
 }

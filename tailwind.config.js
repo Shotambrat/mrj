@@ -47,7 +47,8 @@ module.exports = {
         blacklighttxt: 'var(--Black-Black50, #808080)',
         snowy: '#F4F7FE',
         contactBorder: " #E1E1E1",
-        greenView: '#088133'
+        greenView: '#088133',
+        greenCategory: '#E6F2EB'
       },
     },
   },
