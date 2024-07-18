@@ -3,10 +3,13 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import eventImage1 from "@/public/images/equipments/uzi.png"; // Replace with your image paths
-import eventImage2 from "@/public/images/equipments/lab-equip.png"; // Replace with your image paths
+import eventImage1 from "@/public/images/news/events/1.png"; 
+import eventImage2 from "@/public/images/news/events/2.png"; 
+import eventImage3 from "@/public/images/news/events/3.png"; 
+import eventImage4 from "@/public/images/news/events/4.png"; 
+
 import GreenArrow from "@/app/_components/Buttons/GreenArrow";
-import EventCard from "@/app/_components/Events/EventCard"; // Adjust the import path as necessary
+import EventCard from "@/app/_components/Events/EventCard"; 
 
 export default function Events() {
   const data = [
@@ -20,6 +23,16 @@ export default function Events() {
       imageSrc: eventImage2,
       link: "#",
     },
+    {
+      title: "Medical Technology and Equipment Conference in Sharjah",
+      imageSrc: eventImage3,
+      link: "#",
+    },
+    {
+      title: "UAE Global Medical Forum: The Future of Medical Devices",
+      imageSrc: eventImage4,
+      link: "#",
+    },
   ];
 
   const settings = {
@@ -28,7 +41,7 @@ export default function Events() {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 123000,
     responsive: [
       {
         breakpoint: 1200,
@@ -63,7 +76,7 @@ export default function Events() {
       <div className="w-full">
         <Slider {...settings}>
           {data.map((item, index) => (
-            <div key={index} className="p-4">
+            <div key={index} className="p-2 mt-4">
               <EventCard title={item.title} imageSrc={item.imageSrc} link={item.link} />
             </div>
           ))}

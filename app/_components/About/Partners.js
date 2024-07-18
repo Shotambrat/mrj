@@ -25,7 +25,7 @@ export default function Partners() {
         {logos.map((logo, index) => (
           <div
             key={index}
-            className="flex justify-center items-center w-full h-24 p-20 xl:p-24 border border-gray-200 "
+            className="flex justify-center items-center w-full h-24 p-5 xl:p-24 border border-gray-200"
           >
             <Image src={logo.src} alt={logo.alt} />
           </div>
