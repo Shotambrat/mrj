@@ -16,7 +16,7 @@ export default function Events() {
     {
       title: "International Medical Equipment Exhibition in Dubai - 2024",
       imageSrc: eventImage1,
-      link: "#",
+      link: "#", 
     },
     {
       title: "Innovation in Medicine: Presentation of the Latest Technologies in Abu Dhabi - 2024",
