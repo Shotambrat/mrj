@@ -38,8 +38,3 @@ body {
   height: 100%;
   filter: grayscale(100%);
 }
-
-#dollar-logo {
-  border-bottom: 2px solid #e5e7eb; /* TailwindCSS grey-200 */
-}
-
