@@ -10,15 +10,15 @@ export default function Pagination() {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
-    useEffect(() => { 
-        const getNews = async () => {
-            const data = await fetchNews(currentPage);
-            console.log(data)
-            setNews(data.data.content);
-            setTotalPages(Math.ceil(30 / 12)); // Assuming there are 30 blogs in total, adjust if necessary
-        };
-        getNews();
-    }, [currentPage]);
+    // useEffect(() => { 
+    //     const getNews = async () => {
+    //         const data = await fetchNews(currentPage);
+    //         console.log(data)
+    //         setNews(data.data.content);
+    //         setTotalPages(Math.ceil(30 / 12)); 
+    //     };
+    //     getNews();
+    // }, [currentPage]);
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
