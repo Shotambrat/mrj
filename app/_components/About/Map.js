@@ -4,65 +4,6 @@
 export default function Map() {
 
 
-    const formatValue = (value) => {
-        if (!value) return "";
-
-        let formattedValue = "+998(";
-
-        for (let i = 0; i < Math.min(9, value.length); i++) {
-            if (i === 2) formattedValue += ")";
-            if (i === 5 || i === 7) formattedValue += "-";
-            formattedValue += value[i];
-        }
-
-        return formattedValue;
-    };
-
-    const handleChangePhone = (event) => {
-        let { value } = event.target;
-        let numbersOnly = value.replace(/[^\d]/g, "");
-
-        if (numbersOnly.startsWith("998")) {
-            numbersOnly = numbersOnly.substring(3);
-        }
-
-        setPhone(numbersOnly);
-    };
-
-    const getFormattedPhone = () => {
-        return formatValue(phone);
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const tgBotToken = "YOUR_TELEGRAM_BOT_TOKEN";
-        const chatId = "YOUR_CHAT_ID";
-        const text = `
-        Name: ${inputValue}\n
-        Phone: ${phone}\n
-        Time: ${time}\n
-        Message: ${result}
-      `;
-
-        try {
-            const response = await fetch(`https://api.telegram.org`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: text,
-                }),
-            });
-            const data = await response.json();
-            console.log("Form submitted:", data);
-        } catch (error) {
-            console.error("Error submitting form:", error);
-        }
-    };
-
     return (
         <div className="xl:mt-24 relative flex justify-center items-end h-[50rem] mdx:h-[57rem] xl:h-[38rem] ">
             <div className="w-full h-auto xl:h-full xl:absolute relative left-0 xl:top-0 z-0">
@@ -71,7 +12,7 @@ export default function Map() {
                 </div>
             </div>
             <div className="absolute top-0 left-0 xl:relative w-full 3xl:w-[1500px] h-[32rem] xl:h-[32rem] flex items-center z-10 xl:bg-inherit" style={{ pointerEvents: 'none' }}>
-                <div className="bg-white relative mx-auto w-full xl:mx-0 xl:left-10 xl:left-20 2xl:left-[6.875rem] bottom-0 xl:bottom-[70px] xl:w-[467px] xl:rounded-2xl"> 
+                <div className="bg-white relative mx-auto w-full xl:mx-0 xl:left-10 xl:left-20 2xl:left-[6.875rem] bottom-0 xl:bottom-[70px] xl:w-[467px] xl:rounded-2xl">
                     <div style={{ pointerEvents: 'auto' }} className="p-4 mdl:px-8 mdl:py-6 shadow-contact xl:py-8">
                         <div>
                             <div>
@@ -81,7 +22,7 @@ export default function Map() {
                             </div>
                         </div>
                         <div className="flex-1 mt-4">
-                            <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
+                            <form className="flex flex-col space-y-4" >
                                 <div className='xl:pb-[30px] border-b-2 border-contactBorder flex flex-row gap-4 items-center pb-3'>
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">

@@ -104,7 +104,7 @@ export default function NewsComp() {
       imageSrc: newsPhoto,
       slug: "children",
     },
-    
+
   ];
 
   const [currentPage, setCurrentPage] = useState(1);

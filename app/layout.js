@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Header />
-        <main className="w-full bg-white">{children}</main>
+        <main className="w-full bg-white relative">{children}</main>
         <Footer />
       </body>
     </html>

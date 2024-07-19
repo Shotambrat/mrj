@@ -89,3 +89,12 @@ body {
   z-index: 3;
   background: var(--Green-Green-10, #E6F2EB);
 }
+
+.invisible-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.shadow-contactPages {
+  box-shadow: 0px -4px 40px rgba(0, 0, 0, 0.10); /* Тень сверху */
+}
