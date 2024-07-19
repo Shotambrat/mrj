@@ -43,7 +43,7 @@ export default function Catalogitem({ new: isNew, sale, image, title, descriptio
             </div>
           )}
         </div>
-        <button onClick={handleFavoriteToggle} className="absolute top-4 right-4">
+        <div onClick={handleFavoriteToggle} className="absolute top-4 right-4">
           <Image
             src={isFavorite ? favFilled : fav}
             width={100}
@@ -51,7 +51,7 @@ export default function Catalogitem({ new: isNew, sale, image, title, descriptio
             alt="Favorite Icon"
             className="w-5 h-5 max-mdx:w-8 max-mdx:h-8"
           />
-        </button>
+        </div>
         <div className="w-full h-[300px] flex items-center justify-center overflow-hidden">
           <Image
             src={image}
