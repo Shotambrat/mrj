@@ -78,10 +78,10 @@ export default function ProductCharacteristics() {
               <button
                 onClick={() => handleFilter(item.category)}
                 key={index}
-                className={`z-10 w-auto text-lg transition-text text-neutral-600 font-medium ${
-                  active === item.category
+                className={`z-10 w-auto text-lg transition-text font-medium ${
+                  active == item.category
                     ? "text-greenView border-b-2 border-b-greenView"
-                    : ""
+                    : "text-neutral-400"
                 }`}
               >
                 <h3 className="my-2 whitespace-nowrap">{item.title}</h3>
@@ -95,10 +95,19 @@ export default function ProductCharacteristics() {
         {filtered.desc ? (
           <p className="text-lg leading-5">{filtered.data}</p>
         ) : (
-          <div className="flex flex-col gap-4 w-full">
-            <div className="w-full">
-
-            </div>
+          <div className="flex flex-col gap-6 w-full">
+            {filtered.data.map((item, i) => (
+              <div key={i} className="w-full flex gap-3">
+                <p className="w-full text-neutral-400 max-w-[100px] md:max-w-[150px] mdx:max-w-[200px] lg:max-w-[400px]">
+                  {item.title}
+                </p>
+                <div className="flex w-full flex-col">
+                  {item.data.map((subitem, j) => (
+                    <p key={j}>{subitem}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         )}
       </div>

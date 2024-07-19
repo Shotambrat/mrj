@@ -13,31 +13,36 @@ import Link from "next/link";
 import GreenArrow from "@/app/_components/Buttons/GreenArrow";
 import Catalogitem from "../Catalog/Catalogitem";
 
-
 const equipmentData = [
   {
     title: "MINDRAY DC 60 X-insight",
-    description: "A high-end ultrasound scanner that allows for high-quality diagnostics",
+    description:
+      "A high-end ultrasound scanner that allows for high-quality diagnostics",
     image: mindrayDC60,
     new: false,
     promotions: true,
-    price: '2500000 y.e',
-    sale: '-35%',
+    price: "2500000 y.e",
+    sale: "-35%",
+    slug: "1-mindray",
   },
   {
     title: "MINDRAY SV300",
-    description: "Advanced solution for mechanical ventilation in clinical settings",
+    description:
+      "Advanced solution for mechanical ventilation in clinical settings",
     image: mindraySV300,
     new: true,
     promotions: false,
+    slug: "2-mindray",
   },
   {
     title: "CL-900i",
-    description: "One of the smallest fully automated chemiluminescent immunoassay analyzers",
+    description:
+      "One of the smallest fully automated chemiluminescent immunoassay analyzers",
     image: cl900i,
     new: true,
     promotions: false,
-    sale: '-5%',
+    sale: "-5%",
+    slug: "1-cl",
   },
   {
     title: "MINDRAY UniBase 30",
@@ -45,6 +50,7 @@ const equipmentData = [
     image: mindrayUniBase,
     new: true,
     promotions: false,
+    slug: "2-mindray",
   },
   {
     title: "MINDRAY BeneHeart",
@@ -52,31 +58,38 @@ const equipmentData = [
     image: mindrayBeneHeart,
     new: false,
     promotions: true,
-    price: '2500 y.e',
-    sale: '-5%',
+    price: "2500 y.e",
+    sale: "-5%",
+    slug: "4-mindray",
   },
   {
     title: "MINDRAY DC 60 X-insight",
-    description: "A high-end ultrasound scanner that allows for high-quality diagnostics",
+    description:
+      "A high-end ultrasound scanner that allows for high-quality diagnostics",
     image: mindrayDC60,
     new: false,
     promotions: true,
-    price: '2500 y.e',
-    sale: '-55%',
+    price: "2500 y.e",
+    sale: "-55%",
+    slug: "5-mindray",
   },
   {
     title: "MINDRAY SV300",
-    description: "Advanced solution for mechanical ventilation in clinical settings",
+    description:
+      "Advanced solution for mechanical ventilation in clinical settings",
     image: mindraySV300,
     new: true,
     promotions: false,
+    slug: "6-mindray",
   },
   {
     title: "CL-900i",
-    description: "One of the smallest fully automated chemiluminescent immunoassay analyzers",
+    description:
+      "One of the smallest fully automated chemiluminescent immunoassay analyzers",
     image: cl900i,
     new: true,
     promotions: false,
+    slug: "2-cl",
   },
   {
     title: "MINDRAY UniBase 30",
@@ -84,6 +97,7 @@ const equipmentData = [
     image: mindrayUniBase,
     new: true,
     promotions: false,
+    slug: "7-mindray",
   },
   {
     title: "MINDRAY BeneHeart",
@@ -91,8 +105,9 @@ const equipmentData = [
     image: mindrayBeneHeart,
     new: false,
     promotions: true,
-    price: '2500 y.e',
-    sale: '-25%',
+    price: "2500 y.e",
+    sale: "-25%",
+    slug: "8-mindray",
   },
 ];
 
@@ -163,7 +178,9 @@ const EquipmentCarousel = () => {
 
   return (
     <section className="w-full max-w-[1440px] mx-auto flex flex-col gap-8 px-2">
-      <h2 className="text-3xl max-mdx:text-2xl font-bold">PROFESSIONAL MEDICAL EQUIPMENT</h2>
+      <h2 className="text-3xl max-mdx:text-2xl font-bold">
+        PROFESSIONAL MEDICAL EQUIPMENT
+      </h2>
       <div className="w-full flex flex-col gap-2">
         <div className="flex gap-2 overflow-x-scroll no-scrollbar">
           {categories.map((category, index) => (
@@ -181,18 +198,28 @@ const EquipmentCarousel = () => {
           ))}
         </div>
         <div className="w-full px-4">
-
-        <Slider {...settings} className="h-auto flex">
-          {filteredData.map((item, index) => (
-            <div key={index} className="p-2">
-              <Catalogitem new={item.new} sale={item.sale} image={item.image} title={item.title} description={item.description} price={item.price} />
-            </div>
-          ))}
-        </Slider>
+          <Slider {...settings} className="h-auto flex">
+            {filteredData.map((item, index) => (
+              <div key={index} className="p-2">
+                <Catalogitem
+                  new={item.new}
+                  sale={item.sale}
+                  image={item.image}
+                  title={item.title}
+                  description={item.description}
+                  price={item.price}
+                  slug={item.slug}
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
       <div className="flex w-full justify-center">
-        <Link href="/categories" className="border border-greenView rounded-xl px-12 py-3">
+        <Link
+          href="/categories"
+          className="border border-greenView rounded-xl px-12 py-3"
+        >
           <GreenArrow title={"All products"} />
         </Link>
       </div>

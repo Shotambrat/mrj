@@ -48,7 +48,8 @@ module.exports = {
         snowy: '#F4F7FE',
         contactBorder: " #E1E1E1",
         greenView: '#088133',
-        greenCategory: '#E6F2EB'
+        greenCategory: '#E6F2EB',
+        modalBg: 'rgba(0, 0, 0, 0.6)',
       },
     },
   },

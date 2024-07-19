@@ -31,7 +31,7 @@ export default function ProductPreview() {
         <hr />
         <div className="w-full flex justify-between items-center">
           <p className="w-full max-w-[200px] leading-4">
-            Manufacturer's Warranty Technical support
+            {`Manufacturer's Warranty Technical support`}
           </p>
           <Image
             src={mindray}
