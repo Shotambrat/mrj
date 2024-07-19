@@ -9,11 +9,12 @@ import mindrayUniBase from "@/public/images/equipments/equip-uzi.png"; // При
 import mindrayBeneHeart from "@/public/images/equipments/equip-lab.png"; // Пример изображения, замените на ваши изображения
 import Catalogitem from "./Catalogitem";
 import Dropdown from "./DropDown";
-import tableCatalog from '@/public/svg/table-catalog.svg'
+import tableCatalog from "@/public/svg/table-catalog.svg";
 import Image from "next/image";
+import Category from "../Modal/Category";
 
 export default function List() {
-  const [filteredData, setFilteredData] = useState([]);
+  const [categoryModal, setCategoryModal] = useState(false);
 
   const data = [
     {
@@ -336,16 +337,20 @@ export default function List() {
 
   return (
     <div className="w-full max-w-[1440px] mx-auto flex flex-col lg:gap-20 gap-5 px-2">
+      {categoryModal && <Category />}
       <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-5">
         <h1 className="text-3xl max-mdx:text2xl font-semibold">CATALOG</h1>
         <div className="z-10 flex gap-5 items-center">
-          <button className="px-4 py-3 rounded-xl bg-greenCategory gap-2 font-semibold backdrop-opacity-10 text-greenView flex items-center lg:hidden">
+          <button
+            onClick={() => setCategoryModal(true)}
+            className="px-4 py-3 rounded-xl bg-greenCategory gap-2 font-semibold backdrop-opacity-10 text-greenView flex items-center lg:hidden"
+          >
             <Image
-            src={tableCatalog}
-            width={100}
-            height={100}
-            alt="Catalog Filter Icon"
-            className="w-5 h-5"
+              src={tableCatalog}
+              width={100}
+              height={100}
+              alt="Catalog Filter Icon"
+              className="w-5 h-5"
             />
             Categories
           </button>
