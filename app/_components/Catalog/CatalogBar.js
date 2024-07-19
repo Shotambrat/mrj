@@ -14,7 +14,7 @@ const AccordionItem = ({ title, isOpen, onClick, children }) => {
         onClick={onClick}
         className={`flex gap-5 py-7 ${
           isOpen ? "text-greenView" : "text-black"
-        } font-semibold text-xl max-md:flex-wrap max-md:max-w-full cursor-pointer`}
+        } font-semibold text-xl  max-md:max-w-full cursor-pointer`}
       >
         <span className="flex-auto">{title}</span>
         {isOpen ? (

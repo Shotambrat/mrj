@@ -7,16 +7,6 @@ import heartIcon from "@/public/svg/tools/heart-icon.svg";
 import close from "@/public/svg/close.svg";
 
 const Menu = ({ menu, closeMenu, navOptions }) => {
-  const data = [
-    {
-      icon: heartIcon,
-      slug: "favorites",
-    },
-    {
-      icon: phoneIcon,
-      tel: "+998900997755",
-    },
-  ];
   return (
     <div
       className={`fixed z-[9999] top-0 right-0 w-full max-w-[300px] bg-white h-full shadow-md ${
@@ -26,9 +16,26 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
       <div className="border-b py-4 flex">
         <div className="w-full flex justify-end mx-4">
           <div className="flex justify-between items-center gap-3">
-            {data.map((item, i) => {
-              return <ToolItem key={i} url={item.icon} />;
-            })}
+          <Link href={'/favorites'}>
+        <button className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3">
+          <Image
+            src={heartIcon}
+            height={100}
+            width={100}
+            alt={`Tools Item HeartIcon : Favorites`}
+            className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+          />
+        </button>
+      </Link>
+        <a href="tel:+998990909095" className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3">
+          <Image
+            src={phoneIcon}
+            height={100}
+            width={100}
+            alt={`Tools Item HeartIcon : Favorites`}
+            className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+          />
+        </a>
             <button
               onClick={closeMenu}
               className="bg-green-800 max-mdx:px-3 max-mdx:py-3 px-5 py-5 rounded-full"

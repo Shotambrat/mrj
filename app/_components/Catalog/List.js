@@ -25,92 +25,92 @@ export default function List() {
           data: [
             {
               title: "MINDRAY DC 60 X-insight",
-              description:
-                "A high-end ultrasound scanner that allows for high-quality diagnostics",
+              description: "A high-end ultrasound scanner that allows for high-quality diagnostics",
               image: mindrayDC60,
               new: false,
               promotions: true,
-              price: "2500000 y.e",
-              sale: "-35%",
+              price: '2500000 y.e',
+              sale: '-35%',
+              slug: '1-mindray',
             },
             {
               title: "MINDRAY SV300",
-              description:
-                "Advanced solution for mechanical ventilation in clinical settings",
+              description: "Advanced solution for mechanical ventilation in clinical settings",
               image: mindraySV300,
               new: true,
               promotions: false,
+              slug: '2-mindray',
             },
             {
               title: "CL-900i",
-              description:
-                "One of the smallest fully automated chemiluminescent immunoassay analyzers",
+              description: "One of the smallest fully automated chemiluminescent immunoassay analyzers",
               image: cl900i,
               new: true,
               promotions: false,
-              sale: "-5%",
+              sale: '-5%',
+              slug: '1-cl',
             },
             {
               title: "MINDRAY UniBase 30",
-              description:
-                "Reliable and durable operating table at an affordable price",
+              description: "Reliable and durable operating table at an affordable price",
               image: mindrayUniBase,
               new: true,
               promotions: false,
+              slug: '2-mindray',
             },
             {
               title: "MINDRAY BeneHeart",
-              description:
-                "Mindray’s new solution for non-invasive electrocardiography",
+              description: "Mindray’s new solution for non-invasive electrocardiography",
               image: mindrayBeneHeart,
               new: false,
               promotions: true,
-              price: "2500 y.e",
-              sale: "-5%",
+              price: '2500 y.e',
+              sale: '-5%',
+              slug: '4-mindray',
             },
             {
               title: "MINDRAY DC 60 X-insight",
-              description:
-                "A high-end ultrasound scanner that allows for high-quality diagnostics",
+              description: "A high-end ultrasound scanner that allows for high-quality diagnostics",
               image: mindrayDC60,
               new: false,
               promotions: true,
-              price: "2500 y.e",
-              sale: "-55%",
+              price: '2500 y.e',
+              sale: '-55%',
+              slug: '5-mindray',
             },
             {
               title: "MINDRAY SV300",
-              description:
-                "Advanced solution for mechanical ventilation in clinical settings",
+              description: "Advanced solution for mechanical ventilation in clinical settings",
               image: mindraySV300,
               new: true,
               promotions: false,
+              slug: '6-mindray',
             },
             {
               title: "CL-900i",
-              description:
-                "One of the smallest fully automated chemiluminescent immunoassay analyzers",
+              description: "One of the smallest fully automated chemiluminescent immunoassay analyzers",
               image: cl900i,
               new: true,
               promotions: false,
+              slug: '2-cl',
             },
             {
               title: "MINDRAY UniBase 30",
-              description:
-                "Reliable and durable operating table at an affordable price",
+              description: "Reliable and durable operating table at an affordable price",
               image: mindrayUniBase,
               new: true,
               promotions: false,
+              slug: '7-mindray',
             },
             {
               title: "MINDRAY BeneHeart",
-              description:
-                "Mindray’s new solution for non-invasive electrocardiography",
+              description: "Mindray’s new solution for non-invasive electrocardiography",
               image: mindrayBeneHeart,
               new: false,
               promotions: true,
-              price: "2500 y.e",
-              sale: "-25%",
+              price: '2500 y.e',
+              sale: '-25%',
+              slug: '8-mindray',
             },
           ],
         },
@@ -333,11 +333,13 @@ export default function List() {
     },
   ];
 
-  console.log("Data", data[0].caltalogList[0].data);
+  const handleClose = () => {
+    setCategoryModal(false);
+  }
 
   return (
     <div className="w-full max-w-[1440px] mx-auto flex flex-col lg:gap-20 gap-5 px-2">
-      {categoryModal && <Category />}
+      {categoryModal && <Category handleClose={handleClose} />}
       <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-5">
         <h1 className="text-3xl max-mdx:text2xl font-semibold">CATALOG</h1>
         <div className="z-10 flex gap-5 items-center">
@@ -371,6 +373,7 @@ export default function List() {
                 title={item.title}
                 description={item.description}
                 price={item.price}
+                slug={item.slug}
               />
             </div>
           ))}
