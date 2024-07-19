@@ -1,3 +1,4 @@
+
 import Logo from "@/app/_components/Header/Logo";
 import Navigation from "@/app/_components/Header/Navigation";
 import Tools from "@/app/_components/Header/Tools";
@@ -6,7 +7,7 @@ export default function Header() {
   const data = [
     {
         title: 'Categories',
-        slug: 'categories',
+        slug: 'categorie',
     },
     {
         title: 'About us',

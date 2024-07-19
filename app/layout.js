@@ -1,6 +1,9 @@
 import "@/app/_styles/globals.css"
-import Header from  "@/app/_components/Header/Header"
+// import Header from  "@/app/_components/Header/Header"
 import Footer from "@/app/_components/Footer/Footer"
+import dynamic from 'next/dynamic';
+
+const Header = dynamic(() => import('@/app/_components/Header/Header'), { ssr: true });
 
 export const metadata = {
   title: {
