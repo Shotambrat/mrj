@@ -39,7 +39,7 @@ export default function ContAddress() {
 
                 <div className="grid gap-6 slg:grid-cols-2 xl:grid-cols-3">
                     {data.map((item, i) => (
-                        <div key={i} className="bg-white rounded-xl shadow-md overflow-hidden">
+                        <div key={i} className="bg-white rounded-3xl shadow-custom-light overflow-hidden">
                             <div className="">
                                 <div className="p-4">
                                     <Image className="h-auto w-full object-cover" src={item.imageSrc} alt={item.title} />

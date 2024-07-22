@@ -31,7 +31,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="flex gap-3">
-              <a href="/" target="_blank">
+              <a href="https://t.me/mrjtrade_ae" target="_blank">
                 <Image
                   src={telegram}
                   width={100}
@@ -40,7 +40,7 @@ export default function Footer() {
                   className="w-10 h-10"
                 />
               </a>
-              <a href="/" target="_blank">
+              <a href="https://www.facebook.com/people/MRJ-Medical-Equipment-in-Dubai/61562385060429/" target="_blank">
                 <Image
                   src={facebook}
                   width={100}
@@ -49,7 +49,7 @@ export default function Footer() {
                   className="w-10 h-10"
                 />
               </a>
-              <a href="/" target="_blank">
+              <a href="https://www.instagram.com/mrjtrade/" target="_blank">
                 <Image
                   src={instagram}
                   width={100}
@@ -58,7 +58,7 @@ export default function Footer() {
                   className="w-10 h-10"
                 />
               </a>
-              <a href="/" target="_blank">
+              <a href="https://www.youtube.com/@MRJ_Medical_Equipment_in_Dubai" target="_blank">
                 <Image
                   src={youtube}
                   width={100}
@@ -72,12 +72,12 @@ export default function Footer() {
           <div className="lg:w-1/2 w-full flex max-mdx:gap-5">
             <div className="flex-1 flex flex-col text-sm gap-4 font-semibold">
               <h2 className="text-lg font-semibold text-green-700">CATALOG</h2>
-              <a href="/category">Ultrasound Diagnostic System</a>
-              <a href="/category">Laboratory Equipment</a>
-              <a href="/category">Reagents and Consumables</a>
-              <a href="/category">Radiology/X-ray systems</a>
+              <a href="/categories/lab">Ultrasound Diagnostic System</a>
+              <a href="/categories/lab">Laboratory Equipment</a>
+              <a href="/categories/lab">Reagents and Consumables</a>
+              <a href="/categories/lab">Radiology/X-ray systems</a>
               <a
-                href="/category"
+                href="/categories"
                 className="flex gap-2 hover:gap-4 items-center transition-all duration-200"
               >
                 <p className="text-green-700 ">View all</p>
