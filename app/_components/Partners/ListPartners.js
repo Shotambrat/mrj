@@ -10,7 +10,28 @@ const partners = [
         description: "Lingen Precision Medical Products Co., Ltd. is a unique manufacturer specializing in medical products",
         link: "lingen"
     },
-    // Другие партнеры...
+    {
+        id: 2,
+        imageSrc: partnerPhoto,
+        title: "assdsd",
+        description: "fdgfdghfdhdgh",
+        link: "fgfdgdf"
+    },
+    {
+        id: 3,
+        imageSrc: partnerPhoto,
+        title: "assdsd",
+        description: "fdgfdghfdhdgh",
+        link: "fgfdgdf"
+    },
+    {
+        id: 4,
+        imageSrc: partnerPhoto,
+        title: "assdsd",
+        description: "fdgfdghfdhdgh",
+        link: "fgfdgdf"
+    },
+    
 ];
 
 export default function ListPartners() {

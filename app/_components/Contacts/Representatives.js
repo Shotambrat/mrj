@@ -39,7 +39,7 @@ export default function ContAddress() {
 
                 <div className="grid gap-6 slg:grid-cols-2 xl:grid-cols-3">
                     {data.map((item, i) => (
-                        <div key={i} className="bg-white rounded-3xl shadow-custom-light overflow-hidden">
+                        <div key={i} className="bg-white rounded-3xl shadow-lg overflow-hidden">
                             <div className="">
                                 <div className="p-4">
                                     <Image className="h-auto w-full object-cover" src={item.imageSrc} alt={item.title} />
@@ -51,23 +51,23 @@ export default function ContAddress() {
                                     <p className="block mt-1 border-b-2 pb-5 text-lg leading-tight font-medium text-black text-[15px] mdx:text-[18px] xl:text-[20px]">{item.address}</p>
 
                                     <div className="flex flex-row items-end mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px] justify-between">
-                                        <p>Country:</p>
+                                        <p className="text-[#BABABA]">Country:</p>
                                         <p className="mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px]">{item.country}</p>
                                     </div>
 
 
                                     <div className="flex flex-row items-end mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px] justify-between">
-                                        <p>Schedule:</p>
+                                        <p className="text-[#BABABA]">Schedule:</p>
                                         <p className="mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px]"> {item.schedule}</p>
                                     </div>
 
                                     <div className="flex flex-row items-end mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px] justify-between">
-                                        <p>E-mail:</p>
+                                        <p className="text-[#BABABA]">E-mail:</p>
                                         <p className="mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px]"> {item.email}</p>
                                     </div>
 
                                     <div className="flex flex-row items-start mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px] justify-between">
-                                        <p>Phone:</p>
+                                        <p className="text-[#BABABA]">Phone:</p>
                                         <div className="mt-2 text-gray-500 text-[16px] mdx:text-[18px] xl:text-[20px]">
                                             {item.phones.map((phone, index) => (
                                                 <p key={index}>{phone}</p>
