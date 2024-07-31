@@ -12,7 +12,7 @@ export default function Page() {
 
   useEffect(() => {
     // Fetch the category details to get the category ID
-    fetch("/api/category")
+    fetch("http://213.230.91.55:8110/category")
       .then((response) => response.json())
       .then((data) => {
         const category = data.data.item.find((cat) => cat.slug === slug);
@@ -21,7 +21,7 @@ export default function Page() {
           setCategory(category);
 
           // Fetch products by category ID
-          fetch(`/api/product/v2/all?category-id=${category.id}`)
+          fetch(`http://213.230.91.55:8110/product/v2/all?category-id=${category.id}`)
             .then((response) => response.json())
             .then((data) => setProducts(data.data))
             .catch((error) => {
