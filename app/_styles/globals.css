@@ -6,6 +6,10 @@ body {
   @apply font-lato;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 .carousel-container {
   display: flex;
   justify-content: center;
