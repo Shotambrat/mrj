@@ -7,7 +7,7 @@ export default function List() {
 
   useEffect(() => {
     // Fetch categories
-    fetch("http://213.230.91.55:8110/category")
+    fetch("/api/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
