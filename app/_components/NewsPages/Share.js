@@ -2,10 +2,9 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import newsPhoto from "@/public/images/news/news-photo.png";
 import Modal from "@/app/_components/Modal/ShareNews";
 
-export default function NewsTitle() {
+export default function NewsTitle({ data }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -16,16 +15,18 @@ export default function NewsTitle() {
         setIsModalOpen(false);
     };
 
+    const { head, newOptions, createData } = data;
+
     return (
-        <div className="max-w-[1440px] mx-[15px]  mdl:mx-auto bg-slate-100 rounded-3xl">
-            <div className=" rounded-3xl mdl:flex mdl:flex-row-reverse mdl:items-center mdl:justify-between   relative ">
+        <div className="max-w-[1440px] mx-[15px] w-full mdl:mx-auto bg-slate-100 rounded-3xl">
+            <div className=" rounded-3xl mdl:flex mdl:flex-row-reverse mdl:items-center mdl:justify-between relative ">
                 <div className="mdl:items-center mdl:flex mdl:my-3 flex justify-center content-center">
                     <Image
-                        src={newsPhoto}
+                        src={head.photo ? head.photo.url : '/default-image.png'}
                         width={500}
                         height={500}
                         alt={`News Image`}
-                        className=" w-[92%] h-auto max-w-[560px] max-h-[308px] mdl:w-full rounded-3xl mdl:max-h-[383px] mdl:max-w-[383px] mdl:mr-5"
+                        className="h-[300px] w-auto object-cover"
                     />
                 </div>
                 <div className="flex flex-col uppercase text-greentxt  mdl:flex-1 ">
@@ -33,7 +34,7 @@ export default function NewsTitle() {
                         Share this news<br /> with a friend!
                     </h2>
                     <p className="text-gray-500 text-[15px] normal-case mdl:w-[320px] xl:text-[20px] xl:w-[503px] z-20 xl:ml-9 ml-3">
-                        Learn more about the latest advances in medical imaging! Share this news with friends and colleagues who may be interested
+                        Learn more about the latest advances in medical imaging! Share this news with friends and colleagues who may be interested.
                     </p>
                     <div className="semicircle h-[283px] w-full xl:h-full mdl:h-full mdl:w-[50%] xl:w-[50%] rounded-b-2xl rounded-t-[20px] mdl:rounded-r-[140px] "></div>
                     <button
@@ -44,7 +45,7 @@ export default function NewsTitle() {
                     </button>
                 </div>
             </div>
-            <Modal isOpen={isModalOpen} onClose={closeModal} />
+            <Modal isOpen={isModalOpen} onClose={closeModal} title={head.title} newsPhoto={head.photo.url} date={head.date} createData={createData} />
         </div>
     );
 }
