@@ -10,9 +10,9 @@ export default async function Header() {
   return (
     <header className="w-full bg-white py-4 px-2 h-[90px] max-mdx:h-[70px] shadow-2xl">
       <div className="w-full max-w-[1440px] flex justify-between gap-2 h-full mx-auto">
-        {/* <Logo logoUrl={data.data.logo.url} />
+        <Logo logoUrl={data.data.logo.url} />
         <Navigation navOptions={data.data.options} />
-        <Tools navOptions={data.data.options} /> */}
+        <Tools navOptions={data.data.options} />
       </div>
     </header>
   )
