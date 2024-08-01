@@ -72,10 +72,10 @@ export default function Footer() {
           <div className="lg:w-1/2 w-full flex max-mdx:gap-5">
             <div className="flex-1 flex flex-col text-sm gap-4 font-semibold">
               <h2 className="text-lg font-semibold text-green-700">CATALOG</h2>
-              <a href="/categories/lab">Ultrasound Diagnostic System</a>
-              <a href="/categories/lab">Laboratory Equipment</a>
-              <a href="/categories/lab">Reagents and Consumables</a>
-              <a href="/categories/lab">Radiology/X-ray systems</a>
+              <a href="/categories/ultrasound-diagnostic-systems">Ultrasound Diagnostic System</a>
+              <a href="/categories/laboratory-equipment">Laboratory Equipment</a>
+              <a href="/categories/reagents-and-consumables">Reagents and Consumables</a>
+              <a href="/categories/radiology-and-xray-systems">Radiology/X-ray systems</a>
               <a
                 href="/categories"
                 className="flex gap-2 hover:gap-4 items-center transition-all duration-200"

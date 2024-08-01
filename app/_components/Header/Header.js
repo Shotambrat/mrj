@@ -4,7 +4,7 @@ import Navigation from "@/app/_components/Header/Navigation";
 import Tools from "@/app/_components/Header/Tools";
 
 export default async function Header() {
-  const res = await axios.get('http://213.230.91.55:8110/navbar/get');
+  const res = await axios.get('https://mrjtrade.uz/navbar/get');
   const data = res.data;
 
   return (

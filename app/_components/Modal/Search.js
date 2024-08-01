@@ -9,7 +9,7 @@ export default function Search() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://213.230.91.55:8110/search?query=${query}`);
+      const response = await axios.get(`https://mrjtrade.uz/search?query=${query}`);
       setResults(response.data.data);
     } catch (error) {
       console.error('Error fetching search results:', error);

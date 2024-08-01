@@ -21,19 +21,19 @@ export default function Application() {
   const validateInput = (name, value) => {
     if (name === "fullName") {
       return value.length >= 3
-        ? { isValid: true, message: "Правильно" }
-        : { isValid: false, message: "Введите полное имя" };
+        ? { isValid: true, message: "Correct" }
+        : { isValid: false, message: "Enter your full name" };
     } else if (name === "phoneNumber") {
       const phoneRegex =
         /^(\+?\d{1,3}[-.\s]?)?(\(?\d{2,3}\)?[-.\s]?)?\d{3,4}[-.\s]?\d{4}$/;
       return phoneRegex.test(value)
-        ? { isValid: true, message: "Правильно" }
-        : { isValid: false, message: "Введите правильный номер" };
+        ? { isValid: true, message: "Correct" }
+        : { isValid: false, message: "Enter the correct number" };
     } else if (name === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(value)
-        ? { isValid: true, message: "Правильно" }
-        : { isValid: false, message: "Введите правильный email" };
+        ? { isValid: true, message: "Correct" }
+        : { isValid: false, message: "Enter correct email" };
     }
     return { isValid: true, message: "" };
   };

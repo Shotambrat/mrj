@@ -14,21 +14,21 @@ export default function List({ categoryId, category, products, setProducts }) {
 
   useEffect(() => {
     // Fetch categories
-    fetch("http://213.230.91.55:8110/category")
+    fetch("https://mrjtrade.uz/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
   const handleCatalogSelect = (catalogId) => {
-    fetch(`http://213.230.91.55:8110/product/v2/all?catalog-id=${catalogId}`)
+    fetch(`https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}`)
       .then((response) => response.json())
       .then((data) => setProducts(data.data))
       .catch((error) => console.error("Error fetching products:", error));
   };
 
   const handleCategorySelect = (categoryId) => {
-    fetch(`http://213.230.91.55:8110/product/v2/all?category-id=${categoryId}`)
+    fetch(`https://mrjtrade.uz/product/v2/all?category-id=${categoryId}`)
       .then((response) => response.json())
       .then((data) => setProducts(data.data))
       .catch((error) => console.error("Error fetching products:", error));
