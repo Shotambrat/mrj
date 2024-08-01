@@ -14,21 +14,21 @@ export default function List({ categoryId, category, products, setProducts }) {
 
   useEffect(() => {
     // Fetch categories
-    fetch("/api/category")
+    fetch("http://213.230.91.55:8110/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
   const handleCatalogSelect = (catalogId) => {
-    fetch(`/api/product/v2/all?catalog-id=${catalogId}`)
+    fetch(`http://213.230.91.55:8110/product/v2/all?catalog-id=${catalogId}`)
       .then((response) => response.json())
       .then((data) => setProducts(data.data))
       .catch((error) => console.error("Error fetching products:", error));
   };
 
   const handleCategorySelect = (categoryId) => {
-    fetch(`/api/product/v2/all?category-id=${categoryId}`)
+    fetch(`http://213.230.91.55:8110/product/v2/all?category-id=${categoryId}`)
       .then((response) => response.json())
       .then((data) => setProducts(data.data))
       .catch((error) => console.error("Error fetching products:", error));
@@ -70,7 +70,7 @@ export default function List({ categoryId, category, products, setProducts }) {
           <Dropdown onFilterChange={handleFilterChange} />
         </div>
       </div>
-      <div className="w-full flex gap-10">
+      <div className="w-full flex gap-10 items-start">
         <div className="w-full max-w-[350px] max-2xl:max-w-[280px] max-lg:hidden">
           <CatalogList
             categories={categories}
@@ -79,7 +79,7 @@ export default function List({ categoryId, category, products, setProducts }) {
             openSection={categoryId}
           />
         </div>
-        <div className="w-full grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">
+        <div className="w-full h-auto grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">
           {filteredProducts.map((item, index) => (
             <div key={index}>
               <Catalogitem

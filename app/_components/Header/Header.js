@@ -4,8 +4,8 @@ import Navigation from "@/app/_components/Header/Navigation";
 import Tools from "@/app/_components/Header/Tools";
 
 export default async function Header() {
-  // const res = await axios.get('/api/navbar/get');
-  // const data = res.data;
+  const res = await axios.get('http://213.230.91.55:8110/navbar/get');
+  const data = res.data;
 
   return (
     <header className="w-full bg-white py-4 px-2 h-[90px] max-mdx:h-[70px] shadow-2xl">

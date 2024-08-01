@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import searchIcon from "@/public/svg/tools/search-icon.svg";
 import phoneIcon from "@/public/svg/tools/phone-icon.svg";
 import heartIcon from "@/public/svg/tools/heart-icon.svg";
@@ -7,9 +7,11 @@ import Image from "next/image";
 import burgerMenu from "@/public/svg/tools/burger-menu.svg";
 import Menu from "../Menu";
 import Link from "next/link";
+import Search from "../Modal/Search";
 
 export default function Tools({ navOptions }) {
   const [menu, setMenu] = useState(false);
+  const [searchMenu, setSearchMenu] = useState(false);
 
   const handleOpenMenu = () => {
     setMenu(true);
@@ -19,9 +21,18 @@ export default function Tools({ navOptions }) {
     setMenu(false);
   };
 
+  useEffect(() => {
+    if (searchMenu) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [searchMenu]);
+
   return (
     <div className="h-full items-center flex gap-3">
-      <button className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3">
+      {searchMenu && <Search />}
+      <button onClick={() => setSearchMenu(prev => !prev)} className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3">
         <Image
           src={searchIcon}
           height={100}

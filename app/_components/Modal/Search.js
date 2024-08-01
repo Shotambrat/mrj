@@ -1,69 +1,97 @@
-
+"use client"
+import { useState } from 'react';
+import axios from 'axios';
+import Image from 'next/image';
 
 export default function Search() {
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`http://213.230.91.55:8110/search?query=${query}`);
+      setResults(response.data.data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
+
+  const getLink = (item) => {
+    let url = '';
+    switch (item.dtoName) {
+      case 'Product':
+        url = `/product/${item.slug}`;
+        break;
+      case 'Category':
+        url = `/categories/catalog/${item.slug}`;
+        break;
+      case 'Catalog':
+        url = `/categories/catalog/all?catalog-id=${item.id}`;
+        break;
+      // Добавьте обработку для остальных типов dtoName
+      case 'New':
+        url = `/news/${item.slug}`;
+        break;
+      case 'Partner':
+        url = `/partners/${item.slug}`;
+        break;
+      case 'Event':
+        url = `/events/${item.slug}`;
+        break;
+      default:
+        url = '#';
+        break;
+    }
+    return url;
+  };
+
   return (
-    <div className="fixed h-screen w-full bg-modalBg ">
-        <div className="w-full bg-white h-[80%]">
-            <div className="w-full max-w-[1440px] mx-auto px-2 flex flex-col gap-8 pt-8">
+    <div className="fixed h-screen w-full bg-modalBg left-0 top-[100px] z-[9999]">
+      <div className="h-[70%] w-full bg-white pt-8">
+        <div className="h-[95%] w-full max-w-[1440px] mx-auto flex flex-col gap-8 overflow-y-scroll no-scrollbar">
+          <div className="flex items-center bg-snowy rounded-lg p-4 w-full shadow-sm">
             <input
-                  type={field === "email" ? "email" : "text"}
-                  name={field}
-                  value={values[field]}
-                  onChange={handleInputChange}
-                  onFocus={() => setFocusedInput(field)}
-                  onBlur={() => setFocusedInput(null)}
-                  className={`block w-full px-3 py-3 bg-white rounded-lg shadow-sm placeholder-transparent focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm border-2 ${
-                    focusedInput === field
-                      ? validateInput(field, values[field]).isValid
-                        ? "border-green-500"
-                        : "border-red-500"
-                      : "border-transparent"
-                  }`}
-                  placeholder={
-                    field === "fullName"
-                      ? "Full name"
-                      : field === "phoneNumber"
-                      ? "Phone number"
-                      : field === "email"
-                      ? "E-mail"
-                      : "Your question"
-                  }
-                />
-                <label
-                  htmlFor={field}
-                  className={`absolute left-3  transition-all ${
-                    focusedInput === field || values[field]
-                      ? "-top-4 text-xs"
-                      : "top-3 text-sm"
-                  } ${
-                    focusedInput === field
-                      ? validateInput(field, values[field]).isValid
-                        ? "text-green-500"
-                        : "text-red-500"
-                      : "text-gray-400"
-                  } cursor-text`}
-                  onClick={() => document.getElementsByName(field)[0].focus()}
-                >
-                  {focusedInput === field && values[field].length > 0 ? (
-                    validateInput(field, values[field]).message
-                  ) : field === "fullName" ? (
-                    <p>
-                      Full Name
-                      <span className="text-red-600 ml-2">*</span>
-                    </p>
-                  ) : field === "phoneNumber" ? (
-                    <p>
-                      Phone number
-                      <span className="text-red-600 ml-2">*</span>
-                    </p>
-                  ) : field === "email" ? (
-                    "E-mail"
-                  ) : (
-                    "Your question"
-                  )}
-                </label>
-            </div>
+              type="text"
+              placeholder="Enter the name of the product, page, etc..."
+              className="bg-transparent outline-none flex-1 text-gray-600 placeholder-gray-400"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <button onClick={handleSearch}>
+              <svg
+                className="w-8 h-8 text-greenView"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div className="flex flex-col gap-4">
+            {results.map((item) => (
+              <a
+                key={item.id}
+                href={getLink(item)}
+                className="p-4 bg-white shadow-md flex gap-4 w-full rounded-md cursor-pointer"
+              >
+                {item.photo && item.photo.url && <Image src={item.photo.url} alt={item.name} width={500} height={500} className="w-40 h-40 object-cover rounded-md mb-2" />}
+                <div>
+                <h3 className="text-lg font-semibold">{item.name}</h3>
+                <p className="text-gray-500">{item.shortDescription}</p>
+
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
+      </div>
     </div>
-  )
+  );
 }
