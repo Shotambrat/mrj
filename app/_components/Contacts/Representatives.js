@@ -1,5 +1,7 @@
 import Image from "next/image";
-import newsPhoto from "@/public/images/clinicslogo/intermed.png";
+import intermed from "@/public/images/contacts/image48.png";
+import intermed2 from "@/public/images/contacts/image49.png";
+import alnair from "@/public/images/contacts/image50.png";
 
 export default function ContAddress() {
     const data = [
@@ -10,7 +12,7 @@ export default function ContAddress() {
             schedule: "09:00 - 18:00",
             email: "info@imed.uz",
             phones: ["+998781504747", "+998781504707"],
-            imageSrc: newsPhoto,
+            imageSrc: intermed,
         },
         {
             title: "Alnair Medical",
@@ -19,7 +21,7 @@ export default function ContAddress() {
             schedule: "09:00 - 18:00",
             email: "sales@alnair.kz",
             phones: ["+77008368710"],
-            imageSrc: newsPhoto,
+            imageSrc: alnair,
         },
         {
             title: "Intermed Innovation",
@@ -28,7 +30,7 @@ export default function ContAddress() {
             schedule: "09:00 - 18:00",
             email: "info@imedrf.ru",
             phones: ["+74959208100", "+79858100791"],
-            imageSrc: newsPhoto,
+            imageSrc: intermed2,
         },
     ];
 
@@ -41,8 +43,10 @@ export default function ContAddress() {
                     {data.map((item, i) => (
                         <div key={i} className="bg-white rounded-3xl shadow-lg overflow-hidden">
                             <div className="">
-                                <div className="p-4">
-                                    <Image className="h-auto w-full object-cover" src={item.imageSrc} alt={item.title} />
+                                <div className="p-4 mx-auto flex items-center">
+                                    <div className="w-full slg:max-w-[443px] h-[234px] bg-[#F4F7FE] rounded-2xl flex items-center justify-center">
+                                        <Image className="h-auto w-[80%] slg:w-full object-contain max-h-[50px] " src={item.imageSrc} alt={item.title} />
+                                    </div>
                                 </div>
                                 <div className="p-8">
                                     <div className="uppercase  tracking-wide text-[22px] mdx:text-[24px] xl:text-[30px] text-greentxt font-semibold">{item.title}</div>
