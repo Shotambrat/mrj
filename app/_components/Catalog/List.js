@@ -70,7 +70,7 @@ export default function List({ categoryId, category, products, setProducts }) {
           <Dropdown onFilterChange={handleFilterChange} />
         </div>
       </div>
-      <div className="w-full flex gap-10">
+      <div className="w-full flex gap-10 items-start">
         <div className="w-full max-w-[350px] max-2xl:max-w-[280px] max-lg:hidden">
           <CatalogList
             categories={categories}
@@ -79,7 +79,7 @@ export default function List({ categoryId, category, products, setProducts }) {
             openSection={categoryId}
           />
         </div>
-        <div className="w-full grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">
+        <div className="w-full h-auto grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">
           {filteredProducts.map((item, index) => (
             <div key={index}>
               <Catalogitem
