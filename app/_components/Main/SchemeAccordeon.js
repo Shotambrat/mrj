@@ -68,19 +68,19 @@ const data = [
   {
     key: "blood",
     title: "Order Processing",
-    description: "Consult",
+    description: "Our streamlined order processing ensures a smooth and efficient transition from selection to delivery, maintaining accuracy and timeliness throughout the entire process.",
     image: schemeImage
   },
   {
     key: "urine",
     title: "Customized Ordering and Installation",
-    description: "Hola",
+    description: "Tailor your equipment order and installation to fit your specific requirements. Our team handles everything from start to finish, ensuring seamless integration into your facility.",
     image: schemeImage
   },
   {
     key: "feces",
     title: "Training and Support",
-    description: "Consul",
+    description: "Receive comprehensive training and ongoing support to maximize the usage and longevity of your equipment. Our experts are available to assist you at every step, ensuring optimal performance.",
     image: schemeImage
   }
 ];

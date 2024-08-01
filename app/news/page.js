@@ -5,7 +5,7 @@ import Map from "../_components/About/Map";
 export default function News() {
   return (
     <div>
-      <Events />
+      {/* <Events /> */}
       <NewsComp />
       <Map />
     </div>
