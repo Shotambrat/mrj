@@ -4,6 +4,7 @@ import CatalogList from "./CatalogBar";
 import Catalogitem from "./Catalogitem";
 import Dropdown from "./DropDown";
 import Image from "next/image";
+import { useRouter, useParams } from 'next/navigation';
 import Category from "../Modal/Category";
 import tableCatalog from "@/public/svg/table-catalog.svg";
 
@@ -11,6 +12,9 @@ export default function List({ categoryId, category, products, setProducts }) {
   const [categoryModal, setCategoryModal] = useState(false);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [selectedCatalog, setSelectedCatalog] = useState(null);
+  const router = useRouter();
+  const { slug } = useParams();
 
   useEffect(() => {
     // Fetch categories
@@ -20,17 +24,25 @@ export default function List({ categoryId, category, products, setProducts }) {
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
-  const handleCatalogSelect = (catalogId) => {
+  const handleCatalogSelect = (catalogId, categorySlug) => {
     fetch(`https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}`)
       .then((response) => response.json())
-      .then((data) => setProducts(data.data))
+      .then((data) => {
+        setProducts(data.data);
+        setSelectedCatalog(catalogId);
+        router.push(`/categories/${categorySlug}/${catalogId}`);
+      })
       .catch((error) => console.error("Error fetching products:", error));
   };
 
-  const handleCategorySelect = (categoryId) => {
+  const handleCategorySelect = (categoryId, categorySlug) => {
     fetch(`https://mrjtrade.uz/product/v2/all?category-id=${categoryId}`)
       .then((response) => response.json())
-      .then((data) => setProducts(data.data))
+      .then((data) => {
+        setProducts(data.data);
+        setSelectedCatalog(null);
+        router.push(`/categories/${categorySlug}`);
+      })
       .catch((error) => console.error("Error fetching products:", error));
   };
 
@@ -77,6 +89,7 @@ export default function List({ categoryId, category, products, setProducts }) {
             onCatalogSelect={handleCatalogSelect}
             onCategorySelect={handleCategorySelect}
             openSection={categoryId}
+            selectedCatalog={selectedCatalog}
           />
         </div>
         <div className="w-full h-auto grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">

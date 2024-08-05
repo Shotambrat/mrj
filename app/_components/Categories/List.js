@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import CategoryItem from "@/app/_components/Categories/CategoryItem";
 
@@ -25,6 +25,7 @@ export default function List() {
             title={category.title}
             imageSrc={category.photo.url}
             slug={category.slug}
+            hasCatalog={category.catalog.length > 0}
           />
         ))}
       </div>
