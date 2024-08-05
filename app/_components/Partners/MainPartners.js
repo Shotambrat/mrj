@@ -21,7 +21,7 @@ export default function PartnerPage() {
     }, [slug]);
 
     const fetchPartnerDetails = async (slug) => {
-        const response = await fetch(`http://213.230.91.55:8110/partner/get/${slug}`);
+        const response = await fetch(`https://mrjtrade.uz/partner/get/${slug}`);
         const data = await response.json();
         if (data.message === "Found") {
             setPartner(data.data);
@@ -30,7 +30,7 @@ export default function PartnerPage() {
 
     const fetchPartnersSlider = async () => {
         // Fetch all partners or a subset for the slider
-        const response = await fetch('http://213.230.91.55:8110/partner/get/all');
+        const response = await fetch('https://mrjtrade.uz/partner/get/all');
         const data = await response.json();
         if (data.message === "Found") {
             setPartnersSlider(data.data);

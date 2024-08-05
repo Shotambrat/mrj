@@ -30,7 +30,7 @@ const EquipmentCarousel = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://213.230.91.55:8110/product/v2/all?proffetional=true');
+      const response = await fetch('https://mrjtrade.uz/product/v2/all?proffetional=true');
       const result = await response.json();
       setEquipmentData(result.data.slice(0, 20)); // Получаем первые 20 товаров
       setFilteredData(result.data.slice(0, 20)); // Устанавливаем отфильтрованные данные
