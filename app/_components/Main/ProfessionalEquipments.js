@@ -1,115 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import mindrayDC60 from "@/public/images/equipments/equip-lab.png"; // Пример изображения, замените на ваши изображения
-import mindraySV300 from "@/public/images/equipments/equip-uzi.png"; // Пример изображения, замените на ваши изображения
-import cl900i from "@/public/images/equipments/equip-lab.png"; // Пример изображения, замените на ваши изображения
-import mindrayUniBase from "@/public/images/equipments/equip-uzi.png"; // Пример изображения, замените на ваши изображения
-import mindrayBeneHeart from "@/public/images/equipments/equip-lab.png"; // Пример изображения, замените на ваши изображения
 import Link from "next/link";
 import GreenArrow from "@/app/_components/Buttons/GreenArrow";
 import Catalogitem from "../Catalog/Catalogitem";
-
-const equipmentData = [
-  {
-    title: "MINDRAY DC 60 X-insight",
-    description:
-      "A high-end ultrasound scanner that allows for high-quality diagnostics",
-    image: mindrayDC60,
-    new: false,
-    promotions: true,
-    price: "2500000 y.e",
-    sale: "-35%",
-    slug: "1-mindray",
-  },
-  {
-    title: "MINDRAY SV300",
-    description:
-      "Advanced solution for mechanical ventilation in clinical settings",
-    image: mindraySV300,
-    new: true,
-    promotions: false,
-    slug: "2-mindray",
-  },
-  {
-    title: "CL-900i",
-    description:
-      "One of the smallest fully automated chemiluminescent immunoassay analyzers",
-    image: cl900i,
-    new: true,
-    promotions: false,
-    sale: "-5%",
-    slug: "1-cl",
-  },
-  {
-    title: "MINDRAY UniBase 30",
-    description: "Reliable and durable operating table at an affordable price",
-    image: mindrayUniBase,
-    new: true,
-    promotions: false,
-    slug: "2-mindray",
-  },
-  {
-    title: "MINDRAY BeneHeart",
-    description: "Mindray’s new solution for non-invasive electrocardiography",
-    image: mindrayBeneHeart,
-    new: false,
-    promotions: true,
-    price: "2500 y.e",
-    sale: "-5%",
-    slug: "4-mindray",
-  },
-  {
-    title: "MINDRAY DC 60 X-insight",
-    description:
-      "A high-end ultrasound scanner that allows for high-quality diagnostics",
-    image: mindrayDC60,
-    new: false,
-    promotions: true,
-    price: "2500 y.e",
-    sale: "-55%",
-    slug: "5-mindray",
-  },
-  {
-    title: "MINDRAY SV300",
-    description:
-      "Advanced solution for mechanical ventilation in clinical settings",
-    image: mindraySV300,
-    new: true,
-    promotions: false,
-    slug: "6-mindray",
-  },
-  {
-    title: "CL-900i",
-    description:
-      "One of the smallest fully automated chemiluminescent immunoassay analyzers",
-    image: cl900i,
-    new: true,
-    promotions: false,
-    slug: "2-cl",
-  },
-  {
-    title: "MINDRAY UniBase 30",
-    description: "Reliable and durable operating table at an affordable price",
-    image: mindrayUniBase,
-    new: true,
-    promotions: false,
-    slug: "7-mindray",
-  },
-  {
-    title: "MINDRAY BeneHeart",
-    description: "Mindray’s new solution for non-invasive electrocardiography",
-    image: mindrayBeneHeart,
-    new: false,
-    promotions: true,
-    price: "2500 y.e",
-    sale: "-25%",
-    slug: "8-mindray",
-  },
-];
 
 const categories = [
   {
@@ -127,17 +24,29 @@ const categories = [
 ];
 
 const EquipmentCarousel = () => {
-  const [filteredData, setFilteredData] = useState(equipmentData);
+  const [equipmentData, setEquipmentData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('http://213.230.91.55:8110/product/v2/all?proffetional=true');
+      const result = await response.json();
+      setEquipmentData(result.data.slice(0, 20)); // Получаем первые 20 товаров
+      setFilteredData(result.data.slice(0, 20)); // Устанавливаем отфильтрованные данные
+    };
+    
+    fetchData();
+  }, []);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
     if (category === "all") {
       setFilteredData(equipmentData);
     } else if (category === "new") {
-      setFilteredData(equipmentData.filter((item) => item.new));
+      setFilteredData(equipmentData.filter((item) => item.tag.includes("New")));
     } else if (category === "promotions") {
-      setFilteredData(equipmentData.filter((item) => item.promotions));
+      setFilteredData(equipmentData.filter((item) => item.tag.includes("Promotion")));
     }
   };
 
@@ -202,12 +111,12 @@ const EquipmentCarousel = () => {
             {filteredData.map((item, index) => (
               <div key={index} className="p-2">
                 <Catalogitem
-                  new={item.new}
-                  sale={item.sale}
-                  image={item.image}
-                  title={item.title}
-                  description={item.description}
-                  price={item.price}
+                  new={item.tag.includes("New")}
+                  sale={item.discount ? `-${item.discount}%` : null}
+                  image={item.photo ? item.photo.url : null}
+                  title={item.name}
+                  description={item.shortDescription}
+                  price={item.originalPrice ? `${item.originalPrice} y.e` : null}
                   slug={item.slug}
                 />
               </div>

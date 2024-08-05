@@ -26,7 +26,7 @@ export default async function NewsDetailPage({ params }) {
     <div className="flex flex-col gap-36 ">
       <NewsTitle data={newsData} />
       <Share data={newsData} />
-      <OtherNews />
+      <OtherNews currentSlug={slug} />
       <Map />
     </div>
   );

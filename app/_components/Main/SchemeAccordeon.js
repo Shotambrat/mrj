@@ -6,6 +6,9 @@ import { useState } from "react";
 import upGreen from "@/public/svg/arrow-up-green.svg";
 import downGray from "@/public/svg/arrow-down-gray.svg";
 import schemeImage from "@/public/images/main/scheme-image.png";
+import schemeTwo from "@/public/images/main/scheme/order-processing.jpg"
+import schemeThree from "@/public/images/main/scheme/customized.jpg"
+import schemeFour from "@/public/images/main/scheme/training.jpg"
 
 const AccordionItem = ({ title, isOpen, onClick, children }) => {
   return (
@@ -69,19 +72,19 @@ const data = [
     key: "blood",
     title: "Order Processing",
     description: "Our streamlined order processing ensures a smooth and efficient transition from selection to delivery, maintaining accuracy and timeliness throughout the entire process.",
-    image: schemeImage
+    image: schemeTwo
   },
   {
     key: "urine",
     title: "Customized Ordering and Installation",
     description: "Tailor your equipment order and installation to fit your specific requirements. Our team handles everything from start to finish, ensuring seamless integration into your facility.",
-    image: schemeImage
+    image: schemeThree
   },
   {
     key: "feces",
     title: "Training and Support",
     description: "Receive comprehensive training and ongoing support to maximize the usage and longevity of your equipment. Our experts are available to assist you at every step, ensuring optimal performance.",
-    image: schemeImage
+    image: schemeFour
   }
 ];
 

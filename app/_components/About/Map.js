@@ -1,11 +1,13 @@
 "use client";
-
+import { useState } from "react";
+import Questions from "@/app/_components/Modal/Questions"
 
 export default function Map() {
-
+    const [modal, setModal] = useState(false)
 
     return (
         <div className="xl:mt-24 relative flex justify-center items-end h-[50rem] mdx:h-[57rem] xl:h-[38rem] ">
+            {modal && <Questions closeModal={setModal} />}
             <div className="w-full h-auto xl:h-full xl:absolute relative left-0 xl:top-0 z-0">
                 <div className="h-[350px] mdx:h-[450px] xl:h-[620px]">
                     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A518e000d74529368bca3a568b2843702261e398bdb518ddbd5458260f3f56097&amp;source=constructor" width="100%" height="400" className="relative top-0 left-0 w-full h-full border-none " frameborder="0"></iframe>
@@ -22,7 +24,7 @@ export default function Map() {
                             </div>
                         </div>
                         <div className="flex-1 mt-4">
-                            <form className="flex flex-col space-y-4" >
+                            <div className="flex flex-col space-y-4" >
                                 <div className='xl:pb-[30px] border-b-2 border-contactBorder flex flex-row gap-4 items-center pb-3'>
                                     <div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -72,10 +74,10 @@ export default function Map() {
                                         <a href="mailto:info@mrjtrade.ae" className="text-black text-lg font-semibold mdx:text-[20px]">info@mrjtrade.ae</a>
                                     </div>
                                 </div>
-                                <button type="submit" className="w-full md:w-[328px] mdl:mr-auto mdl:px-16 py-3 rounded-[12px] transition-colors bg-greentxt text-white mdx:text-[20px] mdx:w-[408px] xl:mt-[130px]" style={{ pointerEvents: 'auto' }}>
+                                <button onClick={()=> setModal(true)} className="w-full md:w-[328px] mdl:mr-auto mdl:px-16 py-3 rounded-[12px] transition-colors bg-greentxt text-white mdx:text-[20px] mdx:w-[408px] xl:mt-[130px]" style={{ pointerEvents: 'auto' }}>
                                     Ask question
                                 </button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

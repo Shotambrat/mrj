@@ -6,7 +6,7 @@ export default function ProductPreview({ product }) {
   return (
     <div className="w-full flex flex-col lg:flex-row">
       <div className="flex-1 w-full">
-        <VerticalCarousel images={product.gallery} />
+        <VerticalCarousel images={product.gallery} name={product.name} />
       </div>
       <div className="w-full flex-1 flex flex-col gap-5">
         <div className="flex gap-4 max-lg:hidden">

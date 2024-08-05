@@ -5,13 +5,13 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Image from "next/image";
 
-const VerticalCarousel = ({ images }) => {
+const VerticalCarousel = ({ images, name }) => {
   const [selectedImage, setSelectedImage] = useState(0);
 
   return (
     <div className="flex flex-col gap-8 w-full max-w-[1440px] mx-auto px-2">
       <div className="flex gap-4 lg:hidden">
-        <h1 className="text-3xl font-semibold">RESONA R9</h1>
+        <h1 className="text-3xl font-semibold">{name}</h1>
         <div className="py-2 px-5 font-bold rounded-full text-greenView bg-greenCategory">
           New
         </div>
