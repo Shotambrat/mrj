@@ -4,7 +4,7 @@ import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 export default function Page() {
-  const { slug } = useParams();
+  const { slug, catalogId } = useParams();
   const router = useRouter();
   const [categoryId, setCategoryId] = useState(null);
   const [category, setCategory] = useState(null);
@@ -20,8 +20,12 @@ export default function Page() {
           setCategoryId(category.id);
           setCategory(category);
 
-          // Fetch products by category ID
-          fetch(`https://mrjtrade.uz/product/v2/all?category-id=${category.id}`)
+          // Fetch products by category or catalog ID
+          const fetchUrl = catalogId 
+            ? `https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}` 
+            : `https://mrjtrade.uz/product/v2/all?category-id=${category.id}`;
+
+          fetch(fetchUrl)
             .then((response) => response.json())
             .then((data) => setProducts(data.data))
             .catch((error) => {
@@ -36,7 +40,7 @@ export default function Page() {
         console.error("Error fetching category:", error);
         router.push('/404'); // Redirect to 404 page on error
       });
-  }, [slug, router]);
+  }, [slug, catalogId, router]);
 
   if (categoryId === null) {
     return <div>Loading...</div>; // Show a loading state until the category is fetched
@@ -44,7 +48,13 @@ export default function Page() {
 
   return (
     <div className='w-full bg-white flex flex-col py-24'>
-      <List categoryId={categoryId} category={category} products={products} setProducts={setProducts} />
+      <List 
+        categoryId={categoryId} 
+        category={category} 
+        products={products} 
+        setProducts={setProducts}
+        selectedCatalogId={catalogId}
+      />
     </div>
   );
 }

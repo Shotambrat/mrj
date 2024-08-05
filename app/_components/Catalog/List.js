@@ -8,11 +8,10 @@ import { useRouter, useParams } from 'next/navigation';
 import Category from "../Modal/Category";
 import tableCatalog from "@/public/svg/table-catalog.svg";
 
-export default function List({ categoryId, category, products, setProducts }) {
+export default function List({ categoryId, category, products, setProducts, selectedCatalogId }) {
   const [categoryModal, setCategoryModal] = useState(false);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("all");
-  const [selectedCatalog, setSelectedCatalog] = useState(null);
   const router = useRouter();
   const { slug } = useParams();
 
@@ -29,7 +28,6 @@ export default function List({ categoryId, category, products, setProducts }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.data);
-        setSelectedCatalog(catalogId);
         router.push(`/categories/${categorySlug}/${catalogId}`);
       })
       .catch((error) => console.error("Error fetching products:", error));
@@ -40,7 +38,6 @@ export default function List({ categoryId, category, products, setProducts }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.data);
-        setSelectedCatalog(null);
         router.push(`/categories/${categorySlug}`);
       })
       .catch((error) => console.error("Error fetching products:", error));
@@ -89,7 +86,7 @@ export default function List({ categoryId, category, products, setProducts }) {
             onCatalogSelect={handleCatalogSelect}
             onCategorySelect={handleCategorySelect}
             openSection={categoryId}
-            selectedCatalog={selectedCatalog}
+            selectedCatalogId={selectedCatalogId}
           />
         </div>
         <div className="w-full h-auto grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">
