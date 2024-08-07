@@ -73,7 +73,7 @@ const VerticalCarousel = ({ images, name }) => {
         .image-gallery-thumbnail.active,
         .image-gallery-thumbnail:hover,
         .image-gallery-thumbnail:focus {
-          border: 2px solid #34D399;
+          border: 2px solid #b2b2b2;
         }
       `}</style>
     </div>

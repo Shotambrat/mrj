@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from 'next/router';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,8 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 export default function PartnerPage() {
-    const router = useRouter();
-    const { slug } = router.query;
+    const pathname = usePathname();
+    const slug = pathname.split('/').pop();
     const [partner, setPartner] = useState(null);
     const [partnersSlider, setPartnersSlider] = useState([]);
 
@@ -77,8 +77,8 @@ export default function PartnerPage() {
     return (
         <div className="w-full max-w-[1440px] mx-auto px-4 py-8">
             <div className="mb-8">
-                <div className="w-[50%] h-[55%] max-w-[170px] max-h-[67px] mdx:max-w-[180px] mdx:max-h-[71px] mb-4 xl:mb-6">
-                    <Image src={partner.photo.url} alt={partner.title} objectFit="contain" width={170} height={67} />
+                <div className="w-[50%] h-[55%] max-w-[170px] max-h-[67px] mdx:max-w-[180px] mdx:max-h-[150px] mb-4 xl:mb-6">
+                    <Image src={partner.photo.url} alt={partner.title} className='h-full ' width={170} height={67} />
                 </div>
                 <h1 className="text-[25px] font-semibold mdx:text-[35px] xl:text-[40px] mb-4 text-[#252324] uppercase">{partner.title}</h1>
                 <p className="text-[#252324] text-[15px] mdx:text-[20px]">{partner.description}</p>
