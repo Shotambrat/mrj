@@ -7,9 +7,6 @@ import Commercial from "@/app/_components/Modal/Commercial";
 export default function FavoriteList( ) {
   const [favorites, setFavorites] = useState([]);
   const [modal, setModal] = useState(false);
-  {
-    modal && <Commercial closeModal={setModal} />;
-  }
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];

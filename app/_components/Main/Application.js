@@ -13,6 +13,7 @@ export default function Application() {
   const [focusedInput, setFocusedInput] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleInputChange = (e) => {
     setValues({
@@ -41,10 +42,25 @@ export default function Application() {
     return { isValid: true, message: "" };
   };
 
+  const isFormValid = () => {
+    const fullNameValid = validateInput("fullName", values.fullName).isValid;
+    const phoneNumberValid = validateInput("phoneNumber", values.phoneNumber).isValid;
+    const emailValid = validateInput("email", values.email).isValid;
+
+    return fullNameValid && phoneNumberValid && emailValid;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSuccess(false);
+
+    if (!isFormValid()) {
+      setError("Please fill in all required fields correctly.");
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await axios.post("https://mrjtrade.uz/application/create", values);
@@ -55,7 +71,7 @@ export default function Application() {
           email: "",
           question: "",
         });
-        alert("Your question has been sent successfully!");
+        setSuccess(true);
       } else {
         setError("Error submitting form, please try again.");
       }
@@ -63,6 +79,10 @@ export default function Application() {
       setError("Error submitting form, please try again.");
     } finally {
       setLoading(false);
+      setTimeout(() => {
+        setError(null);
+        setSuccess(false);
+      }, 3000);
     }
   };
 
@@ -146,9 +166,9 @@ export default function Application() {
               <button
                 type="submit"
                 className="py-3 px-12 bg-greenView text-xs text-white font-semibold rounded-lg shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                disabled={loading}
+                disabled={loading || success}
               >
-                {loading ? "Sending..." : "Send question"}
+                {loading ? "Sending..." : success ? "Sent successfully!" : "Send question"}
               </button>
             </div>
           </form>

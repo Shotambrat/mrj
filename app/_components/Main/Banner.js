@@ -2,11 +2,13 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function BannerCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [slides, setSlides] = useState([]);
-  const slideInterval = useRef(null);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const fetchBanners = async () => {
@@ -24,42 +26,47 @@ export default function BannerCarousel() {
     fetchBanners();
   }, []);
 
-  useEffect(() => {
-    slideInterval.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 7000);
-    return () => clearInterval(slideInterval.current);
-  }, [slides]);
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    dots: false,
+    arrows: false,
+  };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    sliderRef.current.slickNext();
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    sliderRef.current.slickPrev();
+  };
+
+  const goToSlide = (index) => {
+    sliderRef.current.slickGoTo(index);
   };
 
   return (
-    <div className="relative w-full max-w-[1440px] mx-auto overflow-hidden">
-      <div
-        className="relative flex transition-transform duration-700"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-      >
+    <div className="relative w-full max-w-[1440px] mx-auto overflow-hidden px-2 lg:px-12">
+      <Slider ref={sliderRef} {...settings}>
         {slides.map((slide, index) => (
-          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full">
+          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full flex justify-center px-2">
             <Image
               src={slide.photo.url}
               alt={`Banner ${index + 1}`}
               width={1500}
               height={500}
-              className="w-full h-full rounded-2xl"
+              className="w-full h-full object-cover rounded-2xl"
             />
           </a>
         ))}
-      </div>
+      </Slider>
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10"
+        className="absolute top-1/2 left-20 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
       >
         <svg
           className="w-8 h-8 text-white"
@@ -78,7 +85,7 @@ export default function BannerCarousel() {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10"
+        className="absolute top-1/2 right-20 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
       >
         <svg
           className="w-8 h-8 text-white"
