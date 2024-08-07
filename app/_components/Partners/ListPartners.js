@@ -39,8 +39,8 @@ export default function ListPartners() {
                 {partners.map(card => (
                     <div key={card.id} className="bg-white p-4 w-full rounded-2xl border border-gray-200 mdx:p-0 mdl:p-5 slg:h-auto">
                         <div className="mdx:flex mdx:flex-row items-center justify-between">
-                            <div className="mdx:w-[50%] h-[70px] relative mt-3">
-                                <Image src={card.photo.url} alt={card.title} layout="fill" objectFit="contain" />
+                            <div className="mdx:w-[50%] h-full relative flex justify-center">
+                                <Image src={card.photo.url} alt={card.title} height={500} width={500} className="max-h-[150px] w-[70%] h-full object-contain" />
                             </div>
                             <div className='mdx:mb-4 mdx:w-[50%]'>
                                 <h2 className="text-xl font-bold right mt-4 mdx:mb-2 xl:text-[28px]">{card.title}</h2>
