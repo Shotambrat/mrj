@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import ImageGallery from "react-image-gallery";
-import "react-image-gallery/styles/css/image-gallery.css";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Image from "next/image";
 
 const VerticalCarousel = ({ images, name }) => {
-  const [selectedImage, setSelectedImage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -21,11 +21,6 @@ const VerticalCarousel = ({ images, name }) => {
     };
   }, []);
 
-  const galleryImages = images.map((image) => ({
-    original: image.url,
-    thumbnail: image.url,
-  }));
-
   return (
     <div className="flex flex-col gap-8 w-full max-w-[1440px] mx-auto px-2">
       <div className="flex gap-4 lg:hidden">
@@ -35,45 +30,58 @@ const VerticalCarousel = ({ images, name }) => {
         </div>
       </div>
       <div className="w-full">
-        <ImageGallery
-          items={galleryImages}
-          showThumbnails={true}
-          showFullscreenButton={false}
-          showPlayButton={false}
-          showBullets={false}
-          onSlide={(index) => setSelectedImage(index)}
-          startIndex={selectedImage}
-          thumbnailPosition={isMobile ? "bottom" : "left"}
-          renderLeftNav={() => null}
-          renderRightNav={() => null}
-          renderFullscreenButton={() => null}
-          renderPlayButton={() => null}
-          additionalClass="custom-image-gallery"
-        />
+        <Carousel
+          selectedItem={0}
+          showThumbs={true}
+          showIndicators={false}
+          showStatus={false}
+          infiniteLoop={true}
+          useKeyboardArrows={true}
+          axis={isMobile ? "horizontal" : "vertical"}
+          className="main-carousel"
+          showArrows={false}
+          renderThumbs={() =>
+            images.map((image, index) => (
+              <div key={index}>
+                <Image
+                  src={image.url}
+                  alt={`Thumbnail ${index}`}
+                  className="object-contain h-full w-full"
+                  width={100}
+                  height={100}
+                />
+              </div>
+            ))
+          }
+        >
+          {images.map((image, index) => (
+            <div key={index}>
+              <Image
+                src={image.url}
+                alt={`Slide ${index}`}
+                className="object-contain h-96 w-full"
+                width={500}
+                height={500}
+              />
+            </div>
+          ))}
+        </Carousel>
       </div>
       <style jsx global>{`
-        .custom-image-gallery .image-gallery-slide img {
+        .carousel .slide img {
           object-fit: contain;
           height: 500px;
+          width: auto;
         }
-        .custom-image-gallery .image-gallery-thumbnail img {
+        .carousel .thumb img {
           height: ${isMobile ? "80px" : "100px"};
+          width: auto;
           object-fit: contain;
         }
-        .image-gallery-thumbnails-wrapper {
-          height: ${isMobile ? "auto" : "500px"};
+        .carousel .thumbs-wrapper {
           display: flex;
           align-items: center;
           justify-content: center;
-        }
-        .image-gallery-thumbnail {
-          border: 2px solid transparent;
-          transition: border 0.2s ease;
-        }
-        .image-gallery-thumbnail.active,
-        .image-gallery-thumbnail:hover,
-        .image-gallery-thumbnail:focus {
-          border: 2px solid #b2b2b2;
         }
       `}</style>
     </div>

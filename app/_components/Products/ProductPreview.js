@@ -21,18 +21,20 @@ export default function ProductPreview({ product }) {
     if (isFavorite) {
       favorites = favorites.filter(item => item.slug !== product.slug);
     } else {
-      favorites.push({ 
-        title: product.name, 
-        description: product.shortDescription, 
-        image: product.gallery[0] ? product.gallery[0].url : null, 
-        price: product.originalPrice ? `${product.originalPrice} y.e` : null, 
-        slug: product.slug 
+      favorites.push({
+        title: product.name,
+        description: product.shortDescription,
+        image: product.gallery[0] ? product.gallery[0].url : null,
+        price: product.originalPrice ? `${product.originalPrice} y.e` : null,
+        slug: product.slug
       });
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
     setIsFavorite(!isFavorite);
   };
+
+  console.log("Product gallery", product.gallery)
 
   return (
     <div className="w-full flex flex-col lg:flex-row">
