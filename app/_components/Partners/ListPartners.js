@@ -68,7 +68,7 @@ export default function ListPartners() {
                                 <h2 className="text-xl font-bold right mt-4 mdx:mb-2 xl:text-[28px]">{card.title}</h2>
                                 <p className="mb-4 text-gray-600 xl:text-[18px]">{card.description}</p>
                                 <Link href={`/partners/${card.link}`}>
-                                    <span className="text-green-600 font-semibold hover:underline mdx:text-[18px]">
+                                    <span className="text-green-600 font-semibold mdx:text-[18px]">
                                         read more →
                                     </span>
                                 </Link>
