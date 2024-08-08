@@ -10,11 +10,11 @@ export default function Map() {
             {modal && <Questions closeModal={setModal} />}
             <div className="w-full h-auto xl:h-full xl:absolute relative left-0 xl:top-0 z-0">
                 <div className="h-[350px] mdx:h-[450px] xl:h-[620px]">
-                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A518e000d74529368bca3a568b2843702261e398bdb518ddbd5458260f3f56097&amp;source=constructor" width="100%" height="400" className="relative top-0 left-0 w-full h-full border-none " frameborder="0"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1804.0640191323969!2d55.30726323929795!3d25.266277951561523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43e4158d75a1%3A0x352852e5ebff102d!2sCasiani%20Furs!5e0!3m2!1sru!2s!4v1723103423605!5m2!1sru!2s" width="00" height="400" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" className="relative border-none top-0 left-0 w-full h-full "></iframe>
                 </div>
             </div>
-            <div className="absolute top-0 left-0 xl:relative w-full 3xl:w-[1500px] h-[32rem] xl:h-[32rem] flex items-center z-10 xl:bg-inherit" style={{ pointerEvents: 'none' }}>
-                <div className="bg-white relative mx-auto w-full xl:mx-0 xl:left-10 xl:left-20 2xl:left-[6.875rem] bottom-0 xl:bottom-[70px] xl:w-[467px] xl:rounded-2xl">
+            <div className="absolute top-0 left-0 xl:relative w-full 3xl:w-[1500px] h-[32rem] xl:h-[32rem] flex items-center z-10 xl:bg-inherit xl:justify-end 2xy:justify-normal" style={{ pointerEvents: 'none' }}>
+                <div className="bg-white relative mx-auto w-full xl:mx-0    2xy:left-[6.875rem] bottom-0 xl:bottom-[70px] xl:w-[467px] xl:rounded-2xl">
                     <div style={{ pointerEvents: 'auto' }} className="p-4 mdl:px-8 mdl:py-6 shadow-contact xl:py-8">
                         <div>
                             <div>
