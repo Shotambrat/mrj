@@ -4,24 +4,22 @@ import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 export default function Page() {
-  const { slug } = useParams();
+  const { slug, catalogId } = useParams();
   const router = useRouter();
-  const [categoryId, setCategoryId] = useState(null);
   const [category, setCategory] = useState(null);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
     // Fetch the category details to get the category ID
-    fetch("http://213.230.91.55:8110/category")
+    fetch(`https://mrjtrade.uz/category/${slug}`)
       .then((response) => response.json())
       .then((data) => {
-        const category = data.data.item.find((cat) => cat.slug === slug);
+        const category = data.data;
         if (category) {
-          setCategoryId(category.id);
           setCategory(category);
 
-          // Fetch products by category ID
-          fetch(`http://213.230.91.55:8110/product/v2/all?category-id=${category.id}`)
+          // Fetch products by catalog ID
+          fetch(`https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}`)
             .then((response) => response.json())
             .then((data) => setProducts(data.data))
             .catch((error) => {
@@ -36,15 +34,15 @@ export default function Page() {
         console.error("Error fetching category:", error);
         router.push('/404'); // Redirect to 404 page on error
       });
-  }, [slug, router]);
+  }, [slug, catalogId, router]);
 
-  if (categoryId === null) {
+  if (!category) {
     return <div>Loading...</div>; // Show a loading state until the category is fetched
   }
 
   return (
     <div className='w-full bg-white flex flex-col py-24'>
-      <List categoryId={categoryId} category={category} products={products} setProducts={setProducts} />
+      <List categoryId={category.id} category={category} products={products} setProducts={setProducts} />
     </div>
   );
 }

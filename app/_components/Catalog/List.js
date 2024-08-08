@@ -4,33 +4,42 @@ import CatalogList from "./CatalogBar";
 import Catalogitem from "./Catalogitem";
 import Dropdown from "./DropDown";
 import Image from "next/image";
+import { useRouter, useParams } from 'next/navigation';
 import Category from "../Modal/Category";
 import tableCatalog from "@/public/svg/table-catalog.svg";
 
-export default function List({ categoryId, category, products, setProducts }) {
+export default function List({ categoryId, category, products, setProducts, selectedCatalogId }) {
   const [categoryModal, setCategoryModal] = useState(false);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("all");
+  const router = useRouter();
+  const { slug } = useParams();
 
   useEffect(() => {
     // Fetch categories
-    fetch("http://213.230.91.55:8110/category")
+    fetch("https://mrjtrade.uz/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
   }, []);
 
-  const handleCatalogSelect = (catalogId) => {
-    fetch(`http://213.230.91.55:8110/product/v2/all?catalog-id=${catalogId}`)
+  const handleCatalogSelect = (catalogId, categorySlug) => {
+    fetch(`https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}`)
       .then((response) => response.json())
-      .then((data) => setProducts(data.data))
+      .then((data) => {
+        setProducts(data.data);
+        router.push(`/categories/${categorySlug}/${catalogId}`);
+      })
       .catch((error) => console.error("Error fetching products:", error));
   };
 
-  const handleCategorySelect = (categoryId) => {
-    fetch(`http://213.230.91.55:8110/product/v2/all?category-id=${categoryId}`)
+  const handleCategorySelect = (categoryId, categorySlug) => {
+    fetch(`https://mrjtrade.uz/product/v2/all?category-id=${categoryId}`)
       .then((response) => response.json())
-      .then((data) => setProducts(data.data))
+      .then((data) => {
+        setProducts(data.data);
+        router.push(`/categories/${categorySlug}`);
+      })
       .catch((error) => console.error("Error fetching products:", error));
   };
 
@@ -77,6 +86,7 @@ export default function List({ categoryId, category, products, setProducts }) {
             onCatalogSelect={handleCatalogSelect}
             onCategorySelect={handleCategorySelect}
             openSection={categoryId}
+            selectedCatalogId={selectedCatalogId}
           />
         </div>
         <div className="w-full h-auto grid grid-cols-1 mdl:grid-cols-2 3xl:grid-cols-3 gap-4">

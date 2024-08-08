@@ -5,8 +5,7 @@ export default function Map() {
         <div className="mx-auto relative w-full">
             <div className="xl:flex xl:flex-row-reverse xl:justify-between xl:items-center">
                 <div className="h-[350px] mdx:h-[450px] xl:h-[620px] w-full xl:max-w-[950px] xl:max-h-[750px]">
-                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A518e000d74529368bca3a568b2843702261e398bdb518ddbd5458260f3f56097&amp;source=constructor" width="100%" height="400" className="relative top-0 left-0 w-full h-full border-none " frameborder="0"></iframe>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1804.0640191323969!2d55.30726323929795!3d25.266277951561523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43e4158d75a1%3A0x352852e5ebff102d!2sCasiani%20Furs!5e0!3m2!1sru!2s!4v1723103423605!5m2!1sru!2s" width="100%" height="400" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" className="relative top-0 left-0 w-full h-full border-none " frameborder="0"></iframe>
                 </div>
                 <div className=" mx-[14px] 3xl:mx-auto">
                     <div className="mt-4 max-w-[1440px] xl:mx-5">

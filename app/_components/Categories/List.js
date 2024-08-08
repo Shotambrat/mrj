@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import CategoryItem from "@/app/_components/Categories/CategoryItem";
 
@@ -7,7 +7,7 @@ export default function List() {
 
   useEffect(() => {
     // Fetch categories
-    fetch("http://213.230.91.55:8110/category")
+    fetch("https://mrjtrade.uz/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
@@ -25,6 +25,7 @@ export default function List() {
             title={category.title}
             imageSrc={category.photo.url}
             slug={category.slug}
+            hasCatalog={category.catalog.length > 0}
           />
         ))}
       </div>

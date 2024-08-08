@@ -11,6 +11,7 @@ import Link from "next/link";
 import GreenArrow from "@/app/_components/Buttons/GreenArrow";
 import Catalogitem from "../Catalog/Catalogitem";
 
+
 export default function Similar() {
   const equipmentData = [
     {

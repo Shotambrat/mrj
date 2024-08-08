@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 
 export default function NewCard({ key, title, date, imageSrc }) {
   return (
@@ -8,7 +8,7 @@ export default function NewCard({ key, title, date, imageSrc }) {
         width={500}
         height={500}
         alt={`News Image ${key}`}
-        className="w-full h-auto object-cover rounded-2xl"
+        className="w-full h-[250px] object-cover rounded-2xl"
       />
       <div className="w-full flex flex-col gap-1">
         <h3 className="text-xl max-mdx:text-lg font-semibold">

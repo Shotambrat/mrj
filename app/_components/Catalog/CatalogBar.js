@@ -52,7 +52,7 @@ const AccordionContent = ({ children }) => {
   return <div className="pb-5 px-4">{children}</div>;
 };
 
-export default function CatalogList({ categories, onCatalogSelect, onCategorySelect, openSection }) {
+export default function CatalogList({ categories, onCatalogSelect, onCategorySelect, openSection, selectedCatalogId }) {
   const [openSections, setOpenSections] = useState([]);
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function CatalogList({ categories, onCatalogSelect, onCategorySel
   return (
     <section className="w-full">
       <div className="flex flex-col w-full">
-        {categories.map(({ id, title, catalog }) => (
+        {categories.map(({ id, title, catalog, slug }) => (
           <div key={id} className="w-full">
             {catalog.length > 0 ? (
               <AccordionItem
@@ -83,12 +83,18 @@ export default function CatalogList({ categories, onCatalogSelect, onCategorySel
               >
                 <AccordionContent>
                   <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
+                    <div
+                      className={`cursor-pointer ${!selectedCatalogId && openSection === id && "text-red-500"}`}
+                      onClick={() => onCategorySelect(id, slug)}
+                    >
+                      All
+                    </div>
                     {catalog.map(
                       (catalogItem) => (
                         <div
-                          className="cursor-pointer"
+                          className={`cursor-pointer ${selectedCatalogId === catalogItem.id && "text-red-500"}`}
                           key={catalogItem.id}
-                          onClick={() => onCatalogSelect(catalogItem.id)}
+                          onClick={() => onCatalogSelect(catalogItem.id, slug)}
                         >
                           {catalogItem.name}
                         </div>
@@ -99,8 +105,8 @@ export default function CatalogList({ categories, onCatalogSelect, onCategorySel
               </AccordionItem>
             ) : (
               <div
-                className="py-7 border-t border-b border-solid border-neutral-200 cursor-pointer"
-                onClick={() => onCategorySelect(id)}
+                className={`py-7 border-t border-b border-solid border-neutral-200 cursor-pointer ${openSection === id && "text-green-500"}`}
+                onClick={() => onCategorySelect(id, slug)}
               >
                 <span className="text-2xl font-bold text-neutral-900">{title}</span>
               </div>

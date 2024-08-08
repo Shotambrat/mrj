@@ -31,6 +31,8 @@ module.exports = {
       '2xl': '1100px',
       // => @media (min-width: 1536px) { ... }
 
+      '2xy': '1200px',
+
       '3xl': '1440px',
       // => @media (min-width: 1440px) { ... }
     },

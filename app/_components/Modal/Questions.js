@@ -1,8 +1,11 @@
 "use client";
+
 import { useState } from "react";
+import closeGray from "@/public/svg/close-gray.svg";
+import Image from "next/image";
 import axios from "axios";
 
-export default function Application() {
+export default function Commercial({ closeModal }) {
   const [values, setValues] = useState({
     fullName: "",
     phoneNumber: "",
@@ -13,7 +16,6 @@ export default function Application() {
   const [focusedInput, setFocusedInput] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
 
   const handleInputChange = (e) => {
     setValues({
@@ -25,53 +27,32 @@ export default function Application() {
   const validateInput = (name, value) => {
     if (name === "fullName") {
       return value.length >= 3
-        ? { isValid: true, message: "Correct" }
-        : { isValid: false, message: "Enter your full name" };
+        ? { isValid: true, message: "Правильно" }
+        : { isValid: false, message: "Введите полное имя" };
     } else if (name === "phoneNumber") {
       const phoneRegex =
         /^(\+?\d{1,3}[-.\s]?)?(\(?\d{2,3}\)?[-.\s]?)?\d{3,4}[-.\s]?\d{4}$/;
       return phoneRegex.test(value)
-        ? { isValid: true, message: "Correct" }
-        : { isValid: false, message: "Enter the correct number" };
+        ? { isValid: true, message: "Правильно" }
+        : { isValid: false, message: "Введите правильный номер" };
     } else if (name === "email") {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(value)
-        ? { isValid: true, message: "Correct" }
-        : { isValid: false, message: "Enter correct email" };
+        ? { isValid: true, message: "Правильно" }
+        : { isValid: false, message: "Введите правильный email" };
     }
     return { isValid: true, message: "" };
-  };
-
-  const isFormValid = () => {
-    const fullNameValid = validateInput("fullName", values.fullName).isValid;
-    const phoneNumberValid = validateInput("phoneNumber", values.phoneNumber).isValid;
-    const emailValid = validateInput("email", values.email).isValid;
-
-    return fullNameValid && phoneNumberValid && emailValid;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setSuccess(false);
-
-    if (!isFormValid()) {
-      setError("Please fill in all required fields correctly.");
-      setLoading(false);
-      return;
-    }
 
     try {
       const response = await axios.post("https://mrjtrade.uz/application/create", values);
       if (response.status === 200) {
-        setValues({
-          fullName: "",
-          phoneNumber: "",
-          email: "",
-          question: "",
-        });
-        setSuccess(true);
+        closeModal(false);
       } else {
         setError("Error submitting form, please try again.");
       }
@@ -79,27 +60,24 @@ export default function Application() {
       setError("Error submitting form, please try again.");
     } finally {
       setLoading(false);
-      setTimeout(() => {
-        setError(null);
-        setSuccess(false);
-      }, 3000);
     }
   };
 
   return (
-    <div className="w-full max-w-[1440px] max-auto px-2 mx-auto">
-      <div className="w-full rounded-3xl flex flex-col max-lg:gap-8 lg:flex-row bg-snowy px-4 py-8 lg:px-12 lg:py-12 relative overflow-hidden">
-        <div className="flex-1 w-full flex flex-col gap-5 z-10">
-          <h2 className="text-4xl max-mdx:text-2xl text-greenView font-semibold">
-            HAVE A QUESTION? <br />
-            CONTACT US!
-          </h2>
-          <p className="text-neutral-500 w-full max-w-[350px] text-lg leading-6">
-            Write your question and we will answer you as soon as possible
-          </p>
-        </div>
+    <div className="fixed w-full top-0 left-0 h-screen justify-center flex bg-modalBg items-center z-[9999] p-2">
+      <div className="w-full max-w-[320px] xl:max-w-[450px] rounded-3xl px-6 py-6 flex flex-col gap-6 relative bg-white">
+        <button onClick={() => closeModal(false)} className="w-4 h-4 absolute top-8 right-6">
+          <Image
+            src={closeGray}
+            width={100}
+            height={100}
+            alt="Close Icon Gray"
+            className="w-full h-full"
+          />
+        </button>
+        <h3 className="text-xl font-semibold ">Ask question</h3>
         <div className="z-10 flex-1 w-full flex justify-center">
-          <form className="flex flex-col gap-6 w-full max-lg:max-w-full max-w-[350px]" onSubmit={handleSubmit}>
+          <form className="flex flex-col gap-6 w-full" onSubmit={handleSubmit}>
             {["fullName", "phoneNumber", "email", "question"].map((field) => (
               <div className="relative" key={field}>
                 <input
@@ -109,7 +87,7 @@ export default function Application() {
                   onChange={handleInputChange}
                   onFocus={() => setFocusedInput(field)}
                   onBlur={() => setFocusedInput(null)}
-                  className={`block w-full px-3 py-3 bg-white rounded-lg shadow-sm placeholder-transparent focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm border-2 ${
+                  className={`block w-full px-3 py-3 bg-white rounded-lg placeholder-transparent focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm border border-neutral-400 ${
                     focusedInput === field
                       ? validateInput(field, values[field]).isValid
                         ? "border-green-500"
@@ -162,18 +140,15 @@ export default function Application() {
               </div>
             ))}
             {error && <p className="text-red-500">{error}</p>}
-            <div>
-              <button
-                type="submit"
-                className="py-3 px-12 bg-greenView text-xs text-white font-semibold rounded-lg shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                disabled={loading || success}
-              >
-                {loading ? "Sending..." : success ? "Sent successfully!" : "Send question"}
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl text-white font-semibold bg-greenView"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send"}
+            </button>
           </form>
         </div>
-        <div className="absolute -bottom-48 mdl:-left-20 max-mdl:-right-20 border-2 border-greenView opacity-30 rounded-full w-80 h-80 z-0"></div>
       </div>
     </div>
   );

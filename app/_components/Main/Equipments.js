@@ -11,22 +11,22 @@ export default function Equipments() {
     {
       title: "Ultrasound Diagnostic System",
       imageSrc: uzi,
-      slug: "ultrasound"
+      slug: "ultrasound-diagnostic-systems"
     },
     {
       title: "Laboratory Equipment",
       imageSrc: lab,
-      slug: "lab"
+      slug: "laboratory-equipment"
     },
     {
       title: "Reagents and consumables",
       imageSrc: colba,
-      slug: "reagents"
+      slug: "reagents-and-consumables"
     },
     {
       title: "Radiology and X-ray systems",
       imageSrc: radio,
-      slug: "radiology"
+      slug: "radiology-and-xray-systems"
     },
   ];
   return (

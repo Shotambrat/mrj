@@ -28,6 +28,7 @@ export default function Catalogitem({ new: isNew, sale, image, title, descriptio
   };
 
   const truncateDescription = (desc, wordLimit) => {
+    if (!desc) return ""; // Если описание отсутствует, вернуть пустую строку
     // Replace newline characters with spaces
     const cleanDesc = desc.replace(/\n/g, ' ');
     const words = cleanDesc.split(" ");
@@ -62,13 +63,19 @@ export default function Catalogitem({ new: isNew, sale, image, title, descriptio
           />
         </div>
         <div className="w-full h-[300px] flex items-center justify-center overflow-hidden">
-          <Image
-            src={image}
-            alt={title}
-            width={200}
-            height={200}
-            className="object-contain w-full h-full"
-          />
+          {image ? (
+            <Image
+              src={image}
+              alt={title}
+              width={200}
+              height={200}
+              className="object-contain w-full h-full"
+            />
+          ) : (
+            <div className="object-contain w-full h-full bg-gray-200 flex items-center justify-center">
+              No Image Available
+            </div>
+          )}
         </div>
         <h3 className="text-md font-semibold mt-3">{title}</h3>
         <p className="text-xs text-gray-600 mt-1">

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
@@ -9,7 +9,7 @@ export default function Search() {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://213.230.91.55:8110/search?query=${query}`);
+      const response = await axios.get(`https://mrjtrade.uz/search?query=${query}`);
       setResults(response.data.data);
     } catch (error) {
       console.error('Error fetching search results:', error);
@@ -26,9 +26,8 @@ export default function Search() {
         url = `/categories/catalog/${item.slug}`;
         break;
       case 'Catalog':
-        url = `/categories/catalog/all?catalog-id=${item.id}`;
+        url = `/categories/`;
         break;
-      // Добавьте обработку для остальных типов dtoName
       case 'New':
         url = `/news/${item.slug}`;
         break;
@@ -45,8 +44,23 @@ export default function Search() {
     return url;
   };
 
+  const getTypeLabel = (dtoName) => {
+    switch (dtoName) {
+      case 'Product':
+        return 'Product';
+      case 'New':
+        return 'News';
+      case 'Partner':
+        return 'Partner';
+      case 'Catalog':
+        return 'Catalog';
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div className="fixed h-screen w-full bg-modalBg left-0 top-[100px] z-[9999]">
+    <div className="fixed h-screen w-full bg-modalBg left-0 top-[90px] z-[9999]">
       <div className="h-[70%] w-full bg-white pt-8">
         <div className="h-[95%] w-full max-w-[1440px] mx-auto flex flex-col gap-8 overflow-y-scroll no-scrollbar">
           <div className="flex items-center bg-snowy rounded-lg p-4 w-full shadow-sm">
@@ -81,11 +95,21 @@ export default function Search() {
                 href={getLink(item)}
                 className="p-4 bg-white shadow-md flex gap-4 w-full rounded-md cursor-pointer"
               >
-                {item.photo && item.photo.url && <Image src={item.photo.url} alt={item.name} width={500} height={500} className="w-40 h-40 object-cover rounded-md mb-2" />}
+                {item.photo && item.photo.url && (
+                  <Image
+                    src={item.photo.url}
+                    alt={item.name || item.title}
+                    width={500}
+                    height={500}
+                    className="w-40 h-40 object-cover rounded-md mb-2"
+                  />
+                )}
                 <div>
-                <h3 className="text-lg font-semibold">{item.name}</h3>
-                <p className="text-gray-500">{item.shortDescription}</p>
-
+                  <h3 className="text-lg font-semibold">{item.name || item.title}</h3>
+                  {item.categoryName && (
+                    <p className="text-sm text-gray-400">Category: {item.categoryName}</p>
+                  )}
+                  <p className="text-sm text-gray-400">{getTypeLabel(item.dtoName)}</p>
                 </div>
               </a>
             ))}

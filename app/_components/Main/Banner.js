@@ -1,118 +1,107 @@
 "use client";
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import banner from "@/public/images/main/banner.png";
+
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-// Custom Arrow Components
-const LeftArrow = ({ onClick, hasPrev }) => (
-  <button
-    onClick={onClick}
-    className={`${
-      hasPrev ? "absolute" : "hidden"
-    } top-1/2 z-10 left-4 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100`}
-    aria-label="Previous Slide"
-  >
-    <svg
-      className="w-8 h-8 max-mdl:w-6 max-mdl:h-6 text-white"
-      viewBox="-9 0 40 22"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M10.2969 1.5625L1.85938 10L10.2969 18.4375M3.03125 10L20.1406 10"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </button>
-);
+export default function BannerCarousel() {
+  const [slides, setSlides] = useState([]);
+  const sliderRef = useRef(null);
 
-const RightArrow = ({ onClick, hasNext }) => (
-  <button
-    onClick={onClick}
-    className={`${
-      hasNext ? "absolute" : "hidden"
-    } top-1/2 right-4 z-10 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100`}
-    aria-label="Next Slide"
-  >
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const response = await fetch("https://mrjtrade.uz/banner/get");
+        const data = await response.json();
+        if (data.message === "Found" && data.data.banner && data.data.banner.data) {
+          setSlides(data.data.banner.data.filter(slide => slide.active));
+        }
+      } catch (error) {
+        console.error("Error fetching banner data:", error);
+      }
+    };
 
-    <svg
-      className="w-8 h-8 max-mdl:w-6 max-mdl:h-6 text-white"
-      viewBox="-9 0 40 22"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M11.7031 1.5625L20.1406 10L11.7031 18.4375M18.9687 10L1.85937 10"
-        stroke="white"
-        stroke-width={2}
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
-  </button>
-);
+    fetchBanners();
+  }, []);
 
-const BannerCarousel = () => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    dots: false,
+    arrows: false,
+  };
+
+  const nextSlide = () => {
+    sliderRef.current.slickNext();
+  };
+
+  const prevSlide = () => {
+    sliderRef.current.slickPrev();
+  };
+
+  const goToSlide = (index) => {
+    sliderRef.current.slickGoTo(index);
+  };
+
   return (
-    <div className="w-full max-w-[1440px] mx-auto relative px-2">
-      <Carousel
-        autoPlay
-        infiniteLoop
-        showThumbs={false}
-        showStatus={false}
-        showIndicators={false}
-        renderArrowPrev={(clickHandler, hasPrev) => (
-          <LeftArrow onClick={clickHandler} hasPrev={hasPrev} />
-        )}
-        renderArrowNext={(clickHandler, hasNext) => (
-          <RightArrow onClick={clickHandler} hasNext={hasNext} />
-        )}
-        className="relative "
+    <div className="relative w-full max-w-[1440px] mx-auto overflow-hidden px-2 lg:px-12">
+      <Slider ref={sliderRef} {...settings}>
+        {slides.map((slide, index) => (
+          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full flex justify-center px-2">
+            <Image
+              src={slide.photo.url}
+              alt={`Banner ${index + 1}`}
+              width={1500}
+              height={500}
+              className="w-full h-full object-cover rounded-2xl"
+            />
+          </a>
+        ))}
+      </Slider>
+      <button
+        onClick={prevSlide}
+        className="absolute top-1/2 left-20 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
       >
-        <div className="w-full relative ">
-          <Image
-            src={banner}
-            width={1500}
-            height={1500}
-            alt="Surgical Equipment Banner"
-            className="w-full h-full rounded-2xl z-0"
+        <svg
+          className="w-8 h-8 text-white"
+          viewBox="-9 0 40 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.2969 1.5625L1.85938 10L10.2969 18.4375M3.03125 10L20.1406 10"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
-        </div>
-        <div className="w-full relative ">
-          <Image
-            src={banner}
-            width={1500}
-            height={1500}
-            alt="Surgical Equipment Banner"
-            className="w-full h-full rounded-2xl"
+        </svg>
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute top-1/2 right-20 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
+      >
+        <svg
+          className="w-8 h-8 text-white"
+          viewBox="-9 0 40 22"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.7031 1.5625L20.1406 10L11.7031 18.4375M18.9687 10L1.85937 10"
+            stroke="white"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
-        </div>
-        <div className="w-full relative ">
-          <Image
-            src={banner}
-            width={1500}
-            height={1500}
-            alt="Surgical Equipment Banner"
-            className="w-full h-full rounded-2xl"
-          />
-        </div>
-        <div className="w-full relative ">
-          <Image
-            src={banner}
-            width={1500}
-            height={1500}
-            alt="Surgical Equipment Banner"
-            className="w-full h-full rounded-2xl"
-          />
-        </div>
-        {/* Add more slides as needed */}
-      </Carousel>
+        </svg>
+      </button>
     </div>
   );
-};
-
-export default BannerCarousel;
+}
