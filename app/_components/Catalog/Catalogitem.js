@@ -6,19 +6,27 @@ import GreenArrow from "../Buttons/GreenArrow";
 import fav from "@/public/svg/main/fav.svg";
 import favFilled from "@/public/svg/main/fav-filled.svg";
 
-export default function Catalogitem({ new: isNew, sale, image, title, description, price, slug }) {
+export default function Catalogitem({
+  new: isNew,
+  sale,
+  image,
+  title,
+  description,
+  price,
+  slug,
+}) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    setIsFavorite(favorites.some(item => item.slug === slug));
+    setIsFavorite(favorites.some((item) => item.slug === slug));
   }, [slug]);
 
   const handleFavoriteToggle = () => {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
     if (isFavorite) {
-      favorites = favorites.filter(item => item.slug !== slug);
+      favorites = favorites.filter((item) => item.slug !== slug);
     } else {
       favorites.push({ title, description, image, price, slug });
     }
@@ -30,7 +38,7 @@ export default function Catalogitem({ new: isNew, sale, image, title, descriptio
   const truncateDescription = (desc, wordLimit) => {
     if (!desc) return ""; // Если описание отсутствует, вернуть пустую строку
     // Replace newline characters with spaces
-    const cleanDesc = desc.replace(/\n/g, ' ');
+    const cleanDesc = desc.replace(/\n/g, " ");
     const words = cleanDesc.split(" ");
     if (words.length > wordLimit) {
       return words.slice(0, wordLimit).join(" ") + "...";
@@ -62,25 +70,31 @@ export default function Catalogitem({ new: isNew, sale, image, title, descriptio
             className="w-5 h-5 max-mdx:w-8 max-mdx:h-8"
           />
         </div>
-        <div className="w-full h-[300px] flex items-center justify-center overflow-hidden">
-          {image ? (
-            <Image
-              src={image}
-              alt={title}
-              width={200}
-              height={200}
-              className="object-contain w-full h-full"
-            />
-          ) : (
-            <div className="object-contain w-full h-full bg-gray-200 flex items-center justify-center">
-              No Image Available
-            </div>
-          )}
-        </div>
+          <Link href={`/product/${slug}`} className="w-full h-[300px] flex items-center justify-center overflow-hidden">
+            {image ? (
+              <Image
+                src={image}
+                alt={title}
+                width={200}
+                height={200}
+                className="object-contain w-full h-full"
+              />
+            ) : (
+              <div className="object-contain w-full h-full bg-gray-200 flex items-center justify-center">
+                No Image Available
+              </div>
+            )}
+          </Link>
+        <Link href={`/product/${slug}`}>
         <h3 className="text-md font-semibold mt-3">{title}</h3>
+        
+        </Link>
+        <Link href={`/product/${slug}`}>
         <p className="text-xs text-gray-600 mt-1">
           {truncateDescription(description, 14)}
         </p>
+        
+        </Link>
         <div className="flex w-full justify-between items-center flex-wrap mt-3">
           <Link href={`/product/${slug}`}>
             <GreenArrow title={"more details"} />

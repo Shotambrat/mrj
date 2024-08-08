@@ -49,9 +49,9 @@ export default function Page() {
   return (
     <div className='w-full bg-white flex flex-col py-24'>
       <List 
-        categoryId={categoryId} 
-        category={category} 
-        products={products} 
+        categoryId={categoryId}
+        category={category}
+        products={products}
         setProducts={setProducts}
         selectedCatalogId={catalogId}
       />

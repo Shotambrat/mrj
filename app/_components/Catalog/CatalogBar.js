@@ -63,9 +63,7 @@ export default function CatalogList({ categories, onCatalogSelect, onCategorySel
 
   const toggleSection = (section) => {
     setOpenSections((prev) =>
-      prev.includes(section)
-        ? prev.filter((s) => s !== section)
-        : [...prev, section]
+      prev.includes(section) ? [] : [section]
     );
   };
 

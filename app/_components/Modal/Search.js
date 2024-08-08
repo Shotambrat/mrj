@@ -23,7 +23,7 @@ export default function Search() {
         url = `/product/${item.slug}`;
         break;
       case 'Category':
-        url = `/categories/catalog/${item.slug}`;
+        url = `/categories/${item.slug}`;
         break;
       case 'Catalog':
         url = `/categories/`;
