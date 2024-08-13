@@ -10,7 +10,9 @@ const AccordionItem = ({ title, isOpen, onClick, children, defaultOpen }) => {
     <div className="border-t border-b border-solid">
       <summary
         onClick={onClick}
-        className={`flex gap-5 py-7 ${isOpen ? "text-greenView" : "text-black"} font-semibold text-xl max-md:max-w-full cursor-pointer`}
+        className={`flex gap-5 py-7 ${
+          isOpen ? "text-greenView" : "text-black"
+        } font-semibold text-xl max-md:max-w-full cursor-pointer`}
       >
         <span className="flex-auto">{title}</span>
         {isOpen ? (
@@ -52,7 +54,13 @@ const AccordionContent = ({ children }) => {
   return <div className="pb-5 px-4">{children}</div>;
 };
 
-export default function CatalogList({ categories, onCatalogSelect, onCategorySelect, openSection, selectedCatalogId }) {
+export default function CatalogList({
+  categories,
+  onCatalogSelect,
+  onCategorySelect,
+  openSection,
+  selectedCatalogId,
+}) {
   const [openSections, setOpenSections] = useState([]);
 
   useEffect(() => {
@@ -62,9 +70,7 @@ export default function CatalogList({ categories, onCatalogSelect, onCategorySel
   }, [openSection]);
 
   const toggleSection = (section) => {
-    setOpenSections((prev) =>
-      prev.includes(section) ? [] : [section]
-    );
+    setOpenSections((prev) => (prev.includes(section) ? [] : [section]));
   };
 
   return (
@@ -82,31 +88,42 @@ export default function CatalogList({ categories, onCatalogSelect, onCategorySel
                 <AccordionContent>
                   <div className="flex flex-col gap-5 text-lg font-semibold text-neutral-900 w-full">
                     <div
-                      className={`cursor-pointer ${!selectedCatalogId && openSection === id && "text-red-500"}`}
+                      className={`cursor-pointer ${
+                        !selectedCatalogId &&
+                        openSection === id &&
+                        "text-red-500"
+                      }`}
                       onClick={() => onCategorySelect(id, slug)}
                     >
                       All
                     </div>
-                    {catalog.map(
-                      (catalogItem) => (
+                    {catalog.map((catalogItem) => {
+                      return (
                         <div
-                          className={`cursor-pointer ${selectedCatalogId === catalogItem.id && "text-red-500"}`}
+                          className={`cursor-pointer ${
+                            selectedCatalogId == catalogItem.id &&
+                            "text-red-500"
+                          }`}
                           key={catalogItem.id}
                           onClick={() => onCatalogSelect(catalogItem.id, slug)}
                         >
                           {catalogItem.name}
                         </div>
-                      )
-                    )}
+                      );
+                    })}
                   </div>
                 </AccordionContent>
               </AccordionItem>
             ) : (
               <div
-                className={`py-7 border-t border-b border-solid border-neutral-200 cursor-pointer ${openSection === id && "text-green-500"}`}
+                className={`py-7 border-t border-b border-solid border-neutral-200 cursor-pointer ${
+                  openSection === id && "text-green-500"
+                }`}
                 onClick={() => onCategorySelect(id, slug)}
               >
-                <span className="text-2xl font-bold text-neutral-900">{title}</span>
+                <span className="text-2xl font-bold text-neutral-900">
+                  {title}
+                </span>
               </div>
             )}
           </div>

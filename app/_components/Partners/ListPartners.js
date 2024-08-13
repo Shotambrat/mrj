@@ -16,7 +16,6 @@ export default function ListPartners() {
                 }
 
                 const data = await response.json();
-                console.log("Fetched data:", data);
 
                 if (data && data.data) {
                     setPartners(data.data);
@@ -30,8 +29,6 @@ export default function ListPartners() {
 
         fetchPartners();
     }, []);
-
-    console.log("Partners state:", partners);
 
     return (
         <div className="w-full max-w-[1440px] mx-auto px-2 flex flex-col gap-8 mt-7">

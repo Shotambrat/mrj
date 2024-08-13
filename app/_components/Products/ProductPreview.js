@@ -34,7 +34,7 @@ export default function ProductPreview({ product }) {
     setIsFavorite(!isFavorite);
   };
 
-  console.log("Product gallery", product.gallery)
+  console.log(product);
 
   return (
     <div className="w-full flex flex-col lg:flex-row">
@@ -51,7 +51,7 @@ export default function ProductPreview({ product }) {
             </div>
           )}
         </div>
-        <p className="text-neutral-400 leading-5">{product.description}</p>
+        <p className="text-neutral-400 leading-5">{product.shortDescription}</p>
         <hr />
         <div className="w-full flex max-mdx:flex-col max-mdx:items-start max-mdx:gap-8 justify-between items-center">
           <p className="w-full max-w-[200px] leading-4">{product.conditions}</p>

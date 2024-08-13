@@ -1,15 +1,26 @@
-import { Menu } from '@headlessui/react'
-import { Fragment } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+"use client";
+
+import { useState } from "react";
+import { Menu } from "@headlessui/react";
+import { Fragment } from "react";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function Dropdown({ onFilterChange }) {
+  const [activeFilter, setActiveFilter] = useState("all");
+  const handleFilterClick = (filter) => {
+    setActiveFilter(filter);
+    onFilterChange(filter);
+  };
   return (
     <div className="relative inline-block text-left">
       <Menu as="div" className="relative">
         <div>
           <Menu.Button className="inline-flex justify-center items-center w-56 px-4 py-2 font-medium text-black bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent">
-            All equipment
-            <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1" aria-hidden="true" />
+            {activeFilter == 'all' ? 'All equipment' : activeFilter == 'new' ? 'New items' : 'Promotions'}
+            <ChevronDownIcon
+              className="w-5 h-5 ml-2 -mr-1"
+              aria-hidden="true"
+            />
           </Menu.Button>
         </div>
 
@@ -20,9 +31,11 @@ export default function Dropdown({ onFilterChange }) {
                 <a
                   href="#"
                   className={`${
-                    active ? 'bg-gray-100 text-greenView' : 'text-gray-900'
+                    activeFilter === "all"
+                      ? "bg-gray-100 text-greenView"
+                      : "text-gray-900"
                   } group flex items-center px-4 py-2 text-sm`}
-                  onClick={() => onFilterChange("all")}
+                  onClick={() => handleFilterClick("all")}
                 >
                   All equipment
                 </a>
@@ -33,9 +46,11 @@ export default function Dropdown({ onFilterChange }) {
                 <a
                   href="#"
                   className={`${
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
+                    activeFilter === "new"
+                      ? "bg-gray-100 text-greenView"
+                      : "text-gray-900"
                   } group flex items-center px-4 py-2 text-sm`}
-                  onClick={() => onFilterChange("new")}
+                  onClick={() => handleFilterClick("new")}
                 >
                   New items
                 </a>
@@ -46,9 +61,11 @@ export default function Dropdown({ onFilterChange }) {
                 <a
                   href="#"
                   className={`${
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-900'
+                    activeFilter === "promotion"
+                      ? "bg-gray-100 text-greenView"
+                      : "text-gray-900"
                   } group flex items-center px-4 py-2 text-sm`}
-                  onClick={() => onFilterChange("promotion")}
+                  onClick={() => handleFilterClick("promotion")}
                 >
                   Promotions
                 </a>
@@ -58,5 +75,5 @@ export default function Dropdown({ onFilterChange }) {
         </Menu.Items>
       </Menu>
     </div>
-  )
+  );
 }

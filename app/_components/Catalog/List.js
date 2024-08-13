@@ -4,11 +4,17 @@ import CatalogList from "./CatalogBar";
 import Catalogitem from "./Catalogitem";
 import Dropdown from "./DropDown";
 import Image from "next/image";
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useParams } from "next/navigation";
 import Category from "../Modal/Category";
 import tableCatalog from "@/public/svg/table-catalog.svg";
 
-export default function List({ categoryId, category, products, setProducts, selectedCatalogId }) {
+export default function List({
+  categoryId,
+  category,
+  products,
+  setProducts,
+  selectedCatalogId,
+}) {
   const [categoryModal, setCategoryModal] = useState(false);
   const [categories, setCategories] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -48,8 +54,8 @@ export default function List({ categoryId, category, products, setProducts, sele
   };
 
   const filteredProducts = products.filter((product) => {
-    if (filter === "new") return product.tag.includes("new");
-    if (filter === "promotion") return product.tag.includes("promotion");
+    if (filter === "new") return product.tag.includes("New");
+    if (filter === "promotion") return product.tag.includes("Promotion");
     return true;
   });
 
@@ -59,7 +65,16 @@ export default function List({ categoryId, category, products, setProducts, sele
 
   return (
     <div className="w-full max-w-[1440px] mx-auto flex flex-col lg:gap-20 gap-5 px-2">
-      {categoryModal && <Category handleClose={handleClose} />}
+      {categoryModal && (
+        <Category
+          handleClose={handleClose}
+          categories={categories}
+          onCatalogSelect={handleCatalogSelect}
+          onCategorySelect={handleCategorySelect}
+          openSection={categoryId}
+          selectedCatalogId={selectedCatalogId}
+        />
+      )}
       <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-5">
         <h1 className="text-3xl max-mdx:text2xl font-semibold">CATALOG</h1>
         <div className="z-10 flex gap-5 items-center">
@@ -93,7 +108,7 @@ export default function List({ categoryId, category, products, setProducts, sele
           {filteredProducts.map((item, index) => (
             <div key={index}>
               <Catalogitem
-                new={item.tag.includes("new")}
+                new={item.tag.includes("New")}
                 sale={item.discount ? `-${item.discount}%` : null}
                 image={item.photo.url}
                 title={item.name}

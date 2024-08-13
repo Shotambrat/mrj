@@ -42,7 +42,7 @@ export default function Page() {
 
   return (
     <div className='w-full bg-white flex flex-col py-24'>
-      <List categoryId={category.id} category={category} products={products} setProducts={setProducts} />
+      <List categoryId={category.id} category={category} products={products} setProducts={setProducts} selectedCatalogId={catalogId} />
     </div>
   );
 }
