@@ -4,7 +4,7 @@ import { useState } from "react";
 import closeGray from "@/public/svg/close-gray.svg";
 import Image from "next/image";
 
-export default function Commercial({ closeModal }) {
+export default function Commercial({ product, closeModal }) {
   const [values, setValues] = useState({
     fullName: "",
     phoneNumber: "",
@@ -51,14 +51,27 @@ export default function Commercial({ closeModal }) {
 
   const handleSendClick = async () => {
     const productLinks = prepareProductLinks();
-
-    const requestBody = {
+    
+    const requestBody =  !product ? {
       name: values.fullName,
       phone: values.phoneNumber,
       mail: values.email,
       message: values.question,
       productLink: productLinks
-    };
+    } : {
+      name: values.fullName,
+      phone: values.phoneNumber,
+      mail: values.email,
+      message: values.question,
+      productLink: [
+        {
+          name: product.name,
+          link: `https://mrjtrade.ae/product/${product.slug}`
+        }
+      ]
+    }
+
+    console.log(requestBody)
 
     try {
       const response = await fetch('https://mrjtrade.uz/commercial-offer', {

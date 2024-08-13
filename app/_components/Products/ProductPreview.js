@@ -38,7 +38,7 @@ export default function ProductPreview({ product }) {
 
   return (
     <div className="w-full flex flex-col lg:flex-row">
-      {modal && <Commercial closeModal={setModal} />}
+      {modal && <Commercial product={product} closeModal={setModal} />}
       <div className="flex-1 w-full">
         <VerticalCarousel images={product.gallery} name={product.name} />
       </div>
