@@ -1,52 +1,94 @@
 "use client"
 
 import { useState } from "react";
-import closeGray from "@/public/svg/close-gray.svg"
+import closeGray from "@/public/svg/close-gray.svg";
 import Image from "next/image";
 
-export default function Commercial( {closeModal} ) {
-    const [values, setValues] = useState({
-        fullName: "",
-        phoneNumber: "",
-        email: "",
-        question: "",
+export default function Commercial({ closeModal }) {
+  const [values, setValues] = useState({
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    question: "",
+  });
+
+  const [focusedInput, setFocusedInput] = useState(null);
+
+  const handleInputChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const validateInput = (name, value) => {
+    if (name === "fullName") {
+      return value.length >= 3
+        ? { isValid: true, message: "Correct" }
+        : { isValid: false, message: "Enter full name" };
+    } else if (name === "phoneNumber") {
+      const phoneRegex =
+        /^(\+?\d{1,3}[-.\s]?)?(\(?\d{2,3}\)?[-.\s]?)?\d{3,4}[-.\s]?\d{4}$/;
+      return phoneRegex.test(value)
+        ? { isValid: true, message: "Correct" }
+        : { isValid: false, message: "Enter valid phone number" };
+    } else if (name === "email") {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(value)
+        ? { isValid: true, message: "Correct" }
+        : { isValid: false, message: "Enter valid email" };
+    }
+    return { isValid: true, message: "" };
+  };
+
+  const prepareProductLinks = () => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    return storedFavorites.map((item) => ({
+      name: item.title,
+      link: `https://mrjtrade.ae/product/${item.slug}`
+    }));
+  };
+
+  const handleSendClick = async () => {
+    const productLinks = prepareProductLinks();
+
+    const requestBody = {
+      name: values.fullName,
+      phone: values.phoneNumber,
+      mail: values.email,
+      message: values.question,
+      productLink: productLinks
+    };
+
+    try {
+      const response = await fetch('https://mrjtrade.uz/commercial-offer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
       });
-    
-      const [focusedInput, setFocusedInput] = useState(null);
-    
-      const handleInputChange = (e) => {
+
+      if (response.ok) {
         setValues({
-          ...values,
-          [e.target.name]: e.target.value,
+          fullName: "",
+          phoneNumber: "",
+          email: "",
+          question: "",
         });
-      };
-    
-      const validateInput = (name, value) => {
-        if (name === "fullName") {
-          return value.length >= 3
-            ? { isValid: true, message: "Правильно" }
-            : { isValid: false, message: "Введите полное имя" };
-        } else if (name === "phoneNumber") {
-          const phoneRegex =
-            /^(\+?\d{1,3}[-.\s]?)?(\(?\d{2,3}\)?[-.\s]?)?\d{3,4}[-.\s]?\d{4}$/;
-          return phoneRegex.test(value)
-            ? { isValid: true, message: "Правильно" }
-            : { isValid: false, message: "Введите правильный номер" };
-        } else if (name === "email") {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(value)
-            ? { isValid: true, message: "Правильно" }
-            : { isValid: false, message: "Введите правильный email" };
-        }
-        return { isValid: true, message: "" };
-      };
-
-
+        closeModal(false);
+      } else {
+        console.error("Error sending commercial offer");
+      }
+    } catch (error) {
+      console.error("Error sending commercial offer", error);
+    }
+  };
 
   return (
     <div className="fixed w-full top-0 left-0 h-screen justify-center flex bg-modalBg items-center z-[9999] p-2">
       <div className="w-full max-w-[320px] xl:max-w-[450px] rounded-3xl px-6 py-6 flex flex-col gap-6 relative bg-white">
-      <button onClick={() => closeModal(false)} className="w-4 h-4 absolute top-8 right-6">
+        <button onClick={() => closeModal(false)} className="w-4 h-4 absolute top-8 right-6">
           <Image
             src={closeGray}
             width={100}
@@ -56,14 +98,13 @@ export default function Commercial( {closeModal} ) {
           />
         </button>
         <div className="flex flex-col gap-1">
-
-        <h3 className="text-xl font-semibold ">Send a commercial offer</h3>
-        <p className="text-neutral-400">
-        Managers will contact you as soon as possible
-        </p>
+          <h3 className="text-xl font-semibold">Send a commercial offer</h3>
+          <p className="text-neutral-400">
+            Managers will contact you as soon as possible
+          </p>
         </div>
         <div className="z-10 flex-1 w-full flex justify-center">
-          <form className="flex flex-col gap-6 w-full">
+          <div className="flex flex-col gap-6 w-full">
             {["fullName", "phoneNumber", "email", "question"].map((field) => (
               <div className="relative" key={field}>
                 <input
@@ -92,7 +133,7 @@ export default function Commercial( {closeModal} ) {
                 />
                 <label
                   htmlFor={field}
-                  className={`absolute left-3  transition-all ${
+                  className={`absolute left-3 transition-all ${
                     focusedInput === field || values[field]
                       ? "-top-4 text-xs"
                       : "top-3 text-sm"
@@ -105,33 +146,24 @@ export default function Commercial( {closeModal} ) {
                   } cursor-text`}
                   onClick={() => document.getElementsByName(field)[0].focus()}
                 >
-                  {focusedInput === field && values[field].length > 0 ? (
-                    validateInput(field, values[field]).message
-                  ) : field === "fullName" ? (
-                    <p>
-                      Full Name
-                      <span className="text-red-600 ml-2">*</span>
-                    </p>
-                  ) : field === "phoneNumber" ? (
-                    <p>
-                      Phone number
-                      <span className="text-red-600 ml-2">*</span>
-                    </p>
-                  ) : field === "email" ? (
-                    "E-mail"
-                  ) : (
-                    "Your offer"
-                  )}
+                  {focusedInput === field && values[field].length > 0
+                    ? validateInput(field, values[field]).message
+                    : field === "fullName"
+                    ? <p>Full Name<span className="text-red-600 ml-2">*</span></p>
+                    : field === "phoneNumber"
+                    ? <p>Phone number<span className="text-red-600 ml-2">*</span></p>
+                    : field === "email"
+                    ? "E-mail"
+                    : "Your offer"}
                 </label>
               </div>
             ))}
-        <button onClick={() => closeModal(false)} className="w-full py-3 rounded-xl text-white font-semibold bg-greenView">
-            Send
-        </button>
-          </form>
+            <button onClick={handleSendClick} className="w-full py-3 rounded-xl text-white font-semibold bg-greenView">
+              Send
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
-
