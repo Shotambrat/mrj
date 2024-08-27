@@ -75,8 +75,9 @@ export default function Catalogitem({
               <Image
                 src={image}
                 alt={title}
-                width={200}
-                height={200}
+                width={500}
+                height={500}
+                quality={100}
                 className="object-contain w-full h-full"
               />
             ) : (
