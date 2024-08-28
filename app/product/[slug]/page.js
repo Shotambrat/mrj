@@ -41,7 +41,7 @@ export default function ProductPage() {
     <div className="w-full bg-white flex flex-col gap-56 pt-12">
       <ProductInfo product={product} />
       <Application />
-      <Similar />
+      <Similar product={product} />
       <Map />
     </div>
   );
