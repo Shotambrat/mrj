@@ -7,6 +7,13 @@ import Image from "next/image";
 
 const VerticalCarousel = ({ images, name }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (images.length > 0) {
+      setLoaded(true);
+    }
+  }, [images]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,44 +36,46 @@ const VerticalCarousel = ({ images, name }) => {
           New
         </div>
       </div>
-      <div className="w-full">
-        <Carousel
-          selectedItem={0}
-          showThumbs={true}
-          showIndicators={false}
-          showStatus={false}
-          infiniteLoop={true}
-          useKeyboardArrows={true}
-          axis={isMobile ? "horizontal" : "vertical"}
-          className="main-carousel"
-          showArrows={false}
-          renderThumbs={() =>
-            images.map((image, index) => (
+      {loaded && (
+        <div className="w-full">
+          <Carousel
+            selectedItem={0}
+            showThumbs={true}
+            showIndicators={false}
+            showStatus={false}
+            infiniteLoop={true}
+            useKeyboardArrows={true}
+            axis={isMobile ? "horizontal" : "vertical"}
+            className="main-carousel"
+            showArrows={false}
+            renderThumbs={() =>
+              images.map((image, index) => (
+                <div key={index}>
+                  <Image
+                    src={image.url}
+                    alt={`Thumbnail ${index}`}
+                    className="object-contain h-full w-full"
+                    width={100}
+                    height={100}
+                  />
+                </div>
+              ))
+            }
+          >
+            {images.map((image, index) => (
               <div key={index}>
                 <Image
                   src={image.url}
-                  alt={`Thumbnail ${index}`}
-                  className="object-contain h-full w-full"
-                  width={100}
-                  height={100}
+                  alt={`Slide ${index}`}
+                  className="object-contain h-96 w-full"
+                  width={500}
+                  height={500}
                 />
               </div>
-            ))
-          }
-        >
-          {images.map((image, index) => (
-            <div key={index}>
-              <Image
-                src={image.url}
-                alt={`Slide ${index}`}
-                className="object-contain h-96 w-full"
-                width={500}
-                height={500}
-              />
-            </div>
-          ))}
-        </Carousel>
-      </div>
+            ))}
+          </Carousel>
+        </div>
+      )}
       <style jsx global>{`
         .carousel .slide img {
           object-fit: contain;
