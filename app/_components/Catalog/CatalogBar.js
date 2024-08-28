@@ -82,7 +82,7 @@ export default function CatalogList({
           }
           return (
           <div key={id} className="w-full">
-            {catalog.length > 0 && catalog.active ? (
+            {catalog.length > 0 ? (
               <AccordionItem
                 title={title}
                 isOpen={openSections.includes(id)}
