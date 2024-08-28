@@ -16,7 +16,7 @@ export default function Similar({ product }) {
     async function fetchSimilarProducts() {
       try {
         const response = await axios.get(
-          `http://213.230.91.55:8110/product/v2/${product.slug}?similar=true`
+          `https://mrjtrade.uz/product/v2/${product.slug}?similar=true`
         );
         setSimilarProducts(response.data.data);
       } catch (error) {
@@ -78,6 +78,7 @@ export default function Similar({ product }) {
                     title={item.name}
                     description={item.shortDescription}
                     price={item.originalPrice ? `${item.originalPrice} y.e` : null}
+                    slug={item.slug}
                   />
                 </div>
               ))}
