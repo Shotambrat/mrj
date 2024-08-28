@@ -19,15 +19,20 @@ export default function List() {
         EQUIPMENT CATEGORIES
       </h1>
       <div className="w-full grid grid-cols-1 mdl:grid-cols-2 xl:grid-cols-4 gap-4">
-        {categories.map((category, i) => (
-          <CategoryItem
-            key={i}
-            title={category.title}
-            imageSrc={category.photo.url}
-            slug={category.slug}
-            hasCatalog={category.catalog.length > 0}
-          />
-        ))}
+        {categories.map((category, i) => {
+          if (!category.active) {
+            return null;
+          }
+          return (
+            <CategoryItem
+              key={i}
+              title={category.title}
+              imageSrc={category.photo.url}
+              slug={category.slug}
+              hasCatalog={category.catalog.length > 0}
+            />
+          );
+        })}
       </div>
     </div>
   );
