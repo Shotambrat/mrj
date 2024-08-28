@@ -76,9 +76,13 @@ export default function CatalogList({
   return (
     <section className="w-full">
       <div className="flex flex-col w-full">
-        {categories.map(({ id, title, catalog, slug }) => (
+        {categories.map(({ id, title, catalog, slug, active }) => {
+          if (!active) {
+            return null
+          }
+          return (
           <div key={id} className="w-full">
-            {catalog.length > 0 ? (
+            {catalog.length > 0 && catalog.active ? (
               <AccordionItem
                 title={title}
                 isOpen={openSections.includes(id)}
@@ -98,6 +102,9 @@ export default function CatalogList({
                       All
                     </div>
                     {catalog.map((catalogItem) => {
+                      if (!catalogItem.active) {
+                        return null;
+                      }
                       return (
                         <div
                           className={`cursor-pointer ${
@@ -127,7 +134,7 @@ export default function CatalogList({
               </div>
             )}
           </div>
-        ))}
+        )})}
       </div>
     </section>
   );
