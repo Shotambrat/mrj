@@ -51,7 +51,7 @@ export default function ProductPreview({ product }) {
             </div>
           )}
         </div>
-        <p className="text-neutral-400 leading-5">{product.shortDescription}</p>
+        <p className="text-neutral-400 leading-5 max-mdl:hidden">{product.shortDescription}</p>
         <hr />
         <div className="w-full flex max-mdx:flex-col max-mdx:items-start max-mdx:gap-8 justify-between items-center">
           <p className="w-full max-w-[200px] leading-4">{product.conditions}</p>
