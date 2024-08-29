@@ -1,7 +1,7 @@
-import "@/app/_styles/globals.css"
-// import Header from  "@/app/_components/Header/Header"
-import Footer from "@/app/_components/Footer/Footer"
+import "@/app/_styles/globals.css";
 import dynamic from 'next/dynamic';
+import Footer from "@/app/_components/Footer/Footer";
+import CookieModal from "@/app/_components/CookieModal";
 
 const Header = dynamic(() => import('@/app/_components/Header/Header'), { ssr: true });
 
@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main className="w-full bg-white relative">{children}</main>
         <Footer />
+        <CookieModal />
       </body>
     </html>
   );

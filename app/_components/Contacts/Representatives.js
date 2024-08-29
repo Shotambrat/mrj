@@ -35,7 +35,7 @@ export default function ContAddress() {
     ];
 
     return (
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 mb-[180px]">
+        <div className="max-w-[2100px] slg:px-20 mx-auto px-4 sm:px-6 mb-[180px]">
             <div>
                 <h2 className="text-3xl font-semibold uppercase mt-16 mdx:mt-20 mb-8">International Representatives</h2>
 

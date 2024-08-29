@@ -43,13 +43,8 @@ export default function ProductPreview({ product }) {
         <VerticalCarousel images={product.gallery} name={product.name} />
       </div>
       <div className="w-full flex-1 flex flex-col gap-5">
-        <div className="flex gap-4 max-lg:hidden">
+        <div className="flex justify-between gap-4 max-lg:hidden">
           <h1 className="text-3xl font-semibold">{product.name}</h1>
-          {product.tag.includes("New") && (
-            <div className="py-2 px-5 font-bold rounded-full text-greenView bg-greenCategory">
-              New
-            </div>
-          )}
         </div>
         <p className="text-neutral-400 leading-5 max-mdl:hidden">{product.shortDescription}</p>
         <hr />

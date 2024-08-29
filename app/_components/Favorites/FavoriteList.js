@@ -14,7 +14,7 @@ export default function FavoriteList( ) {
   }, []);
 
   return (
-    <div className="w-full max-w-[1440px] px-2 flex flex-col gap-12 mx-auto">
+    <div className="w-full max-w-[2100px] slg:px-20 px-2 flex flex-col gap-12 mx-auto">
       {modal && <Commercial closeModal={setModal} />}
       <div className="w-full flex justify-between items-center flex-wrap gap-4">
         <h1 className="text-3xl max-mdx:text-2xl font-semibold">FAVORITES</h1>

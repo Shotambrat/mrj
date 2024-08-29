@@ -12,7 +12,7 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div className="bg-snowy w-full px-2 pt-12">
-      <div className="w-full max-w-[1440px] flex flex-col gap-12 mx-auto">
+      <div className="w-full max-w-[2100px] slg:px-20 flex flex-col gap-12 mx-auto">
         <div className="w-full flex justify-between max-lg:flex-col gap-12">
           <div className="flex lg:flex-col max-lg:justify-between max-mdl:flex-col gap-5">
             <div className="flex flex-col gap-5">

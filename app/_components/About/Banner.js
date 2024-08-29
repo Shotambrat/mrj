@@ -4,7 +4,7 @@ import largeImage from "@/public/images/main/about-large.png";
 
 export default function Banner() {
   return (
-    <div className="w-full max-w-[1440px] px-2 flex flex-col 2xl:flex-row mx-auto h-auto items-center">
+    <div className="w-full max-w-[2100px] px-2 slg:px-20 flex flex-col 2xl:flex-row mx-auto h-auto items-center">
       <div className="flex-1 h-full flex justify-center">
         <div className="w-full flex flex-col gap-8">
           <div className="text-black text-[30px] mdx:text-[45px] font-medium mdx 2xl:w-[550px]">

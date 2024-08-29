@@ -103,3 +103,68 @@ body.modal-open {
   box-shadow: 0px -4px 40px rgba(0, 0, 0, 0.10); /* Тень сверху */
 }
 
+.fixed {
+  position: fixed;
+}
+.bottom-0 {
+  bottom: 0;
+}
+.left-0 {
+  left: 0;
+}
+.w-full {
+  width: 100%;
+}
+.bg-gray-800 {
+  background-color: #2d3748;
+}
+.text-white {
+  color: white;
+}
+.p-4 {
+  padding: 1rem;
+}
+.z-50 {
+  z-index: 50;
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
+}
+.bg-green-500 {
+  background-color: #48bb78;
+}
+.bg-red-500 {
+  background-color: #f56565;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.rounded {
+  border-radius: 0.25rem;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.transition-transform {
+  transition: transform 0.5s ease-in-out;
+}
+.transform {
+  transform: translateY(100%);
+}

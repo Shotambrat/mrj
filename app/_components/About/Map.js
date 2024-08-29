@@ -50,7 +50,7 @@ export default function Map() {
                                         </svg>
                                     </div>
                                     <div >
-                                        <a href="tel:+971543980707" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+971543980707</a>
+                                        <a href="tel:+9710524979914" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+9710524979914</a>
                                         <p className="text-black text-lg font-semibold mdx:text-[20px]">Open daily 09:00 - 18:00</p>
                                     </div>
                                 </div>

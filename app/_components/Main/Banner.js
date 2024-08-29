@@ -50,16 +50,16 @@ export default function BannerCarousel() {
   };
 
   return (
-    <div className="relative w-full max-w-[1440px] mx-auto overflow-hidden px-2 lg:px-12">
+    <div className="relative w-full mx-auto overflow-hidden">
       <Slider ref={sliderRef} {...settings}>
         {slides.map((slide, index) => (
-          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full flex justify-center px-2">
+          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full flex justify-center">
             <Image
               src={slide.photo.url}
               alt={`Banner ${index + 1}`}
               width={1500}
               height={500}
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover"
             />
           </a>
         ))}

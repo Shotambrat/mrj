@@ -18,7 +18,7 @@ export default function NewsTitle({ data }) {
     const { head, newOptions, createData } = data;
 
     return (
-        <div className="max-w-[1440px] mx-[15px] w-full mdl:mx-auto bg-slate-100 rounded-3xl">
+        <div className="max-w-[2100px] slg:px-20 mx-[15px] w-full mdl:mx-auto bg-slate-100 rounded-3xl">
             <div className=" rounded-3xl mdl:flex mdl:flex-row-reverse mdl:items-center mdl:justify-between relative ">
                 <div className="mdl:items-center mdl:flex mdl:my-3 flex justify-center content-center">
                     <Image

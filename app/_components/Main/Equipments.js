@@ -30,7 +30,7 @@ export default function Equipments() {
     },
   ];
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-2 flex flex-col gap-8">
+    <div className="w-full max-w-[2100px] slg:px-20 mx-auto px-2 flex flex-col gap-8">
       <h2 className="text-3xl max-mdl:text-2xl font-bold">
         EQUIPMENT CATEGORIES
       </h2>

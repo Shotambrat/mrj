@@ -5,7 +5,7 @@ import largeImage from "@/public/images/main/about-large.png";
 
 export default function AboutUs() {
   return (
-    <div className="w-full max-w-[1440px] px-2 flex max-lg:flex-col-reverse max-lg:gap-8 mx-auto h-auto items-center">
+    <div className="w-full max-w-[2100px] slg:px-20 px-2 flex max-lg:flex-col-reverse max-lg:gap-8 mx-auto h-auto items-center">
       <div className="flex-1 h-full flex justify-center">
         <div className="w-full flex flex-col gap-8">
           <h2 className="text-3xl max-mdx:text-2xl font-semibold">

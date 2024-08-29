@@ -62,7 +62,7 @@ export default function Search() {
   return (
     <div className="fixed h-screen w-full bg-modalBg left-0 top-[90px] z-[9999]">
       <div className="h-[70%] w-full bg-white pt-8">
-        <div className="h-[95%] w-full max-w-[1440px] mx-auto flex flex-col gap-8 overflow-y-scroll no-scrollbar">
+        <div className="h-[95%] w-full max-w-[2100px] slg:px-20 mx-auto flex flex-col gap-8 overflow-y-scroll no-scrollbar">
           <div className="flex items-center bg-snowy rounded-lg p-4 w-full shadow-sm">
             <input
               type="text"

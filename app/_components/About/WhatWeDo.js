@@ -80,7 +80,7 @@ export default function WhatWeDo() {
     ];
 
     return (
-        <div className="max-w-[1440px] mx-auto px-2">
+        <div className="max-w-[2100px] slg:px-20 mx-auto px-2">
             <div className="2xl:grid 2xl:grid-cols-2">
                 <div>
                     <h2 className="ml-0 text-[25px] mb-8 mdx:text-[35px] font-medium">What we do for <br />our Partners?</h2>

@@ -64,7 +64,7 @@ export default function List({
   };
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto flex flex-col lg:gap-20 gap-5 px-2">
+    <div className="w-full max-w-[2100px] slg:px-20 mx-auto flex flex-col lg:gap-20 gap-5 px-2">
       {categoryModal && (
         <Category
           handleClose={handleClose}

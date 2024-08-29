@@ -14,7 +14,7 @@ export default function List() {
   }, []);
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-2 flex flex-col gap-8">
+    <div className="w-full max-w-[2100px] slg:px-20 mx-auto px-2 flex flex-col gap-8">
       <h1 className="text-3xl max-mdx:text-2xl font-semibold">
         EQUIPMENT CATEGORIES
       </h1>

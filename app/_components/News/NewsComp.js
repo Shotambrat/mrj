@@ -26,7 +26,7 @@ export default function NewsComp() {
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-2 flex flex-col gap-8 py-[120px] mdx:py-[200px] 2xl:py-[250px]">
+    <div className="w-full max-w-[2100px] slg:px-20 mx-auto px-2 flex flex-col gap-8 py-[120px] mdx:py-[200px] 2xl:py-[250px]">
       <h2 className="text-3xl max-mdx:text-2xl font-semibold">NEWS</h2>
       <div className="w-full grid gap-4 grid-cols-1 mdl:grid-cols-2 xl:grid-cols-4 h-auto">
         {data.map((item, i) => (

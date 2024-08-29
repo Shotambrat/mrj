@@ -87,7 +87,7 @@ export default function Application() {
   };
 
   return (
-    <div className="w-full max-w-[1440px] max-auto px-2 mx-auto">
+    <div className="w-full max-w-[2100px] slg:px-20 max-auto px-2 mx-auto">
       <div className="w-full rounded-3xl flex flex-col max-lg:gap-8 lg:flex-row bg-snowy px-4 py-8 lg:px-12 lg:py-12 relative overflow-hidden">
         <div className="flex-1 w-full flex flex-col gap-5 z-10">
           <h2 className="text-4xl max-mdx:text-2xl text-greenView font-semibold">

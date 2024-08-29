@@ -35,7 +35,7 @@ export default function OtherNews({ currentSlug }) {
   };
 
   return (
-    <div className="w-full max-w-[1440px] mx-auto px-2 flex flex-col gap-8 mb-[150px] mt-[150px] mdx:mt-[190px] xl:mt-[230px]">
+    <div className="w-full max-w-[2100px] slg:px-20 mx-auto px-2 flex flex-col gap-8 mb-[150px] mt-[150px] mdx:mt-[190px] xl:mt-[230px]">
       <h2 className="text-3xl max-mdx:text-2xl font-semibold">Other News</h2>
       <div className="w-full grid gap-4 grid-cols-1 mdl:grid-cols-2 xl:grid-cols-4 h-auto">
         {data.map((item, i) => (

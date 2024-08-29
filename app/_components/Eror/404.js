@@ -6,7 +6,7 @@ import notfound from "@/public/images/Error404.png"; // Убедитесь, чт
 function Custom404() {
     return (
         <main className="h-screen w-full bg-white flex flex-col justify-between items-center">
-            <div className="h-[30px] flex justify-center  w-full max-w-[1440px] items-center px-2 mdx:h-[61px]">
+            <div className="h-[30px] flex justify-center  w-full max-w-[2100px] slg:px-20 items-center px-2 mdx:h-[61px]">
                 <div className="h-full flex items-center">
                     <Image
                         src={logo}
