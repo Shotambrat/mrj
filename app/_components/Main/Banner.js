@@ -66,7 +66,7 @@ export default function BannerCarousel() {
       </Slider>
       <button
         onClick={prevSlide}
-        className="absolute top-1/2 left-20 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
+        className="absolute top-1/2 left-20 -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
       >
         <svg
           className="w-8 h-8 text-white"
@@ -85,7 +85,7 @@ export default function BannerCarousel() {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute top-1/2 right-20 transform -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
+        className="absolute top-1/2 right-20 -translate-y-1/2 bg-gray-500 rounded-full p-2 opacity-70 hover:opacity-100 z-10 hidden lg:block"
       >
         <svg
           className="w-8 h-8 text-white"
