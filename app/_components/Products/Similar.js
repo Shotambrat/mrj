@@ -72,7 +72,7 @@ export default function Similar({ product }) {
               {similarProducts.map((item, index) => (
                 <div key={index} className="p-2">
                   <Catalogitem
-                    new={item.tag.includes("New")}
+                    brand={item.brand.photo?.url}
                     sale={item.discount ? `${item.discount}%` : null}
                     image={item.photo.url}
                     title={item.name}

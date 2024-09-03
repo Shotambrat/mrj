@@ -29,7 +29,7 @@ export default function FavoriteList( ) {
         {favorites.map((item, index) => (
           <Catalogitem
             key={index}
-            new={item.new}
+            brand={item.brand.photo.url}
             sale={item.sale}
             image={item.image}
             title={item.title}
