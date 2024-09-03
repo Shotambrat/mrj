@@ -53,7 +53,7 @@ export default function BannerCarousel() {
     <div className="relative w-full mx-auto overflow-hidden">
       <Slider ref={sliderRef} {...settings}>
         {slides.map((slide, index) => (
-          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full flex justify-center">
+          <a href={slide.link} target="_blank" rel="noopener noreferrer" key={index} className="min-w-full h-[250px] lg:h-[350px] 2xl:h-[500px] flex justify-center">
             <Image
               src={slide.photo.url}
               alt={`Banner ${index + 1}`}

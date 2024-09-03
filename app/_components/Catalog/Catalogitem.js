@@ -7,7 +7,7 @@ import fav from "@/public/svg/main/fav.svg";
 import favFilled from "@/public/svg/main/fav-filled.svg";
 
 export default function Catalogitem({
-  new: isNew,
+  brand,
   sale,
   image,
   title,
@@ -49,12 +49,14 @@ export default function Catalogitem({
   return (
     <div className="h-[450px] w-full">
       <div className="border border-neutral-300 rounded-2xl p-4 pt-6 flex flex-col h-full relative">
-        <div className="absolute top-2 left-2 flex gap-1">
-          {isNew && (
-            <div className="py-1 px-2 font-semibold rounded-full text-xs text-greenView bg-green-100">
-              New
-            </div>
-          )}
+        <div className="absolute top-2 left-2 flex gap-1 justify-start">
+          <Image
+          src={brand}
+          width={300}
+          height={300}
+          alt="Brand Logo"
+          className="h-8 max-w-[100px] w-auto object-contain "
+          />
           {sale && (
             <div className="py-1 px-2 font-semibold rounded-full text-xs text-red-500 bg-red-100">
               {sale}
