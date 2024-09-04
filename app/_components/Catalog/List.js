@@ -17,6 +17,7 @@ export default function List({
 }) {
   const [categoryModal, setCategoryModal] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [brands, setBrands] = useState([]); // Добавляем состояние для брендов
   const [filter, setFilter] = useState("all");
   const router = useRouter();
   const { slug } = useParams();
@@ -27,6 +28,12 @@ export default function List({
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
+
+    // Fetch brands
+    fetch("https://mrjtrade.uz/partner/get-all") // Указываем правильный API для брендов
+      .then((response) => response.json())
+      .then((data) => setBrands(data.data)) // Сохраняем список брендов
+      .catch((error) => console.error("Error fetching brands:", error));
   }, []);
 
   const handleCatalogSelect = (catalogId, categorySlug) => {
@@ -49,14 +56,13 @@ export default function List({
       .catch((error) => console.error("Error fetching products:", error));
   };
 
-  const handleFilterChange = (newFilter) => {
-    setFilter(newFilter);
+  const handleFilterChange = (brandTitle) => {
+    setFilter(brandTitle);
   };
 
   const filteredProducts = products.filter((product) => {
-    if (filter === "new") return product.tag.includes("New");
-    if (filter === "promotion") return product.tag.includes("Promotion");
-    return true;
+    if (filter === "all") return true;
+    return product.brand.title === filter;
   });
 
   const handleClose = () => {
@@ -77,7 +83,7 @@ export default function List({
       )}
       <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-5">
         <h1 className="text-3xl max-mdx:text2xl font-semibold">CATALOG</h1>
-        <div className="z-10 flex gap-5 items-center">
+        <div className="z-10 flex gap-5 items-center max-mdx:flex-col max-mdx:items-start">
           <button
             onClick={() => setCategoryModal(true)}
             className="px-4 py-3 rounded-xl bg-greenCategory gap-2 font-semibold backdrop-opacity-10 text-greenView flex items-center lg:hidden"
@@ -91,7 +97,7 @@ export default function List({
             />
             Categories
           </button>
-          <Dropdown onFilterChange={handleFilterChange} />
+          <Dropdown brands={brands} onFilterChange={handleFilterChange} /> {/* Передаем бренды */}
         </div>
       </div>
       <div className="w-full flex gap-10 items-start">

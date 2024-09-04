@@ -20,7 +20,6 @@ body.modal-open {
   /* Add padding if needed */
 }
 
-
 /* Пример для Tailwind CSS */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
