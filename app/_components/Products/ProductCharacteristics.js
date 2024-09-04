@@ -7,7 +7,7 @@ export default function ProductCharacteristics({ product }) {
       category: 'description',
       title: 'Description',
       desc: true,
-      data: product.description
+      data: product.description // Это описание, где могут быть символы \n
     },
     {
       category: 'characteristics',
@@ -27,6 +27,16 @@ export default function ProductCharacteristics({ product }) {
     setActive(catname);
     const filteredArr = data.find((item) => item.category === catname);
     setFiltered(filteredArr);
+  };
+
+  // Функция для разбиения текста по символам \n и отображения каждой строки отдельно
+  const formatTextWithParagraphs = (text) => {
+    if (text) {
+      return text.split('\n').map((line, index) => (
+        <p key={index} className="mb-2">{line}</p>
+      ));
+    }
+    return text;
   };
 
   return (
@@ -51,7 +61,10 @@ export default function ProductCharacteristics({ product }) {
       </div>
       <div>
         {filtered.desc ? (
-          <p className="text-lg leading-5">{filtered.data}</p>
+          // Используем функцию formatTextWithParagraphs для рендеринга с переносами строк
+          <div className="text-lg leading-5">
+            {formatTextWithParagraphs(filtered.data)}
+          </div>
         ) : (
           <div className="flex flex-col gap-6 w-full">
             {filtered.data.map((item, i) => (
