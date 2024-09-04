@@ -4,20 +4,20 @@ import { useState } from "react";
 export default function ProductCharacteristics({ product }) {
   const data = [
     {
-      category: 'description',
-      title: 'Description',
+      category: "description",
+      title: "Description",
       desc: true,
-      data: product.description // Это описание, где могут быть символы \n
+      data: product.description, // Это описание, где могут быть символы \n
     },
     {
-      category: 'characteristics',
-      title: 'Characteristics',
+      category: "characteristics",
+      title: "Characteristics",
       desc: false,
       data: product.characteristics.map((char) => ({
         title: char.parameterName,
-        data: [char.description]
-      }))
-    }
+        data: [char.description],
+      })),
+    },
   ];
 
   const [active, setActive] = useState(data[0].category);
@@ -32,8 +32,10 @@ export default function ProductCharacteristics({ product }) {
   // Функция для разбиения текста по символам \n и отображения каждой строки отдельно
   const formatTextWithParagraphs = (text) => {
     if (text) {
-      return text.split('\n').map((line, index) => (
-        <p key={index} className="mb-2">{line}</p>
+      return text.split("\n").map((line, index) => (
+        <p key={index} className="mb-2">
+          {line}
+        </p>
       ));
     }
     return text;
@@ -74,7 +76,10 @@ export default function ProductCharacteristics({ product }) {
                 </p>
                 <div className="flex w-full flex-col">
                   {item.data.map((subitem, j) => (
-                    <p key={j}>{subitem}</p>
+                    // Применяем formatTextWithParagraphs для каждой строки subitem
+                    <div key={j} className="text-lg leading-5">
+                      {formatTextWithParagraphs(subitem)}
+                    </div>
                   ))}
                 </div>
               </div>
