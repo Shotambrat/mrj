@@ -9,7 +9,19 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-export default function Footer() {
+async function fetchCategories() {
+  const res = await fetch("http://213.230.91.55:8110/category");
+  if (!res.ok) {
+    throw new Error("Failed to fetch categories");
+  }
+  const data = await res.json();
+  // Возвращаем только первые 4 активные категории
+  return data.data.item.filter((category) => category.active).slice(0, 4);
+}
+
+export default async function Footer() {
+  const categories = await fetchCategories();
+
   return (
     <div className="bg-snowy w-full px-2 pt-12">
       <div className="w-full max-w-[2100px] slg:px-20 flex flex-col gap-12 mx-auto">
@@ -40,7 +52,10 @@ export default function Footer() {
                   className="w-10 h-10"
                 />
               </a>
-              <a href="https://www.facebook.com/people/MRJ-Medical-Equipment-in-Dubai/61562385060429/" target="_blank">
+              <a
+                href="https://www.facebook.com/people/MRJ-Medical-Equipment-in-Dubai/61562385060429/"
+                target="_blank"
+              >
                 <Image
                   src={facebook}
                   width={100}
@@ -58,7 +73,10 @@ export default function Footer() {
                   className="w-10 h-10"
                 />
               </a>
-              <a href="https://www.youtube.com/@MRJ_Medical_Equipment_in_Dubai" target="_blank">
+              <a
+                href="https://www.youtube.com/@MRJ_Medical_Equipment_in_Dubai"
+                target="_blank"
+              >
                 <Image
                   src={youtube}
                   width={100}
@@ -71,11 +89,14 @@ export default function Footer() {
           </div>
           <div className="lg:w-1/2 w-full flex max-mdx:gap-5">
             <div className="flex-1 flex flex-col text-sm gap-4 font-semibold">
-              <h2 className="text-lg font-semibold text-green-700">CATALOG</h2>
-              <a href="/categories/ultrasound-diagnostic-systems">Ultrasound Diagnostic System</a>
-              <a href="/categories/laboratory-equipment">Laboratory Equipment</a>
-              <a href="/categories/reagents-and-consumables">Reagents and Consumables</a>
-              <a href="/categories/radiology-and-xray-systems">Radiology/X-ray systems</a>
+              <h2 className="text-lg font-semibold text-green-700">
+                CATEGORIES
+              </h2>
+              {categories.map((category) => (
+                <Link key={category.id} href={`/categories/${category.slug}`}>
+                  <p>{category.title}</p>
+                </Link>
+              ))}
               <a
                 href="/categories"
                 className="flex gap-2 hover:gap-4 items-center transition-all duration-200"

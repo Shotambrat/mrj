@@ -35,9 +35,10 @@ const EquipmentCarousel = () => {
       setEquipmentData(result.data.slice(0, 20)); // Получаем первые 20 товаров
       setFilteredData(result.data.slice(0, 20)); // Устанавливаем отфильтрованные данные
     };
-    
     fetchData();
   }, []);
+  
+  console.log("FilteredData",filteredData)
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
