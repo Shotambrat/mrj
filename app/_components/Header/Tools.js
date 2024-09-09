@@ -33,7 +33,7 @@ export default function Tools({ navOptions }) {
 
   return (
     <div className="h-full items-center flex gap-3">
-      {searchMenu && <Search />}
+      {searchMenu && <Search setSearchMenu={setSearchMenu} />}
       <button
         onClick={() => setSearchMenu((prev) => !prev)}
         className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3"

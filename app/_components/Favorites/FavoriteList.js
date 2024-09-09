@@ -13,6 +13,8 @@ export default function FavoriteList( ) {
     setFavorites(storedFavorites);
   }, []);
 
+  console.log(favorites)
+
   return (
     <div className="w-full max-w-[2100px] slg:px-20 px-2 flex flex-col gap-12 mx-auto">
       {modal && <Commercial closeModal={setModal} />}
@@ -29,7 +31,7 @@ export default function FavoriteList( ) {
         {favorites.map((item, index) => (
           <Catalogitem
             key={index}
-            brand={item.brand.photo.url}
+            brand={item.brand}
             sale={item.sale}
             image={item.image}
             title={item.title}

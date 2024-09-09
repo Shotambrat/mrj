@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 
-export default function Search() {
+export default function Search({ setSearchMenu }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
 
@@ -13,6 +13,14 @@ export default function Search() {
       setResults(response.data.data);
     } catch (error) {
       console.error('Error fetching search results:', error);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    } else if (e.key === 27) {
+      setSearchMenu(prev => !prev);
     }
   };
 
@@ -70,6 +78,7 @@ export default function Search() {
               className="bg-transparent outline-none flex-1 text-gray-600 placeholder-gray-400"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
             <button onClick={handleSearch}>
               <svg

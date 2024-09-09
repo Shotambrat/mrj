@@ -28,7 +28,7 @@ export default function Catalogitem({
     if (isFavorite) {
       favorites = favorites.filter((item) => item.slug !== slug);
     } else {
-      favorites.push({ title, description, image, price, slug });
+      favorites.push({ title, description, image, price, slug, brand });
     }
 
     localStorage.setItem("favorites", JSON.stringify(favorites));
