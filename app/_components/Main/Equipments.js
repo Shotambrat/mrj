@@ -12,7 +12,7 @@ export default function Equipments() {
     // Функция для получения категорий с API
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('http://213.230.91.55:8110/category');
+        const response = await axios.get('https://mrjtrade.uz/category');
         const allCategories = response.data.data.item;
         // Фильтруем активные категории и берем только первые 4
         const activeCategories = allCategories.filter(category => category.active).slice(0, 4);

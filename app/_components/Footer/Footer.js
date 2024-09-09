@@ -10,7 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 async function fetchCategories() {
-  const res = await fetch("http://213.230.91.55:8110/category");
+  const res = await fetch("https://mrjtrade.uz/category");
   if (!res.ok) {
     throw new Error("Failed to fetch categories");
   }
