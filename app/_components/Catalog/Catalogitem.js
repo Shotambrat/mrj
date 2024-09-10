@@ -55,7 +55,7 @@ export default function Catalogitem({
           width={300}
           height={300}
           alt="Brand Logo"
-          className="h-8 max-w-[100px] w-auto object-contain "
+          className="max-h-16 h-auto max-w-[100px] w-auto object-contain "
           />
           {sale && (
             <div className="py-1 px-2 font-semibold rounded-full text-xs text-red-500 bg-red-100">

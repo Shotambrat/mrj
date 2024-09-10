@@ -77,13 +77,13 @@ export default function PartnerPage() {
   return (
     <div className="w-full max-w-[2100px] slg:px-20 mx-auto px-4 py-8">
       <div className="mb-8">
-        <div className="w-[50%] h-[55%] max-w-[170px] max-h-[67px] mdx:max-w-[180px] mdx:max-h-[150px] mb-4 xl:mb-6">
+        <div className="h-[100px] mdx:max-h-[150px] mb-4 xl:mb-6">
           <Image
             src={partner.photo.url}
             alt={partner.title}
-            className="h-full "
-            width={170}
-            height={67}
+            className="h-full w-auto max-w-[200px] object-contain"
+            width={1000}
+            height={1000}
           />
         </div>
         <h1 className="text-[25px] font-semibold mdx:text-[35px] xl:text-[40px] mb-4 text-[#252324] uppercase">
