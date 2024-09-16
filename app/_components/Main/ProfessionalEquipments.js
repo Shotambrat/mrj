@@ -16,11 +16,7 @@ const categories = [
   {
     title: "New Items",
     slug: "new",
-  },
-  {
-    title: "Promotions",
-    slug: "promotions",
-  },
+  }
 ];
 
 const EquipmentCarousel = () => {

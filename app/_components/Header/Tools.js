@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import searchIcon from "@/public/svg/tools/search-icon.svg";
 import phoneIcon from "@/public/svg/tools/phone-icon.svg";
 import heartIcon from "@/public/svg/tools/heart-icon.svg";
@@ -10,10 +10,11 @@ import Menu from "../Menu";
 import Link from "next/link";
 import Search from "../Modal/Search";
 
-
 export default function Tools({ navOptions }) {
   const [menu, setMenu] = useState(false);
   const [searchMenu, setSearchMenu] = useState(false);
+  const searchModalRef = useRef(null);
+  const searchButtonRef = useRef(null); // Добавляем ref для кнопки
 
   const handleOpenMenu = () => {
     setMenu(true);
@@ -33,8 +34,9 @@ export default function Tools({ navOptions }) {
 
   return (
     <div className="h-full items-center flex gap-3">
-      {searchMenu && <Search setSearchMenu={setSearchMenu} />}
+      {searchMenu && <Search searchButtonRef={searchButtonRef} searchModalRef={searchModalRef} setSearchMenu={setSearchMenu} />}
       <button
+        ref={searchButtonRef} // Привязываем ref к кнопке
         onClick={() => setSearchMenu((prev) => !prev)}
         className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3"
       >
@@ -43,7 +45,7 @@ export default function Tools({ navOptions }) {
             src={close}
             height={100}
             width={100}
-            alt={`Tools Item SearchIcon`}
+            alt="Close Search"
             className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
           />
         ) : (
@@ -51,7 +53,7 @@ export default function Tools({ navOptions }) {
             src={searchIcon}
             height={100}
             width={100}
-            alt={`Tools Item SearchIcon`}
+            alt="Open Search"
             className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
           />
         )}
@@ -62,7 +64,7 @@ export default function Tools({ navOptions }) {
             src={heartIcon}
             height={100}
             width={100}
-            alt={`Tools Item HeartIcon : Favorites`}
+            alt="Favorites"
             className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
           />
         </button>
@@ -75,7 +77,7 @@ export default function Tools({ navOptions }) {
           src={phoneIcon}
           height={100}
           width={100}
-          alt={`Tools Item HeartIcon : Favorites`}
+          alt="Phone"
           className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
         />
       </a>
@@ -87,13 +89,11 @@ export default function Tools({ navOptions }) {
           src={burgerMenu}
           height={100}
           width={100}
-          alt={`Tools Item Burger Menu`}
+          alt="Menu"
           className="w-4 h-4 max-mdx:w-3 max-mdx:h-3"
         />
       </button>
-      {menu && (
-        <Menu menu={menu} closeMenu={handleCloseMenu} navOptions={navOptions} />
-      )}
+      {menu && <Menu menu={menu} closeMenu={handleCloseMenu} navOptions={navOptions} />}
     </div>
   );
 }

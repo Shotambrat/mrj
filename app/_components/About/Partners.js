@@ -37,6 +37,7 @@ export default function Partners() {
               width={200}
               height={150}
               className="h-full object-contain"
+              quality={100}
             />
           </Link>
         ))}

@@ -33,6 +33,7 @@ export default function AboutUs() {
               layout="fill"
               objectFit="cover"
               className="rounded-3xl border-8 border-white"
+              quality={100}
             />
           </div>
           <div className="w-2/3 aspect-w-4 aspect-h-3 relative mb-12">
@@ -42,6 +43,7 @@ export default function AboutUs() {
               layout="fill"
               objectFit="cover"
               className="rounded-3xl"
+              quality={100}
             />
           </div>
         </div>

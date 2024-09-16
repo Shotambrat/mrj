@@ -156,7 +156,7 @@ export default function Instruction() {
             width={1000}
             height={1000}
             alt="Scheme Image"
-            className="w-full h-auto"
+            className="w-full h-auto max-h-[400px] object-cover"
           />
           <div className="px-4 py-4">
             {filteredData.description}

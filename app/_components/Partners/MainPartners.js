@@ -86,9 +86,9 @@ export default function PartnerPage() {
             height={1000}
           />
         </div>
-        <h1 className="text-[25px] font-semibold mdx:text-[35px] xl:text-[40px] mb-4 text-[#252324] uppercase">
+        {/* <h1 className="text-[25px] font-semibold mdx:text-[35px] xl:text-[40px] mb-4 text-[#252324] uppercase">
           {partner.title}
-        </h1>
+        </h1> */}
         <p
           className="text-[#252324] text-[15px] mdx:text-[20px]"
           dangerouslySetInnerHTML={{ __html: formattedDescription }}

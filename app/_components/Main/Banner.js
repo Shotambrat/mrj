@@ -60,6 +60,7 @@ export default function BannerCarousel() {
               width={1500}
               height={500}
               className="w-full h-full object-cover"
+              quality={100}
             />
           </a>
         ))}
