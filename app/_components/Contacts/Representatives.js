@@ -49,7 +49,7 @@ export default function ContAddress() {
             >
               <div className="">
                 <div className="p-4 mx-auto flex items-center">
-                  <div className="w-full slg:max-w-[443px] h-[234px] bg-[#F4F7FE] rounded-2xl flex items-center justify-center">
+                  <div className="w-full slg:max-w-[443px] h-[234px] bg-[#F4F7FE] rounded-2xl flex items-center justify-center 2xl:max-w-full">
                     <Image
                       className="h-auto w-[80%] slg:w-full object-contain max-h-[50px] "
                       src={item.imageSrc}

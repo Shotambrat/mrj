@@ -46,7 +46,7 @@ export default function Tools({ navOptions }) {
             height={100}
             width={100}
             alt="Close Search"
-            className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+            className="w-6 h-6 max-mdx:w-4 max-mdx:h-4"
           />
         ) : (
           <Image
@@ -54,7 +54,7 @@ export default function Tools({ navOptions }) {
             height={100}
             width={100}
             alt="Open Search"
-            className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+            className="w-6 h-6 max-mdx:w-4 max-mdx:h-4"
           />
         )}
       </button>
@@ -65,7 +65,7 @@ export default function Tools({ navOptions }) {
             height={100}
             width={100}
             alt="Favorites"
-            className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+            className="w-6 h-6 max-mdx:w-4 max-mdx:h-4"
           />
         </button>
       </Link>
@@ -78,7 +78,7 @@ export default function Tools({ navOptions }) {
           height={100}
           width={100}
           alt="Phone"
-          className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+          className="w-6 h-6 max-mdx:w-4 max-mdx:h-4"
         />
       </a>
       <button
@@ -90,7 +90,7 @@ export default function Tools({ navOptions }) {
           height={100}
           width={100}
           alt="Menu"
-          className="w-4 h-4 max-mdx:w-3 max-mdx:h-3"
+          className="w-4 h-4 max-mdx:w-4 max-mdx:h-4"
         />
       </button>
       {menu && <Menu menu={menu} closeMenu={handleCloseMenu} navOptions={navOptions} />}
