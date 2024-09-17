@@ -167,3 +167,100 @@ body.modal-open {
 .transform {
   transform: translateY(100%);
 }
+
+
+.image-gallery-thumbnail.active {
+  border: 2px solid red !important;
+  border-radius: 10px;
+}
+
+/* Apply rounded corners to all thumbnails */
+.image-gallery-thumbnail img {
+  border-radius: 10px;
+}
+
+/* Remove the default blue border on hover */
+.image-gallery-thumbnail:hover,
+.image-gallery-thumbnail:focus {
+  outline: none !important;
+  border: 2px solid red !important;
+  border-radius: 10px;
+}
+
+/* Переопределение стилей для миниатюр */
+.image-gallery-thumbnail {
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+}
+
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  border-radius: 0.75rem !important;
+}
+
+/* Убедитесь, что при наведении и выборе слайда углы остаются скругленными */
+.image-gallery-thumbnail:hover,
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus {
+  border-radius: 0.75rem !important;
+}
+
+.image-gallery-thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 102px;
+  height: 102px;
+  margin: 0 auto;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+}
+
+.image-gallery-thumbnail img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px !important;
+}
+
+.image-gallery-thumbnail:hover,
+.image-gallery-thumbnail.active {
+  border: 2px solid green !important;
+  border-radius: 10px !important;
+}
+
+.image-gallery-thumbnails img {
+  margin: 0;
+  padding: 0;
+}
+
+.image-gallery-thumbnails img {
+  width: 100px;
+  height: auto;
+}
+
+.image-gallery-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px !important;
+}
+
+.image-gallery-thumbnail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 102px;
+  height: 102px;
+  overflow: hidden;
+}
+.image-gallery-thumbnail img {
+  aspect-ratio: 1 / 1;
+  width: 100px;
+  height: 100px; 
+}
+@media only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2) {
+  .image-gallery-thumbnail img {
+    width: 100px;
+    height: 100px;
+  }
+}
