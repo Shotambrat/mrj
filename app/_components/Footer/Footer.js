@@ -126,7 +126,7 @@ export default async function Footer() {
             <p className="w-full max-mdx:max-w-[150px]">
               2024 © MRJ Trade. All rights reserved
             </p>
-            <a href="https://result-me.uz" target="_blank">
+            <a href=" https://result-me.uz/api/redirect?from=bXJq" target="_blank">
               <Image
                 src={resultLogo}
                 width={500}
