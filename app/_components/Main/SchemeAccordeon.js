@@ -155,6 +155,7 @@ export default function Instruction() {
             src={filteredData.image}
             width={1000}
             height={1000}
+            quality={100}
             alt="Scheme Image"
             className="w-full h-auto max-h-[400px] object-cover"
           />

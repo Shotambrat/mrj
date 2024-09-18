@@ -90,7 +90,7 @@ export default function PartnerPage() {
           {partner.title}
         </h1> */}
         <p
-          className="text-[#252324] text-[15px] mdx:text-[20px]"
+          className="text-[#252324] text-[15px] mdx:text-[20px] pt-[20px] border-t"
           dangerouslySetInnerHTML={{ __html: formattedDescription }}
         />
       </div>
@@ -100,8 +100,8 @@ export default function PartnerPage() {
       <div className="xl:hidden grid grid-cols-1 gap-4 xl:grid-cols-2">
         {partnersSlider.map((card) => (
           <Link key={card.id} href={`/partners/${card.slug}`}>
-            <div className="bg-white flex mdx:items-center p-4 rounded-2xl border-[1px] border-gray-200 mdx:p-0 mdl:p-5 mdx:py-[43px] flex-col mdx:flex-row">
-              <div className="mdx:flex-1 h-[70px] relative w-full">
+            <div className="bg-white flex mdx:items-center p-4 rounded-2xl border-[1px] border-gray-200 mdx:p-0 mdl:p-5 mdx:py-[43px] flex-col mdx:flex-row max-xl:gap-[20px]">
+              <div className="mdx:flex-1 h-[80px] relative w-full">
                 <Image
                   src={card.photo.url}
                   alt={card.title}

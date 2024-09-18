@@ -83,7 +83,7 @@ export default function List({
       )}
       <div className="w-full flex flex-col lg:flex-row lg:justify-between gap-5">
         <h1 className="text-3xl max-mdx:text2xl font-semibold">CATALOG</h1>
-        <div className="z-10 flex gap-5 items-center max-mdx:flex-col max-mdx:items-start">
+        <div className="z-10 flex gap-5 items-center max-mdx:flex-row max-mdx:items-start">
           <button
             onClick={() => setCategoryModal(true)}
             className="px-4 py-3 rounded-xl bg-greenCategory gap-2 font-semibold backdrop-opacity-10 text-greenView flex items-center lg:hidden"

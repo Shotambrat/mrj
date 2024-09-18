@@ -16,7 +16,7 @@ export default function Dropdown({ brands, onFilterChange }) {
     <div className="relative inline-block text-left">
       <Menu as="div" className="relative">
         <div>
-          <Menu.Button className="inline-flex justify-center items-center w-56 px-4 py-2 font-medium text-black bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent">
+          <Menu.Button className="inline-flex justify-center items-center max-mdx:w-full max-mdx:px-8 w-56 px-4 py-3 font-medium text-black bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent">
             {activeFilter === "all" ? "All Brands" : activeFilter}
             <ChevronDownIcon
               className="w-5 h-5 ml-2 -mr-1"

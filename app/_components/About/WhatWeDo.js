@@ -83,7 +83,7 @@ export default function WhatWeDo() {
         <div className="max-w-[2100px] slg:px-20 mx-auto px-2">
             <div className="2xl:grid 2xl:grid-cols-2">
                 <div>
-                    <h2 className="ml-0 text-[25px] mb-8 mdx:text-[35px] font-medium">What we do for <br />our Partners?</h2>
+                    <h2 className="ml-0 text-[25px] mb-8 mdx:text-[35px] font-medium uppercase">What we do for <br />our Partners?</h2>
                 </div>
                 <div className="mt-[25px] grid gap-4 mdx:grid-cols-2">
                     {services.map((service, index) => (

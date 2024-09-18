@@ -25,7 +25,7 @@ export default function WhatWeDo() {
     return (
         <>
             <div className="max-w-[2100px] slg:px-20 mx-auto">
-                <div className="text-[25px] mdx:text-[36px] xl:text-[40px] px-2">Why choose us?</div>
+                <div className="text-[25px] mdx:text-[36px] xl:text-[40px] px-2 uppercase">Why choose us?</div>
                 <div className="p-4">
                     <div className="grid gap-4 mdx:grid-cols-2 2xl:grid-cols-4">
                         {services.map((service, index) => (
