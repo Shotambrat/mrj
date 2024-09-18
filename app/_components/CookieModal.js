@@ -39,7 +39,7 @@ export default function CookieModal() {
   return (
     <motion.div
       initial={{ y: "100%" }}
-      animate={{ y: showModal ? 0 : "100%" }}
+      animate={{ y: showModal ? 0 :'100%' }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="fixed left-0 w-full bg-gray-800 text-white p-8 z-50 bottom-0 overflow-hidden"
       style={{
@@ -66,9 +66,9 @@ export default function CookieModal() {
         `, // Random rotations
       }}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <p className="text-xl">We use cookies to improve your experience on our site. By accepting, you agree to our use of cookies.</p>
-        <div>
+      <div className="container mx-auto flex max-lg:flex-col gap-4 justify-between items-center">
+        <p className="text-xl text-center">We use cookies to improve your experience on our site. By accepting, you agree to our use of cookies.</p>
+        <div className="flex gap-4">
           <button
             onClick={handleAccept}
             className="bg-green-500 px-4 py-2 rounded mr-2"
