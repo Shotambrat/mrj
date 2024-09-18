@@ -26,7 +26,7 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
                   height={100}
                   width={100}
                   alt={`Tools Item HeartIcon : Favorites`}
-                  className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+                  className="w-6 h-6 max-mdx:w-5 max-mdx:h-5"
                 />
               </button>
             </Link>
@@ -39,7 +39,7 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
                 height={100}
                 width={100}
                 alt={`Tools Item HeartIcon : Favorites`}
-                className="w-6 h-6 max-mdx:w-3 max-mdx:h-3"
+                className="w-6 h-6 max-mdx:w-5 max-mdx:h-5"
               />
             </a>
             <button
@@ -51,7 +51,7 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
                 height={100}
                 width={100}
                 alt={`Tools Item Burger Menu`}
-                className="w-4 h-4 max-mdx:w-3 max-mdx:h-3"
+                className="w-4 h-4 max-mdx:w-5 max-mdx:h-5"
               />
             </button>
           </div>

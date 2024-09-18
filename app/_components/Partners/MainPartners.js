@@ -16,7 +16,7 @@ export default function PartnerPage() {
   useEffect(() => {
     if (slug) {
       fetchPartnerDetails(slug);
-      fetchPartnersSlider();
+      fetchPartnersSlider(slug);
     }
   }, [slug]);
 
@@ -28,8 +28,8 @@ export default function PartnerPage() {
     }
   };
 
-  const fetchPartnersSlider = async () => {
-    const response = await fetch("https://mrjtrade.uz/partner/get-all");
+  const fetchPartnersSlider = async (slug) => {
+    const response = await fetch(`https://mrjtrade.uz/partner/get-others/${slug}`);
     const data = await response.json();
     setPartnersSlider(data.data);
   };
@@ -101,18 +101,16 @@ export default function PartnerPage() {
         {partnersSlider.map((card) => (
           <Link key={card.id} href={`/partners/${card.slug}`}>
             <div className="bg-white flex mdx:items-center p-4 rounded-2xl border-[1px] border-gray-200 mdx:p-0 mdl:p-5 mdx:py-[43px] flex-col mdx:flex-row max-xl:gap-[20px]">
-              <div className="mdx:flex-1 h-[80px] relative w-full">
+              <div className="mdx:flex-1 px-12 h-[80px] flex justify-center relative w-full">
                 <Image
                   src={card.photo.url}
                   alt={card.title}
-                  layout="fill"
-                  objectFit="contain"
+                  height={500}
+                  width={500}
+                  className="h-full w-auto max-w-[200px] object-contain"
                 />
               </div>
               <div className="mdx:flex-1 ml-2">
-                <h2 className="text-xl font-bold xl:text-[28px]">
-                  {card.title}
-                </h2>
                 <p className="text-gray-600 xl:text-[18px]">
                   {card.description.slice(0, 200)}
                 </p>

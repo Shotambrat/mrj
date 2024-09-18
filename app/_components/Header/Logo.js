@@ -6,7 +6,7 @@ import logo from "@/public/images/mrj-logo.png";
 
 function Logo({ logoUrl, id }) {
   return (
-    <Link href="/" className="h-full">
+    <Link href="/" className="h-full max-mdx:h-[50px]">
         <Image
           src={logoUrl}
           width={300}

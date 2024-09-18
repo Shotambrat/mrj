@@ -36,17 +36,17 @@ export default function ListPartners() {
         {partners.map((card) => (
           <Link key={card.id} href={`/partners/${card.slug}`} className="bg-white p-4 w-full rounded-2xl border border-gray-200 mdx:p-0 mdl:p-5 slg:h-auto">
               <div className="mdx:flex mdx:flex-row items-center justify-between">
-                <div className="mdx:w-[50%] h-full relative flex justify-center">
+                <div className="mdx:w-[50%] h-full max-mdx:h-[80px] relative max-mdx:px-12 max-mdx:mb-6 flex justify-center">
                   <Image
                     src={card.photo.url}
                     alt={card.title}
                     height={500}
                     width={500}
-                    className="max-h-[150px] w-[70%] h-full object-contain"
+                    className="mdx:max-h-[150px] mdx:w-[70%] h-full w-auto object-contain"
                   />
                 </div>
                 <div className="mdx:mb-4 mdx:w-[50%]">
-                  <h2 className="text-xl font-bold right mt-4 mdx:mb-2 xl:text-[28px]">
+                  <h2 className="text-xl font-bold max-mdx:hidden right mt-4 mdx:mb-2 xl:text-[28px]">
                     {card.title}
                   </h2>
                   <p className="mb-4 text-gray-600 xl:text-[18px]">

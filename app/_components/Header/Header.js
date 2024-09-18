@@ -8,7 +8,7 @@ export default async function Header() {
   const data = res.data;
 
   return (
-    <header className="w-full bg-white py-4 px-2 h-[90px] max-mdx:h-[70px] shadow-2xl">
+    <header className="w-full bg-white py-4 px-2 h-[90px] shadow-2xl">
       <div className="w-full max-w-[2100px]  flex justify-between gap-2 h-full mx-auto">
         <Logo logoUrl={data.data.logo.url} />
         <Navigation navOptions={data.data.options} />
