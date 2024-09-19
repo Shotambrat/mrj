@@ -57,7 +57,9 @@ const VerticalCarousel = ({ images, name }) => {
             showIndex={false}
             renderItem={(item) => (
               <div className="w-full h-auto mb-[30px] flex flex-row justify-center cursor-default items-center">
-                <img
+                <Image
+                  width={1000}
+                  height={1000}
                   src={item.original}
                   alt={item.originalAlt}
                   className="object-contain w-full h-96 xl:px-4"
@@ -66,7 +68,9 @@ const VerticalCarousel = ({ images, name }) => {
             )}
             renderThumbInner={(item) => (
               <div className="cursor-pointer mb-4 mr-4 lg:mr-0 overflow-hidden w-full h-auto">
-                <img
+                <Image
+                width={200}
+                height={200}
                   src={item.thumbnail}
                   alt={item.thumbnailAlt}
                   className="object-contain w-full h-full"
