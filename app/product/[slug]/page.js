@@ -1,5 +1,3 @@
-// app/product/[slug]/page.js
-
 import Map from "@/app/_components/About/Map";
 import Application from "@/app/_components/Main/Application";
 import ProductInfo from "@/app/_components/Products/ProductInfo";
@@ -16,31 +14,37 @@ export async function generateMetadata({ params }) {
 
   if (!product) {
     return {
-      title: 'Hasnt product available',
+      title: 'Product not available',
       description: '404',
     };
   }
 
-  const images = product.gallery.map((image) => image.url);
+  // Форматирование изображений для Open Graph
+  const images = product.gallery.map((image) => ({
+    url: image.url,
+    alt: product.name,
+  }));
 
   return {
     title: product.name,
     description: product.shortDescription || product.description || '',
-    keywords: product.characteristics.map((i) => `${i?.parameterName}, ${i?.description}`),
+    keywords: product.characteristics
+      .map((i) => `${i?.parameterName}, ${i?.description}`)
+      .join(', '),
     openGraph: {
       title: product.name,
       description: product.shortDescription || product.description || '',
       url: `https://imed.uz/product/${slug}`,
       siteName: 'Medical equipment in Dubai',
-      images: images.length ? images : '',
+      images: images.length ? images : undefined,
       locale: 'en-US',
-      type: 'product',
+      type: 'article', // Изменено с 'product' на 'article'
     },
     twitter: {
       card: 'summary_large_image',
       title: product.name,
       description: product.shortDescription || product.description || '',
-      images: images.length ? images[0] : '/default-image.jpg',
+      image: images.length ? images[0].url : '/default-image.jpg', // Изменено с 'images' на 'image'
     },
   };
 }
