@@ -16,7 +16,7 @@ export default function Partners() {
     fetchData();
   }, []);
 
-  console.log("Partners", partners);
+  ("Partners", partners);
 
   return (
     <div className="max-w-[2100px] slg:px-20 w-full mx-auto px-2">

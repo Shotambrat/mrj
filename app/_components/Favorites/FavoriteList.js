@@ -13,7 +13,7 @@ export default function FavoriteList( ) {
     setFavorites(storedFavorites);
   }, []);
 
-  console.log(favorites)
+  (favorites)
 
   return (
     <div className="w-full max-w-[2100px] slg:px-20 px-2 flex flex-col gap-12 mx-auto">

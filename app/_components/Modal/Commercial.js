@@ -71,7 +71,7 @@ export default function Commercial({ product, closeModal }) {
       ]
     }
 
-    console.log(requestBody)
+    (requestBody)
 
     try {
       const response = await fetch('https://mrjtrade.uz/commercial-offer', {

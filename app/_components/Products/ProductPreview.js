@@ -34,7 +34,7 @@ export default function ProductPreview({ product }) {
     setIsFavorite(!isFavorite);
   };
 
-  console.log(product);
+  (product);
 
   return (
     <div className="w-full flex flex-col lg:flex-row">

@@ -8,7 +8,7 @@ import close from "@/public/svg/close.svg";
 
 const Menu = ({ menu, closeMenu, navOptions }) => {
 
-  console.log("navOptions", navOptions);
+  ("navOptions", navOptions);
   return (
     <motion.div
       initial={{ x: "100%" }} // Начальная позиция (вне экрана справа)

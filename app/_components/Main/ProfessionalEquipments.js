@@ -34,7 +34,7 @@ const EquipmentCarousel = () => {
     fetchData();
   }, []);
   
-  console.log("FilteredData",filteredData)
+  ("FilteredData",filteredData)
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
