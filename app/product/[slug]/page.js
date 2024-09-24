@@ -39,8 +39,8 @@ export async function generateMetadata({ params }) {
         {
           url: firstImage,
           alt: product.name,
-          width: 1200, 
-          height: 630,
+          width: 60, 
+          height: 60,
         }
       ],
       type: 'website',
