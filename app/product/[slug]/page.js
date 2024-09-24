@@ -1,3 +1,5 @@
+// app/product/[slug]/page.js
+
 import Map from "@/app/_components/About/Map";
 import Application from "@/app/_components/Main/Application";
 import ProductInfo from "@/app/_components/Products/ProductInfo";
@@ -19,11 +21,8 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  // Форматирование изображений для Open Graph
-  const images = product.gallery.map((image) => ({
-    url: image.url,
-    alt: product.name,
-  }));
+  // Использовать только первую фотографию для Open Graph и Twitter
+  const firstImage = product.gallery.length ? product.gallery[0].url : '/default-image.jpg';
 
   return {
     title: product.name,
@@ -36,15 +35,15 @@ export async function generateMetadata({ params }) {
       description: product.shortDescription || product.description || '',
       url: `https://imed.uz/product/${slug}`,
       siteName: 'Medical equipment in Dubai',
-      images: images.length ? images : undefined,
+      images: [{ url: firstImage, alt: product.name }],
       locale: 'en-US',
-      type: 'article', // Изменено с 'product' на 'article'
+      type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: product.name,
       description: product.shortDescription || product.description || '',
-      image: images.length ? images[0].url : '/default-image.jpg', // Изменено с 'images' на 'image'
+      image: firstImage, // Использовать только первое изображение
     },
   };
 }
