@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
   }
 
   // Использовать только первую фотографию для Open Graph и Twitter
-  const firstImage = product.gallery.length ? product.gallery[0].url : '/default-image.jpg';
+  const firstImage = product.gallery[0]?.url || '/default-image.jpg';
 
   return {
     title: product.name,
@@ -35,9 +35,15 @@ export async function generateMetadata({ params }) {
       description: product.shortDescription || product.description || '',
       url: `https://imed.uz/product/${slug}`,
       siteName: 'Medical equipment in Dubai',
-      images: [{ url: firstImage, alt: product.name }],
-      locale: 'en-US',
-      type: 'article',
+      images: [
+        {
+          url: firstImage,
+          alt: product.name,
+          width: 1200, 
+          height: 630,
+        }
+      ],
+      type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
