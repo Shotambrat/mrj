@@ -49,8 +49,11 @@ export default function Map() {
                                             </svg>
                                         </svg>
                                     </div>
-                                    <div >
-                                        <a href="tel:+9710524979914" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+9710524979914</a>
+                                    <div className="flex flex-col">
+                                        <div className="flex flex-row gap-[20px]">
+                                            <a href="tel:+971562487700" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+971562487700</a>
+                                            <a href="tel:+971543980707" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+971543980707</a>
+                                        </div>
                                         <p className="text-black text-lg font-semibold mdx:text-[20px]">Open daily 09:00 - 18:00</p>
                                     </div>
                                 </div>
@@ -74,7 +77,7 @@ export default function Map() {
                                         <a href="mailto:info@mrjtrade.ae" className="text-black text-lg font-semibold mdx:text-[20px]">info@mrjtrade.ae</a>
                                     </div>
                                 </div>
-                                <button onClick={()=> setModal(true)} className="w-full md:w-[328px] mdl:mr-auto mdl:px-16 py-3 rounded-[12px] transition-colors bg-greentxt text-white mdx:text-[20px] mdx:w-[408px] xl:mt-[130px]" style={{ pointerEvents: 'auto' }}>
+                                <button onClick={() => setModal(true)} className="w-full md:w-[328px] mdl:mr-auto mdl:px-16 py-3 rounded-[12px] transition-colors bg-greentxt text-white mdx:text-[20px] mdx:w-[408px] xl:mt-[130px]" style={{ pointerEvents: 'auto' }}>
                                     Ask question
                                 </button>
                             </div>

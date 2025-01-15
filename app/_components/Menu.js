@@ -31,7 +31,7 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
               </button>
             </Link>
             <a
-              href="tel:+998990909095"
+              href="tel:+971562487700"
               className="border border-neutral-300 px-4 py-4 rounded-full max-mdx:px-3 max-mdx:py-3"
             >
               <Image
