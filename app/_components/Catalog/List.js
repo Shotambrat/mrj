@@ -24,20 +24,20 @@ export default function List({
 
   useEffect(() => {
     // Fetch categories
-    fetch("https://mrjtrade.uz/category")
+    fetch("https://mrjtrade.result-me.uz/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));
 
     // Fetch brands
-    fetch("https://mrjtrade.uz/partner/get-all") // Указываем правильный API для брендов
+    fetch("https://mrjtrade.result-me.uz/partner/get-all") // Указываем правильный API для брендов
       .then((response) => response.json())
       .then((data) => setBrands(data.data)) // Сохраняем список брендов
       .catch((error) => console.error("Error fetching brands:", error));
   }, []);
 
   const handleCatalogSelect = (catalogId, categorySlug) => {
-    fetch(`https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}`)
+    fetch(`https://mrjtrade.result-me.uz/product/v2/all?catalog-id=${catalogId}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.data);
@@ -47,7 +47,7 @@ export default function List({
   };
 
   const handleCategorySelect = (categoryId, categorySlug) => {
-    fetch(`https://mrjtrade.uz/product/v2/all?category-id=${categoryId}`)
+    fetch(`https://mrjtrade.result-me.uz/product/v2/all?category-id=${categoryId}`)
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.data);

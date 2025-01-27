@@ -16,7 +16,7 @@ export default function Similar({ product }) {
     async function fetchSimilarProducts() {
       try {
         const response = await axios.get(
-          `https://mrjtrade.uz/product/v2/${product.slug}?similar=true`
+          `https://mrjtrade.result-me.uz/product/v2/${product.slug}?similar=true`
         );
         setSimilarProducts(response.data.data);
       } catch (error) {

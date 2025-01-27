@@ -5,7 +5,7 @@ import OtherNews from "@/app/_components/NewsPages/OtherNews";
 
 async function fetchNewsData(slug) {
   try {
-    const response = await fetch(`https://mrjtrade.uz/news/get/${slug}`);
+    const response = await fetch(`https://mrjtrade.result-me.uz/news/get/${slug}`);
     const data = await response.json();
     return data.data;
   } catch (error) {

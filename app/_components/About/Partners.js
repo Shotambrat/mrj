@@ -8,7 +8,7 @@ export default function Partners() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("https://mrjtrade.uz/partner/get-all");
+      const response = await fetch("https://mrjtrade.result-me.uz/partner/get-all");
       const result = await response.json();
       setPartners(result.data);
     };

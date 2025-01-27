@@ -15,7 +15,7 @@ export default function Search({ setSearchMenu, searchModalRef, searchButtonRef 
       if (!query.trim()) return; // Не отправляем запрос, если поле пустое
 
       setLoading(true);
-      const response = await axios.get(`https://mrjtrade.uz/search?query=${query}`);
+      const response = await axios.get(`https://mrjtrade.result-me.uz/search?query=${query}`);
       setResults(response.data.data);
       setNoResults(response.data.data.length === 0); // Проверяем, есть ли результаты
       setLoading(false);

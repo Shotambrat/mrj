@@ -14,7 +14,7 @@ export default function NewsComp() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await axios.get(`https://mrjtrade.uz/news/get-all?page=${currentPage}`);
+        const response = await axios.get(`https://mrjtrade.result-me.uz/news/get-all?page=${currentPage}`);
         setData(response.data.data);
       } catch (error) {
         console.error('Error fetching news:', error);

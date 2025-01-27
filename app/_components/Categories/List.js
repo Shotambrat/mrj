@@ -7,7 +7,7 @@ export default function List() {
 
   useEffect(() => {
     // Fetch categories
-    fetch("https://mrjtrade.uz/category")
+    fetch("https://mrjtrade.result-me.uz/category")
       .then((response) => response.json())
       .then((data) => setCategories(data.data.item))
       .catch((error) => console.error("Error fetching categories:", error));

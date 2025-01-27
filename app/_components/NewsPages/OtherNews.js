@@ -7,7 +7,7 @@ import GreenArrow from "@/app/_components/Buttons/GreenArrow";
 
 async function fetchOtherNews(currentSlug) {
   try {
-    const response = await fetch(`https://mrjtrade.uz/news/get-all-other/${currentSlug}`);
+    const response = await fetch(`https://mrjtrade.result-me.uzrjtrade.uz/news/get-all-other/${currentSlug}`);
     const data = await response.json();
     return data.data;
   } catch (error) {

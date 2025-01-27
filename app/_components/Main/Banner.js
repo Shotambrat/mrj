@@ -13,7 +13,7 @@ export default function BannerCarousel() {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const response = await fetch("https://mrjtrade.uz/banner/get");
+        const response = await fetch("https://mrjtrade.result-me.uz/banner/get");
         const data = await response.json();
         if (data.message === "Found" && data.data.banner && data.data.banner.data) {
           setSlides(data.data.banner.data.filter(slide => slide.active));

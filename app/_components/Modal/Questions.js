@@ -50,7 +50,7 @@ export default function Commercial({ closeModal }) {
     setError(null);
 
     try {
-      const response = await axios.post("https://mrjtrade.uz/application/create", values);
+      const response = await axios.post("https://mrjtrade.result-me.uz/application/create", values);
       if (response.status === 200) {
         closeModal(false);
       } else {

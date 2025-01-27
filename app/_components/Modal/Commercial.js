@@ -74,7 +74,7 @@ export default function Commercial({ product, closeModal }) {
     (requestBody)
 
     try {
-      const response = await fetch('https://mrjtrade.uz/commercial-offer', {
+      const response = await fetch('https://mrjtrade.result-me.uz/commercial-offer', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

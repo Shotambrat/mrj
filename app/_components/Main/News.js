@@ -10,7 +10,7 @@ export default function News() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://mrjtrade.uz/news/get-all?size=4');
+      const response = await fetch('https://mrjtrade.result-me.uz/news/get-all?size=4');
       const result = await response.json();
       setData(result.data);
     };

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   const { slug } = params;
 
   // Запрос данных о продукте
-  const res = await fetch(`https://mrjtrade.uz/product/v2/${slug}`);
+  const res = await fetch(`https://mrjtrade.result-me.uz/product/v2/${slug}`);
   const data = await res.json();
   const product = data.data;
 
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
     openGraph: {
       title: product.name,
       description: product.shortDescription || product.description || '',
-      url: `https://imed.uz/product/${slug}`,
+      url: `https://mrjtrade.result-me.uz/product/${slug}`,
       siteName: 'Medical equipment in Dubai',
       images: [
         {
@@ -58,7 +58,7 @@ export default async function ProductPage({ params }) {
   const { slug } = params;
 
   // Запрос данных о продукте
-  const res = await fetch(`https://mrjtrade.uz/product/v2/${slug}`);
+  const res = await fetch(`https://mrjtrade.result-me.uz/product/v2/${slug}`);
   const data = await res.json();
   const product = data.data;
 

@@ -9,7 +9,7 @@ export default function ListPartners() {
   useEffect(() => {
     async function fetchPartners() {
       try {
-        const response = await fetch("https://mrjtrade.uz/partner/get-all");
+        const response = await fetch("https://mrjtrade.result-me.uz/partner/get-all");
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

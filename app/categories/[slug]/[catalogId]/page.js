@@ -11,7 +11,7 @@ export default function Page() {
 
   useEffect(() => {
     // Fetch the category details to get the category ID
-    fetch(`https://mrjtrade.uz/category/${slug}`)
+    fetch(`https://mrjtrade.result-me.uz/category/${slug}`)
       .then((response) => response.json())
       .then((data) => {
         const category = data.data;
@@ -19,7 +19,7 @@ export default function Page() {
           setCategory(category);
 
           // Fetch products by catalog ID
-          fetch(`https://mrjtrade.uz/product/v2/all?catalog-id=${catalogId}`)
+          fetch(`https://mrjtrade.result-me.uz/product/v2/all?catalog-id=${catalogId}`)
             .then((response) => response.json())
             .then((data) => setProducts(data.data))
             .catch((error) => {

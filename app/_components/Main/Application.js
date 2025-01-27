@@ -63,7 +63,7 @@ export default function Application() {
     }
 
     try {
-      const response = await axios.post("https://mrjtrade.uz/application/create", values);
+      const response = await axios.post("https://mrjtrade.result-me.uz/application/create", values);
       if (response.status === 200) {
         setValues({
           fullName: "",

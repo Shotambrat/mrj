@@ -21,7 +21,7 @@ export default function PartnerPage() {
   }, [slug]);
 
   const fetchPartnerDetails = async (slug) => {
-    const response = await fetch(`https://mrjtrade.uz/partner/get/${slug}`);
+    const response = await fetch(`https://mrjtrade.result-me.uz/partner/get/${slug}`);
     const data = await response.json();
     if (data.message === "Found") {
       setPartner(data.data);
@@ -29,7 +29,7 @@ export default function PartnerPage() {
   };
 
   const fetchPartnersSlider = async (slug) => {
-    const response = await fetch(`https://mrjtrade.uz/partner/get-others/${slug}`);
+    const response = await fetch(`https://mrjtrade.result-me.uz/partner/get-others/${slug}`);
     const data = await response.json();
     setPartnersSlider(data.data);
   };
