@@ -1,5 +1,4 @@
 // app/news/[slug]/page.jsx
-
 import React from 'react';
 import Map from "@/app/_components/About/Map";
 import NewsTitle from "@/app/_components/NewsPages/NewsTitle";
@@ -15,7 +14,6 @@ import OtherNews from "@/app/_components/NewsPages/OtherNews";
 async function fetchNewsData(slug) {
   try {
     const response = await fetch(`https://mrjtrade.result-me.uz/news/get/${slug}`, {
-      // Cache the response for 60 seconds
       next: { revalidate: 60 },
     });
 
@@ -24,6 +22,7 @@ async function fetchNewsData(slug) {
     }
 
     const data = await response.json();
+    console.log('Fetched data from API:', data); // Debugging
     return data.data;
   } catch (error) {
     console.error('Error fetching news detail:', error);
@@ -32,144 +31,99 @@ async function fetchNewsData(slug) {
 }
 
 /**
- * Generates dynamic metadata for the News Detail Page.
+ * Parses a date string in 'DD-MM-YYYY' format and returns a Date object.
  *
- * @param {Object} params - The route parameters.
- * @param {string} params.slug - The slug identifier for the news article.
- * @returns {Object} - An object containing metadata properties.
+ * @param {string} dateString - The date string to parse.
+ * @returns {Date|null} - The parsed Date object or null if invalid.
+ */
+function parseDateString(dateString) {
+  const parts = dateString.split('-');
+  if (parts.length !== 3) return null;
+
+  const [day, month, year] = parts.map(part => parseInt(part, 10));
+
+  // Validate the parsed numbers
+  if (
+    isNaN(day) || isNaN(month) || isNaN(year) ||
+    day < 1 || day > 31 ||
+    month < 1 || month > 12 ||
+    year < 1000 || year > 9999
+  ) {
+    return null;
+  }
+
+  const date = new Date(year, month - 1, day);
+
+  // Check if the date is valid
+  return isNaN(date.getTime()) ? null : date;
+}
+
+/**
+ * Generates metadata for the news detail page based on the fetched news data.
+ *
+ * @param {Object} params - Route parameters containing the slug.
+ * @returns {Object} - Metadata object for the page.
  */
 export async function generateMetadata({ params }) {
   const { slug } = params;
   const newsData = await fetchNewsData(slug);
 
   if (!newsData) {
-    // Fallback metadata if data fetching fails
     return {
-      title: "News Detail",
-      description: "Detailed information about the news.",
-      openGraph: {
-        title: "News Detail",
-        description: "Detailed information about the news.",
-        url: `https://mrj-trade.com/news/${slug}`,
-        siteName: "MRJ Trade",
-        images: [
-          {
-            url: "/images/mrj-logo.png", // Ensure this image exists in your public directory
-            width: 800,
-            height: 600,
-            alt: "Default Image",
-          },
-        ],
-        locale: "en_US",
-        type: "article",
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: "News Detail",
-        description: "Detailed information about the news.",
-        images: ["/images/mrj-logo.png"],
-      },
-      additionalLinkTags: [
-        {
-          rel: "canonical",
-          href: `https://mrj-trade.com/news/${slug}`,
-        },
-      ],
+      title: 'Новость не найдена',
+      description: 'К сожалению, запрашиваемая новость не найдена.',
     };
   }
 
-  // Extract relevant information for SEO
-  const title = newsData.heading || "News Detail";
-  const description = newsData.text
-    ? newsData.text.replace(/<[^>]+>/g, "").substring(0, 160)
-    : "Detailed information about the news.";
+  const { head, newOptions, createDate } = newsData;
+  const description = head.body.substring(0, 160); 
+  const imageUrl = head.photo?.url || 'https://mrjtrade.uz/default-image.jpg'; 
 
-  // Extract image URL based on your data structure
-  // Adjust the path based on the actual structure of newsData.photo
-  const image =
-    newsData.photo && Array.isArray(newsData.photo) && newsData.photo.length > 0
-      ? newsData.photo[0].url // Replace with the correct path to the image URL
-      : "/default-og-image.jpg"; // Fallback image
-
-  // Ensure the createDate is in ISO format for structured data
-  const datePublished = new Date(newsData.createDate).toISOString();
-
-  // Structured Data (JSON-LD) for SEO
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: title,
-    description: description,
-    image: [image],
-    datePublished: datePublished,
-    author: {
-      "@type": "Organization",
-      name: "MRJ Trade",
-      url: "https://mrj-trade.com",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "MRJ Trade",
-      logo: {
-        "@type": "ImageObject",
-        url: "/images/mrj-logo.png", // Replace with the path to your logo
-      },
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://mrj-trade.com/news/${slug}`,
-    },
-  };
+  // Парсим дату
+  const parsedDate = parseDateString(createDate);
+  const publishedTime = parsedDate ? parsedDate.toISOString() : null;
 
   return {
-    title: title,
+    title: head.title,
     description: description,
     openGraph: {
-      title: title,
+      title: head.title,
       description: description,
-      url: `https://mrj-trade.com/news/${slug}`,
-      siteName: "MRJ Trade",
+      url: `https://mrjtrade.uz/news/${newsData.slug}`,
+      type: 'article',
+      article: {
+        publishedTime: publishedTime || new Date().toISOString(),
+        tags: newOptions.map(option => option.heading),
+      },
       images: [
         {
-          url: image,
-          width: 800,
-          height: 600,
-          alt: title,
+          url: imageUrl,
+          alt: head.title,
         },
       ],
-      locale: "en_US",
-      type: "article",
     },
     twitter: {
-      card: "summary_large_image",
-      title: title,
+      card: 'summary_large_image',
+      title: head.title,
       description: description,
-      images: [image],
+      images: [imageUrl],
     },
-    additionalLinkTags: [
-      {
-        rel: "canonical",
-        href: `https://mrj-trade.com/news/${slug}`,
-      },
-    ],
-    structuredData: JSON.stringify(structuredData),
+    metadataBase: new URL('https://mrjtrade.uz'),
+    alternates: {
+      canonical: `https://mrjtrade.uz/news/${newsData.slug}`,
+    },
   };
 }
 
-/**
- * The main component for the News Detail Page.
- *
- * @param {Object} props - The component props.
- * @param {Object} props.params - The route parameters.
- * @param {string} props.params.slug - The slug identifier for the news article.
- * @returns {JSX.Element} - The rendered News Detail Page.
- */
 export default async function NewsDetailPage({ params }) {
   const { slug } = params;
+  console.log('Current slug:', slug);
+
   const newsData = await fetchNewsData(slug);
+  console.log('News data:', newsData);
 
   if (!newsData) {
-    return <div>Loading...</div>;
+    return <div>Новость не найдена.</div>;
   }
 
   return (
@@ -181,4 +135,3 @@ export default async function NewsDetailPage({ params }) {
     </div>
   );
 }
-

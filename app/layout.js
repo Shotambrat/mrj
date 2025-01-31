@@ -10,7 +10,10 @@ export const metadata = {
     template: "%s",
     default: "MRJ Trade"
   },
-  description: "MRJ Trade in UAE"
+  description: "MRJ Trade in UAE",
+  alternates: {
+    canonical: `https://mrj-trade.com`
+  },
 }
 
 export default function RootLayout({ children }) {
