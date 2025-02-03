@@ -24,7 +24,7 @@ const AccordionItem = ({ title, isOpen, onClick, children }) => {
           <Image
             src={upGreen}
             className=""
-            alt={`Up icon red`}
+            alt={`Up green icon `}
             priority
             width={30}
             height={30}
@@ -34,7 +34,7 @@ const AccordionItem = ({ title, isOpen, onClick, children }) => {
           <Image
             src={downGray}
             className=""
-            alt={`Down icon black`}
+            alt={`Down black icon`}
             priority
             width={30}
             height={30}

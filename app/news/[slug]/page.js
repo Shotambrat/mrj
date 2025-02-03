@@ -6,10 +6,9 @@ import Share from "@/app/_components/NewsPages/Share";
 import OtherNews from "@/app/_components/NewsPages/OtherNews";
 
 /**
- * Fetches news data from the API based on the provided slug.
  *
- * @param {string} slug - The slug identifier for the news article.
- * @returns {Object|null} - Returns the news data object or null if an error occurs.
+ * @param {string} slug
+ * @returns {Object|null}
  */
 async function fetchNewsData(slug) {
   try {
@@ -77,7 +76,7 @@ export async function generateMetadata({ params }) {
 
   const { head, newOptions, createDate } = newsData;
   const description = head.body.substring(0, 160); 
-  const imageUrl = head.photo?.url || 'https://mrjtrade.uz/default-image.jpg'; 
+  const imageUrl = head.photo?.url || 'https://mrjtrade.uz/mrj-logo.png'; 
 
   // Парсим дату
   const parsedDate = parseDateString(createDate);

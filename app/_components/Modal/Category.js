@@ -21,7 +21,7 @@ export default function Category({
             src={close}
             width={100}
             height={100}
-            alt="Icon"
+            alt="close Icon"
             className="h-full w-full"
           />
         </button>

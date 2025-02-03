@@ -16,7 +16,7 @@ export default function Map() {
                                 </div>
                                 <div>
                                     <a href="https://www.google.com/maps/search/?api=1&query=Deira,+Baniyas+road,+Twin+Towers,+20+floor+office+number+10" target="_blank" rel="noopener noreferrer" className="block text-black text-[20px] mdx:text-[28px] xl:text-[30px] mdx:w-[470px]">
-                                        Deira, Baniyas road, Twin Towers, 20 floor office number 10
+                                        <h1>Deira, Baniyas road, Twin Towers, 20 floor office number 10</h1>
                                     </a>
                                 </div>
                             </div>

@@ -38,7 +38,7 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
                 src={phoneIcon}
                 height={100}
                 width={100}
-                alt={`Tools Item HeartIcon : Favorites`}
+                alt={`phone icon`}
                 className="w-6 h-6 max-mdx:w-5 max-mdx:h-5"
               />
             </a>
@@ -50,7 +50,7 @@ const Menu = ({ menu, closeMenu, navOptions }) => {
                 src={close}
                 height={100}
                 width={100}
-                alt={`Tools Item Burger Menu`}
+                alt={`close icon`}
                 className="w-4 h-4 max-mdx:w-5 max-mdx:h-5"
               />
             </button>

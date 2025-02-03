@@ -29,7 +29,7 @@ export async function generateMetadata({ params }) {
         title: 'Товар не доступен',
         description: 'Страница не найдена.',
         alternates: {
-          canonical: 'https://mrj-trade.com/product/',
+          canonical: 'https://mrj-trade.com/product',
         },
       };
     }
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
         title: product.name,
         description: product.shortDescription || product.description || '',
         url: `https://mrj-trade.com/product/${slug}`,
-        siteName: 'Medical equipment in Dubai',
+        siteName: 'Mrj Trade',
         images: [
           {
             url: firstImage,

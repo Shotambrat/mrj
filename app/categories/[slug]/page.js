@@ -11,7 +11,6 @@ export default function Page() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Fetch the category details to get the category ID
     fetch(`https://mrjtrade.result-me.uz/category/${slug}`)
       .then((response) => response.json())
       .then((data) => {
@@ -20,7 +19,6 @@ export default function Page() {
           setCategoryId(category.id);
           setCategory(category);
 
-          // Fetch products by category or catalog ID
           const fetchUrl = catalogId 
             ? `https://mrjtrade.result-me.uz/product/v2/all?catalog-id=${catalogId}` 
             : `https://mrjtrade.result-me.uz/product/v2/all?category-id=${category.id}`;
@@ -30,20 +28,20 @@ export default function Page() {
             .then((data) => setProducts(data.data))
             .catch((error) => {
               console.error("Error fetching products:", error);
-              router.push('/404'); // Redirect to 404 page on error
+              router.push('/404');
             });
         } else {
-          router.push('/404'); // Redirect to 404 page if category not found
+          router.push('/404');
         }
       })
       .catch((error) => {
         console.error("Error fetching category:", error);
-        router.push('/404'); // Redirect to 404 page on error
+        router.push('/404'); 
       });
   }, [slug, catalogId, router]);
 
   if (categoryId === null) {
-    return <div>Loading...</div>; // Show a loading state until the category is fetched
+    return <div>Loading...</div>; 
   }
 
   return (

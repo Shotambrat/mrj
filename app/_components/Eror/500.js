@@ -12,7 +12,7 @@ function Custom500() {
                         src={logo}
                         height={500}
                         width={500}
-                        alt="Logo Image"
+                        alt="Logo 500 Image"
                         className="h-full w-auto"
                     />
                 </div>

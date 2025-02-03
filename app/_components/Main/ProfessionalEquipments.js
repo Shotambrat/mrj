@@ -84,9 +84,9 @@ const EquipmentCarousel = () => {
 
   return (
     <section className="w-full max-w-[2100px] slg:px-20 mx-auto flex flex-col gap-8 px-2">
-      <h2 className="text-3xl max-mdx:text-2xl font-bold">
+      <h1 className="text-3xl max-mdx:text-2xl font-bold">
         PROFESSIONAL MEDICAL EQUIPMENT
-      </h2>
+      </h1>
       <div className="w-full flex flex-col gap-2">
         <div className="flex gap-2 overflow-x-scroll no-scrollbar">
           {categories.map((category, index) => (
