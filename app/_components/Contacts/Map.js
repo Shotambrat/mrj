@@ -25,7 +25,6 @@ export default function Map() {
                                     <p className="text-[14px] mdx:text-[18px] xl:text-[20px] text-[#BABABA]">Phone</p>
                                 </div>
                                 <div className="flex flex-col gap-[5px]">
-                                    <a href="tel:+971042552933" className="hover:underline text-black text-[20px] mdx:text-[28px] xl:text-[30px]">+971042552933</a>
                                     <a href="tel:+971562487700" className="hover:underline text-black text-[20px] mdx:text-[28px] xl:text-[30px]">+971562487700</a>
                                     <a href="tel:++971543980707" className="hover:underline text-black text-[20px] mdx:text-[28px] xl:text-[30px]">+971543980707</a>
                                 </div>
