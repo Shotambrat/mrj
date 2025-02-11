@@ -54,6 +54,7 @@ export default function Map() {
                                             <a href="tel:+971562487700" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+971562487700</a>
                                             <a href="tel:+971543980707" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+971543980707</a>
                                         </div>
+                                        <a href="tel:+971042552933" className="text-lg font-semibold text-black hover:underline mdx:text-[20px]">+971042552933</a>
                                         <p className="text-black text-lg font-semibold mdx:text-[20px]">Open daily 09:00 - 18:00</p>
                                     </div>
                                 </div>
