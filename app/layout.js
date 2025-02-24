@@ -2,7 +2,7 @@ import "@/app/_styles/globals.css";
 import dynamic from "next/dynamic";
 import Footer from "@/app/_components/Footer/Footer";
 import CookieModal from "@/app/_components/CookieModal";
-
+import Script from "next/script"; 
 const Header = dynamic(() => import("@/app/_components/Header/Header"), { ssr: true });
 
 
